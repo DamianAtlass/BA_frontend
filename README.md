@@ -1,2 +1,3 @@
 # BA_frontend
-test
+steps done:
+1. npx create-react-app students-fe
