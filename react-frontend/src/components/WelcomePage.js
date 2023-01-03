@@ -1,6 +1,6 @@
 import React from "react"
 import CreateUserModal from "./CreateUserModal";
-import TestComponent from "./TestComponent";
+import LoginModal from "./LoginModal";
 
 
 export default function WelcomePage(){
@@ -8,6 +8,7 @@ export default function WelcomePage(){
         <>
             <p>Welcome</p>
             <CreateUserModal/>
+            <LoginModal/>
         </>
     )
 }

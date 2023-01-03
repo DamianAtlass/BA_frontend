@@ -5,34 +5,42 @@ import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import { API_URL } from "../constants";
 
-export default function CreateUserModal() {
-    const [show, setShow] = useState(false);
+export default function LoginModal() {
+    const [show, set_show] = useState(false);
+    const [show_button, set_show_button] = useState(false)
+    const [error_message, set_error_message] = useState("")
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+    const handleClose = () => set_show(false);
+    const handleShow = () => set_show(true);
 
     const email = useRef()
     const password = useRef()
-    const username = useRef()
 
 
-    function foo(){
+    async function sendLoginCredentials(){
+        set_error_message("")
         const data = {
-            "email": email.current.value,
+            "username": email.current.value,
             "password": password.current.value,
-            "username": username.current.value
         }
-        axios.post(API_URL+"ok/", data).then((response)=>{
-            console.log("data:")
-            console.log(response.status)
-            console.log(response.data.somestring)
-        })
+        try {
+            let res = await axios.post(API_URL +"accounts/", data);
+
+        } catch (err) {
+            //TODO: check for verification
+
+            const err_msg = err.response.data["error"]
+            console.log(err_msg)
+            set_error_message(err.response.data["error-message"])
+
+        }
     }
 
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Create User
+                Log in
             </Button>
 
             <Modal
@@ -42,7 +50,7 @@ export default function CreateUserModal() {
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Create user</Modal.Title>
+                    <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {/*additional info here*/}
@@ -50,18 +58,12 @@ export default function CreateUserModal() {
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control ref={email}
-                                type="email"
-                                placeholder="name@example.com"
-                                autoFocus
+                                          type="email"
+                                          placeholder="name@example.com"
+                                          autoFocus
                             />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control ref={username}
-                                          type="text"
-                                          placeholder="username"
-                            />
-                        </Form.Group>
+
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Password</Form.Label>
                             <Form.Control ref={password}
@@ -71,12 +73,19 @@ export default function CreateUserModal() {
                         </Form.Group>
 
                     </Form>
+                    <p>{error_message}</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={foo}>Understood</Button>
+                    { show_button ?
+                        <Button variant="primary" >Understood1</Button>
+                        : null }
+
+                    <Button variant="primary" onClick={sendLoginCredentials}>Understood</Button>
+
+
                 </Modal.Footer>
             </Modal>
         </>
