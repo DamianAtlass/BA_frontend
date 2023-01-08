@@ -4,11 +4,14 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import { API_URL } from "../constants";
+import {useNavigate,
+} from "react-router-dom";
 
 export default function LoginModal() {
     const [show, set_show] = useState(false);
     const [show_button, set_show_button] = useState(false)
-    const [error_message, set_error_message] = useState("")
+    const [response_message, set_response_message] = useState("")
+    const navigate = useNavigate()
 
 
     const handleClose = () => set_show(false);
@@ -18,21 +21,25 @@ export default function LoginModal() {
     const password = useRef()
 
 
+
     async function sendLoginCredentials(){
-        set_error_message("")
+        set_response_message("")
         const data = {
             "username": email.current.value,
             "password": password.current.value,
         }
         try {
-            let res = await axios.post(API_URL +"accounts/", data);
+            let res = await axios.post(API_URL +"accounts/", data).then((response) => {
+                set_response_message(response.data["success-message"])
+                navigate("/overview")
+            });
 
         } catch (err) {
             //TODO: check for verification
 
             const err_msg = err.response.data["error"]
             console.log(err_msg)
-            set_error_message(err.response.data["error-message"])
+            set_response_message(err.response.data["error-message"])
 
         }
     }
@@ -73,7 +80,7 @@ export default function LoginModal() {
                         </Form.Group>
 
                     </Form>
-                    <p>{error_message}</p>
+                    <p>{response_message}</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
