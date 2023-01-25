@@ -4,14 +4,17 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import { API_URL } from "../constants";
-import {useNavigate,
-} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
 
 export default function LoginModal() {
     const [show, set_show] = useState(false);
     const [show_button, set_show_button] = useState(false)
     const [response_message, set_response_message] = useState("")
     const navigate = useNavigate()
+
+    const UserData = useUserData()
+    const setUserData = useUserDataUpdate()
 
 
     const handleClose = () => set_show(false);
@@ -31,6 +34,11 @@ export default function LoginModal() {
         try {
             let res = await axios.post(API_URL +"accounts/", data).then((response) => {
                 set_response_message(response.data["success-message"])
+                setUserData({
+                        "username": email.current.value,
+                        "password": password.current.value,
+                    })
+                console.log(UserData)
                 navigate("/overview")
             });
 
