@@ -7,24 +7,21 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
-const style={
-
-}
 
 export default function WelcomePage(){
     return (
         <Card>
             <Container fluid className="WelcomePage" >
-                <Row flex className="Row justify-content-center" style={style}>
-                    <Col style={style} className="justify-content-center" align="center">
+                <Row flex className="Row justify-content-center">
+                    <Col className="justify-content-center" align="center">
                         <h1>Welcome</h1>
                     </Col>
                 </Row>
-                <Row className="Row justify-content-evenly" style={style}>
-                    <Col style={style} align="center">
+                <Row className="Row justify-content-evenly">
+                    <Col align="center">
                         <CreateUserModal/>
 
-                    </Col><Col style={style} align="center">
+                    </Col><Col align="center">
                     <LoginModal/>
                 </Col>
                 </Row>
