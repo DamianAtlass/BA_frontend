@@ -20,10 +20,10 @@ export default function WelcomePage(){
                 <Row className="Row justify-content-evenly">
                     <Col align="center">
                         <CreateUserModal/>
-
-                    </Col><Col align="center">
-                    <LoginModal/>
-                </Col>
+                    </Col>
+                    <Col align="center">
+                        <LoginModal/>
+                    </Col>
                 </Row>
             </Container>
         </Card>

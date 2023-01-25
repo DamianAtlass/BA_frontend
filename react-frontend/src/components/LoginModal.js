@@ -34,11 +34,11 @@ export default function LoginModal() {
         try {
             let res = await axios.post(API_URL +"accounts/", data).then((response) => {
                 set_response_message(response.data["success-message"])
+
                 setUserData({
                         "username": email.current.value,
-                        "password": password.current.value,
                     })
-                console.log(UserData)
+                console.log("updated userdata: ",UserData)
                 navigate("/overview")
             });
 
