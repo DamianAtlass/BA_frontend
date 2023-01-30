@@ -12,7 +12,7 @@ export default function WelcomePage(){
     return (
         <Card>
             <Container fluid className="WelcomePage" >
-                <Row flex className="Row justify-content-center">
+                <Row flex="flex" className="Row justify-content-center">
                     <Col className="justify-content-center" align="center">
                         <h1>Welcome</h1>
                     </Col>
