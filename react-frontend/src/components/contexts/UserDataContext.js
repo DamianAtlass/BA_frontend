@@ -16,7 +16,7 @@ export function UserContext({children}){
     }
     const [userData, setUserData] = useState(default_state)
 
-    function changeUserData(newUserData){ return ()=>{
+    function changeUserData(newUserData){
         for (const [key, value] of Object.entries(newUserData)) {
             if (userData.hasOwnProperty(key)){
                 const updated_state = {...userData}
@@ -26,7 +26,7 @@ export function UserContext({children}){
                 console.log("No prop", key, "!")
             }
         }
-    }
+
 
     }
 
