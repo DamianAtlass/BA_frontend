@@ -18,9 +18,8 @@ export default function TestComponent(){
 
     useEffect(()=>{
 
-        getMessage()
-
-    },[])
+        console.log('i fire once');
+    },[]);
 
     return(
         <>

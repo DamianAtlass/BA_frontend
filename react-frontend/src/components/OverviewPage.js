@@ -11,7 +11,7 @@ export default function OverviewPage(){
     return (
         <>
             <h1>OverviewPage {userData.username} </h1>
-            <TestComponent/>
+            <Chat/>
 
         </>
     )
