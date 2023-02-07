@@ -5,21 +5,26 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import axios from "axios";
 import {API_URL} from "../constants";
+import {useUserData} from "./contexts/UserDataContext";
 
 
 export default function Chat(){
-
+    const userData = useUserData()
     const [currentMessage, setCurrentMessage] = useState(null)
 
     async function getMessage(){
-
-        let res = await axios.post(API_URL +"TODO/", data).then((response) => {
-
+        const data = {
+            "test": "test",
+            "username": "ben@mail.com"
+        }
+        let res = await axios.get(API_URL +"getchatdata/", data).then((response) => {
+            console.log(response.data)
         });
     }
 
     useEffect(()=>{
 
+        getMessage()
 
     },[])
 

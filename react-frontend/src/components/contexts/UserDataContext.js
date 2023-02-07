@@ -12,7 +12,9 @@ export function useUserDataUpdate(){
 
 export function UserContext({children}){
     const default_state = {
-        "username": "defaultDebuggingUsername"
+        "username": "defaultDebuggingUsername",
+        "current_node": -1,
+
     }
     const [userData, setUserData] = useState(default_state)
 
