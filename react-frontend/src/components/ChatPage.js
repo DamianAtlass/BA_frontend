@@ -3,9 +3,9 @@ import {useUserData} from "./contexts/UserDataContext";
 import Chat from "./Chat";
 import axios from "axios";
 import { API_URL } from "../constants";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import ChoiceList from "./ChoiceList";
+
+
 
 export default function ChatPage(){
     const userData = useUserData()
@@ -13,7 +13,7 @@ export default function ChatPage(){
 
 
     const [messages, setMessages] = useState([])
-    const [choises, setChoises] = useState([])
+    const [choices, setChoices] = useState([])
 
     useEffect(()=>{
         getMessage()
@@ -23,11 +23,15 @@ export default function ChatPage(){
         console.log("messages(State) changed:")
         console.log(messages)
     },[messages])
-    useEffect(()=>{
-        console.log("choises(State) changed:")
-        console.log(choises)
-    },[choises])
 
+    useEffect(()=>{
+        console.log("choices(State) changed:")
+        console.log(choices)
+    },[choices])
+
+    function handleClick(pk){
+        console.log("button clicked", pk)
+    }
 
     async function getMessage(){
         const data = {
@@ -36,16 +40,15 @@ export default function ChatPage(){
         let res = await axios.post(API_URL +"getchatdata/", data).then((response) => {
             console.log("response data(bot responses): ", response.data["bot_responses"])
             setMessages(response.data["bot_responses"])
-            setChoises(response.data["choises"])
+            setChoices(response.data["choices"])
         });
     }
-
-
 
     return (
         <>
             chat:
             <Chat messages={messages}/>
+            <ChoiceList choices={choices} handleClick={handleClick}/>
 
         </>
     )
