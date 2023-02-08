@@ -3,11 +3,12 @@ import {useUserData} from "./contexts/UserDataContext";
 
 
 
-export default function ChatMessage(author, message){
+export default function ChatMessage({author, content}){
+
 
     return(
         <>
-            {author}: {message}
+            ChatMessage: {author}: {content}
         </>
     )
 }
