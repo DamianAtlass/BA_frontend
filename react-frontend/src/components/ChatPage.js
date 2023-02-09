@@ -46,9 +46,9 @@ export default function ChatPage(){
         }
         console.log("messages(State):", messages)
         axios.post(API_URL +"getchatdata/", request_data).then((response) => {
-            console.log("BOT responses: ", response.data["bot_responses"])
+            console.log("RESPONSE data: ", response.data)
 
-            dispatch({type: "update_messages", payload: response.data["bot_responses"]})
+            dispatch({type: "update_messages", payload: [...response.data["history"], ...response.data["bot_responses"]]})
             setChoices(response.data["choices"])
         });
     }
