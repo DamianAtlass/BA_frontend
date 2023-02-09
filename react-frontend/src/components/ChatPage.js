@@ -4,7 +4,9 @@ import Chat from "./Chat";
 import axios from "axios";
 import { API_URL } from "../constants";
 import ChoiceList from "./ChoiceList";
-import {v4} from 'uuid';
+import Button from 'react-bootstrap/Button';
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 
 
@@ -17,52 +19,68 @@ export default function ChatPage(){
     const [messages, setMessages] = useState([])
     const [choices, setChoices] = useState([])
 
+    let tmp = null
+
     useEffect(()=>{
         getMessage()
     },[])
 
     useEffect(()=>{
-        console.log("messages(State) changed:")
-        console.log(messages)
+        console.log("[useEffect] messages changed:", messages)
     },[messages])
 
     useEffect(()=>{
-        console.log("choices(State) changed:")
-        console.log(choices)
+        console.log("[useEffect] choices changed:", choices)
     },[choices])
 
-    function handleClick(user_response_pk){
-        let user_response = choices.find(choice => {
-            return choice["pk"] === user_response_pk
-        })
-
-        console.log("user_response", user_response)
-
-        setMessages(messages.concat(user_response))
-        setTimeout(()=>{
-            return getMessage(user_response_pk)
-        }, 5000)
-
+    function foo(){
+        console.log("messages: ", messages)
     }
 
-    async function getMessage(user_response_pk=null){
+    async function handleClick(user_response_pk){
+        getMessage(user_response_pk, true)
+    }
+
+    function getMessage(user_response_pk=null, do_stuff=false){
+        if(do_stuff){
+            const user_response = choices.find(choice => {
+                return choice["pk"] === user_response_pk
+            })
+            console.log("type:", typeof(user_response))
+            console.log("user_response", user_response)
+
+            tmp = user_response
+
+            console.log("sleep")
+        }
+
+
         console.log("call for response")
         const data = {
             "username": userData.username,
             "user_response_pk": user_response_pk
         }
-        console.log("pre-setState messages(State):", messages)
-        let res = await axios.post(API_URL +"getchatdata/", data).then((response) => {
+        console.log("messages(State):", messages)
+        let res =  axios.post(API_URL +"getchatdata/", data).then((response) => {
             console.log("response data(bot responses): ", response.data["bot_responses"])
-            setMessages(messages.concat(response.data["bot_responses"]))
+
+            if(!user_response_pk){
+                setMessages([...messages, ...response.data["bot_responses"]])
+            } else {
+                setMessages([...messages, tmp,...response.data["bot_responses"]])
+            }
+
             setChoices(response.data["choices"])
         });
+        console.log("messages(State):", messages)
     }
 
     return (
         <>
             chat:
             <Chat messages={messages}/>
+            <Button onClick={foo}>click me</Button>
+            <Button onClick={()=>{getMessage(2)}}>fire</Button>
             <ChoiceList choices={choices} handleClick={handleClick}/>
 
         </>
