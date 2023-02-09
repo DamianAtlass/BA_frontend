@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect, useState, useReducer} from "react"
 import {useUserData} from "./contexts/UserDataContext";
 import Chat from "./Chat";
 import axios from "axios";
@@ -8,6 +8,13 @@ import Button from 'react-bootstrap/Button';
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
+function reducer (state, action){
+    if (action.type==="update_messages"){
+        return [...state, ...action.payload]
+    }
+    throw Error('Unknown action.');
+}
+
 
 
 
@@ -16,7 +23,8 @@ export default function ChatPage(){
     //const [currentMessage, setCurrentMessage] = useState(null)
 
 
-    const [messages, setMessages] = useState([])
+    //const [messages, setMessages] = useState([])
+    const [messages, dispatch] = useReducer(reducer, []);
     const [choices, setChoices] = useState([])
 
     let tmp = null
@@ -38,23 +46,24 @@ export default function ChatPage(){
     }
 
     async function handleClick(user_response_pk){
-        getMessage(user_response_pk, true)
+        const user_response = choices.find(choice => {
+            return choice["pk"] === user_response_pk
+        })
+        console.log("type:", typeof(messages))
+        console.log("pre user_response", messages)
+
+        console.log("dispatch", user_response)
+        dispatch({"type":"update_messages", "payload": [user_response]})
+
+        console.log("post user_response", messages)
+
+
+        console.log("getMessage(user_response_pk)", user_response_pk)
+        await sleep(3000)
+        getMessage(user_response_pk)
     }
 
-    function getMessage(user_response_pk=null, do_stuff=false){
-        if(do_stuff){
-            const user_response = choices.find(choice => {
-                return choice["pk"] === user_response_pk
-            })
-            console.log("type:", typeof(user_response))
-            console.log("user_response", user_response)
-
-            tmp = user_response
-
-            console.log("sleep")
-        }
-
-
+    function getMessage(user_response_pk=null){
         console.log("call for response")
         const data = {
             "username": userData.username,
@@ -64,11 +73,10 @@ export default function ChatPage(){
         let res =  axios.post(API_URL +"getchatdata/", data).then((response) => {
             console.log("response data(bot responses): ", response.data["bot_responses"])
 
-            if(!user_response_pk){
-                setMessages([...messages, ...response.data["bot_responses"]])
-            } else {
-                setMessages([...messages, tmp,...response.data["bot_responses"]])
-            }
+            //setMessages([...messages,...response.data["bot_responses"]])
+            console.log("dispatch")
+            dispatch({"type":"update_messages", "payload": response.data["bot_responses"] })
+
 
             setChoices(response.data["choices"])
         });
