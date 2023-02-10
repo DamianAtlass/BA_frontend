@@ -4,6 +4,8 @@ import Chat from "./Chat";
 import axios from "axios";
 import { API_URL } from "../constants";
 import ChoiceList from "./ChoiceList";
+import {INITIAL_USER} from "./contexts/UserDataContext";
+import {useNavigate} from "react-router-dom";
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -20,11 +22,16 @@ export default function ChatPage(){
     const userData = useUserData()
     const [messages, dispatch] = useReducer(reducer, []); //underline is 'ok'
     const [choices, setChoices] = useState([])
+    const navigate = useNavigate()
 
 
     useEffect(()=>{
+        if(userData.username===INITIAL_USER && !localStorage.getItem("user")){
+            navigate("/welcome")
+        }
         getMessage()
     },[])
+
 
     async function handleClick(user_response_pk){
 
@@ -40,8 +47,9 @@ export default function ChatPage(){
 
     function getMessage(user_response_pk=null){
         console.log("REQUEST response")
+
         const request_data = {
-            "username": userData.username,
+            "username": userData.username === INITIAL_USER ? localStorage.getItem("user") : userData.username,
             "user_response_pk": user_response_pk
         }
         console.log("messages(State):", messages)

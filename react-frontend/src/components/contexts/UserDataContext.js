@@ -2,6 +2,7 @@ import React, {useState, useContext, useReducer, useEffect } from "react";
 
 const UserDataContext = React.createContext()
 const UserDataUpdateContext = React.createContext()
+export const INITIAL_USER = "INITIAL_USER"
 
 export function useUserData(){
     return useContext(UserDataContext)
@@ -21,7 +22,7 @@ export function UserContext({children}){
     }
     ////////////////////////////
     const default_state = {
-        "username": "defaultDebuggingUsername",
+        "username": INITIAL_USER,
         "current_node": -1,
 
     }
