@@ -32,7 +32,7 @@ export default function LoginModal() {
             "password": password.current.value,
         }
         try {
-            let res = await axios.post(API_URL +"accounts/", data).then((response) => {
+            let res = await axios.post(API_URL +"login/", data).then((response) => {
                 set_response_message(response.data["success-message"])
 
                 setUserData({
