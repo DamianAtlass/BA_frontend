@@ -11,7 +11,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 function reducer (state, action){
     switch (action.type) {
-        case "update_messages":
+        case "append":
             return [...state, ...action.payload]
         default:
             throw Error('Unknown action.');
@@ -21,9 +21,8 @@ function reducer (state, action){
 export default function ChatPage(){
     const userData = useUserData()
     const [messages, dispatch] = useReducer(reducer, []); //underline is 'ok'
-    const [choices, setChoices] = useState([])
+    const [choices, setChoices] = useReducer(reducer, []);
     const navigate = useNavigate()
-
 
     useEffect(()=>{
         if(userData.username===INITIAL_USER && !localStorage.getItem("user")){
@@ -32,13 +31,11 @@ export default function ChatPage(){
         getMessage()
     },[])
 
-
     async function handleClick(user_response_pk){
 
         const user_response = choices.find(choice => {
             return choice["pk"] === user_response_pk
         })
-        console.log(`USER response: ${user_response}(${user_response_pk})`)
         dispatch({type:"update_messages", payload: [user_response]})
 
         //await sleep(3000)
@@ -52,12 +49,10 @@ export default function ChatPage(){
             "username": userData.username === INITIAL_USER ? localStorage.getItem("user") : userData.username,
             "user_response_pk": user_response_pk
         }
-        console.log("messages(State):", messages)
         axios.post(API_URL +"getchatdata/", request_data).then((response) => {
-            console.log("RESPONSE data: ", response.data)
 
-            dispatch({type: "update_messages", payload: [...response.data["history"], ...response.data["bot_responses"]]})
-            setChoices(response.data["choices"])
+            dispatch({type: "append", payload: [...response.data["history"], ...response.data["bot_responses"]]})
+            setChoices({type: "append", payload: response.data["choices"]})
         });
     }
 
@@ -66,7 +61,6 @@ export default function ChatPage(){
             chat:
             <Chat messages={messages}/>
             <ChoiceList choices={choices} handleClick={handleClick}/>
-
         </>
     )
 

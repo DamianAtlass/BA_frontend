@@ -8,7 +8,7 @@ export default function ChatMessage({author, content}){
 
     return(
         <>
-            ChatMessage: {author}: {content}
+            {author}: {content}
         </>
     )
 }

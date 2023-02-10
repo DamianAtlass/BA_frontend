@@ -95,7 +95,7 @@ export default function CreateUserModal() {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={foo} >Understood</Button>
+                    <Button variant="primary" onClick={sendusercredentials} >Create Account</Button>
                 </Modal.Footer>
             </Modal>
         </>
