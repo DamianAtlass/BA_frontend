@@ -35,11 +35,10 @@ export default function LoginModal() {
             let res = await axios.post(API_URL +"login/", data).then((response) => {
                 set_response_message(response.data["success-message"])
 
-                setUserData({
+                setUserData({"type": "update", "payload": {
                         "username": email.current.value,
-                    })
+                    }})
                 localStorage.setItem('user', email.current.value)
-                localStorage.setItem('password', password.current.value)
 
                 console.log("updated userdata: ",UserData)
                 navigate("/overview")
