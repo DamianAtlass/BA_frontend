@@ -7,9 +7,10 @@ import ChatPage from "./ChatPage";
 export default function OverviewPage(){
     const userData = useUserData()
 
-
-
-
+    useEffect(()=>{
+        console.log("OverviewPage",localStorage.getItem("user"))
+        console.log("OverviewPage",localStorage.getItem("password"))
+    }, [])
 
     return (
         <>

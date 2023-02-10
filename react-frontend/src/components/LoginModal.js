@@ -38,6 +38,9 @@ export default function LoginModal() {
                 setUserData({
                         "username": email.current.value,
                     })
+                localStorage.setItem('user', email.current.value)
+                localStorage.setItem('password', password.current.value)
+
                 console.log("updated userdata: ",UserData)
                 navigate("/overview")
             });

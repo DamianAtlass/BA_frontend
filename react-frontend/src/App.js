@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import {BrowserRouter, Routes, Route, useNavigate, Navigate} from "react-router-dom";
 import OverviewPage from "./components/OverviewPage";
 import {UserContext} from "./components/contexts/UserDataContext";
+import RedirectToLogin from "./components/RedirectToLogin";
 function App() {
   return(
 
@@ -16,12 +17,14 @@ function App() {
               <Row className="justify-content-center" >
                   <Col sx={12} sm={8} style={{"border-style": "dotted"}}>
                       <BrowserRouter>
-                          <Routes>
-                              <Route path="welcome" element={ <WelcomePage/> }/>
-                              <Route path="overview" element={ <OverviewPage/> }/>
-                              <Route index element={ <Navigate to={"/welcome"}/> }/>
-                              <Route path="*"  element={<div> oh no, you're lost! 404 </div>} />
-                          </Routes>
+                          <RedirectToLogin>
+                              <Routes>
+                                  <Route path="welcome" element={ <WelcomePage/> }/>
+                                  <Route path="overview" element={ <OverviewPage/> }/>
+                                  <Route index element={ <Navigate to={"/welcome"}/> }/>
+                                  <Route path="*"  element={<div> oh no, you're lost! 404 </div>} />
+                              </Routes>
+                          </RedirectToLogin>
                       </BrowserRouter>
                   </Col>
               </Row>

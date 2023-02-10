@@ -1,4 +1,4 @@
-import React, {useState, useContext, useRef} from "react";
+import React, {useState, useContext} from "react";
 
 const UserDataContext = React.createContext()
 const UserDataUpdateContext = React.createContext()
@@ -11,6 +11,7 @@ export function useUserDataUpdate(){
 }
 
 export function UserContext({children}){
+
     const default_state = {
         "username": "defaultDebuggingUsername",
         "current_node": -1,
