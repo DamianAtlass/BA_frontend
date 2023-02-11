@@ -6,6 +6,10 @@ import { API_URL } from "../constants";
 import ChoiceList from "./ChoiceList";
 import {INITIAL_USER} from "./contexts/UserDataContext";
 import {useNavigate} from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import "./css/ChatPage.css"
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -58,9 +62,18 @@ export default function ChatPage(){
 
     return (
         <>
-            chat:
-            <Chat messages={messages}/>
-            <ChoiceList choices={choices} handleClick={handleClick}/>
+            <Navbar bg="light" expand="lg">
+                <Container>
+                    <Navbar.Brand>[ChatbotName]</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+
+                </Container>
+            </Navbar>
+
+            <Container id="chatwindow">
+                <Chat messages={messages}/>
+                <ChoiceList choices={choices} handleClick={handleClick}/>
+            </Container>
         </>
     )
 

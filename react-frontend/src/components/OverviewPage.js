@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react"
 import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
 import Button from 'react-bootstrap/Button';
 import ChatPage from "./ChatPage";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 
 
 export default function OverviewPage(){
@@ -26,7 +26,8 @@ export default function OverviewPage(){
         <>
             <h1>OverviewPage {userData.username} </h1>
             <Button onClick={logout}>Logout</Button>
-            <ChatPage/>
+
+            <Link to="/chat"> LINK </Link>
 
         </>
     )
