@@ -14,9 +14,9 @@ function App() {
   return(
 
       <UserContext>
-          <Container fluid className="MainContainer" style={{ paddingLeft: 0, paddingRight: 0 }}>
+          <Container fluid className="MainContainer">
               <Row className="justify-content-center" >
-                  <Col  sx={12} sm={8} style={{"border-style": "dotted"}}>
+                  <Col sx={12} sm={8}>
                       <BrowserRouter>
                           <RedirectToLogin>
                               <Routes>

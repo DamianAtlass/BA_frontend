@@ -65,7 +65,6 @@ export default function ChatPage(){
             <Navbar bg="light" expand="lg">
                 <Container>
                     <Navbar.Brand>[ChatbotName]</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
 
                 </Container>
             </Navbar>
