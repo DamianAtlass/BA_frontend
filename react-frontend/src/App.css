@@ -10,8 +10,8 @@ div.container-fluid {
 }
 
 div.row {
-  margin-right: 0px;
-  margin-left: 0px;
+  margin-right: 0;
+  margin-left: 0;
   background-color: rgba(126, 255, 126, 0.55);
 }
 

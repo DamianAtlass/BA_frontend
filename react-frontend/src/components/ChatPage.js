@@ -9,6 +9,8 @@ import {useNavigate} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import "./css/ChatPage.css"
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -62,16 +64,20 @@ export default function ChatPage(){
 
     return (
         <>
-            <Navbar bg="light" expand="lg">
-                <Container>
-                    <Navbar.Brand>[ChatbotName]</Navbar.Brand>
 
-                </Container>
-            </Navbar>
+            <Container fluid id="chatwindow">
+                <Row className="justify-content-center">
+                    <Col sx={12} sm={8}>
+                        <Navbar bg="light" expand="lg">
+                            <Container>
+                                <Navbar.Brand>[ChatbotName]</Navbar.Brand>
 
-            <Container id="chatwindow">
-                <Chat messages={messages}/>
-                <ChoiceList choices={choices} handleClick={handleClick}/>
+                            </Container>
+                        </Navbar>
+                        <Chat messages={messages}/>
+                        <ChoiceList choices={choices} handleClick={handleClick}/>
+                    </Col>
+                </Row>
             </Container>
         </>
     )
