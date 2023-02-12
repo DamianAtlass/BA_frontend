@@ -2,3 +2,19 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+.ChatPage-grid-container{
+    background-color: red;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto;
+
+}
+
+.ChatPage-grid-item-1{
+
+}
+.ChatPage-grid-item-2{
+    border-style: dashed;
+    align-self: end;
+}

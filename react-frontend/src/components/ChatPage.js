@@ -31,7 +31,7 @@ export default function ChatPage() {
     const [messages, dispatch] = useReducer(reducer, []); //underline is 'ok'
     const [choices, setChoices] = useReducer(reducer, []);
     const [selectedChoice, setSelectedChoice] = useState(null)
-    const [defaultInput, setDefaultInput] = useState(undefined)
+    const [defaultInput, setDefaultInput] = useState("")
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -83,35 +83,40 @@ export default function ChatPage() {
     }
 
     return (
-        <Container fluid id="chatwindow">
-            <Row className="justify-content-center">
-                <Col className="nopadding" sx={12} sm={8}>
-                    <Navbar className="" bg="light" expand="lg">
-                        <Container fluid>
-                            <Navbar.Brand>[ChatbotName]</Navbar.Brand>
-                        </Container>
-                    </Navbar>
-                </Col>
-            </Row>
+        <div className="ChatPage-grid-container">
+            <Container fluid className="ChatPage-grid-item-1">
+                <Row className="justify-content-center">
+                    <Col className="nopadding" sx={12} sm={8}>
+                        <Navbar className="" bg="light" expand="lg">
+                            <Container fluid>
+                                <Navbar.Brand>[ChatbotName]</Navbar.Brand>
+                            </Container>
+                        </Navbar>
+                    </Col>
+                </Row>
 
-            <Row className="justify-content-center">
-                <Col sx={12} sm={8}>
-                    <ChatMessagesList messages={messages}/>
-                </Col>
-            </Row>
+                <Row className="justify-content-center">
+                    <Col sx={12} sm={8}>
+                        <ChatMessagesList messages={messages}/>
+                    </Col>
+                </Row>
 
-            <Row className="justify-content-center">
-                <Col sx={12} sm={8}>
-                    <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
-                </Col>
-            </Row>
 
-            <Row className="justify-content-center">
-                <Col sx={12} sm={8}>
-                    <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
-                </Col>
-            </Row>
-        </Container>
+            </Container>
+            <Container fluid className="ChatPage-grid-item-2">
+                <Row className="justify-content-center">
+                    <Col sx={12} sm={8}>
+                        <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
+                    </Col>
+                </Row>
+                <Row className="justify-content-center">
+                    <Col sx={12} sm={8}>
+                        <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
+                    </Col>
+                </Row>
+            </Container>
+
+        </div>
 
     )
 
