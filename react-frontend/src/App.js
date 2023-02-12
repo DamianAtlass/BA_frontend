@@ -15,7 +15,7 @@ function App() {
 
       <UserContext>
           <Container fluid className="MainContainer">
-              <Row className="Row justify-content-center">
+              <Row className="justify-content-center">
                   <Col sx={12} sm={10} md={8}>
                       <BrowserRouter>
                           <RedirectToLogin>

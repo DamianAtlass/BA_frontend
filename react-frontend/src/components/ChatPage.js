@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Col from 'react-bootstrap/Col'
 import "./css/ChatPage.css"
 import InputField from "./InputField";
 
@@ -59,10 +59,13 @@ export default function ChatPage() {
         console.log("selectedChoice:", selectedChoice)
 
         dispatch({type: "append", payload: [selectedChoice]})
-
         console.log("selectedChoice[\"pk\"]:", selectedChoice["pk"])
 
+        setSelectedChoice(null)
+        setDefaultInput("")
+
         getMessage(selectedChoice["pk"])
+
     }
 
     function getMessage(user_response_pk = null) {
@@ -81,9 +84,9 @@ export default function ChatPage() {
 
     return (
         <Container fluid id="chatwindow">
-            <Row className="Row justify-content-center">
-                <Col >
-                    <Navbar bg="light" expand="lg">
+            <Row className="justify-content-center">
+                <Col className="nopadding" sx={12} sm={8}>
+                    <Navbar className="" bg="light" expand="lg">
                         <Container fluid>
                             <Navbar.Brand>[ChatbotName]</Navbar.Brand>
                         </Container>
@@ -91,24 +94,23 @@ export default function ChatPage() {
                 </Col>
             </Row>
 
-            <Row className="Row justify-content-center">
+            <Row className="justify-content-center">
                 <Col sx={12} sm={8}>
                     <ChatMessagesList messages={messages}/>
                 </Col>
             </Row>
 
-            <Row className="Row justify-content-center">
+            <Row className="justify-content-center">
                 <Col sx={12} sm={8}>
                     <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
                 </Col>
             </Row>
 
-            <Row className="Row justify-content-center">
+            <Row className="justify-content-center">
                 <Col sx={12} sm={8}>
                     <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
                 </Col>
             </Row>
-
         </Container>
 
     )

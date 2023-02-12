@@ -9,8 +9,8 @@ export default function ChatMessagesList({messages}) {
     function createMessages() {
         return messages.map(msg => {
             return (
-                    <Row key={v4()} className="Row justify-content-center">
-                        <Col>
+                    <Row key={v4()} className="justify-content-center">
+                        <Col className="nopadding">
                             <ChatMessage content={msg["content"]} author={msg["author"]}/>
                         </Col>
                     </Row>

@@ -9,12 +9,12 @@ export default function InputField({handleSubmit, defaultInput}) {
     return (
         <Container fluid>
             <Row className="justify-content-center">
-                <Col>
+                <Col className="nopadding">
                     <form>
                         <input type="text" required readOnly placeholder="Select a message" value={defaultInput}/>
                     </form>
                 </Col>
-                <Col>
+                <Col className="nopadding">
                     <button onClick={handleSubmit}>Button</button>
                 </Col>
             </Row>
