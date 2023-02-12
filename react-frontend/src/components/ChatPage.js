@@ -46,6 +46,7 @@ export default function ChatPage() {
     }, [selectedChoice])
 
     function handelChoiceSelection(user_response_pk) {
+        console.log("buttzon pressed")
         console.log("handelChoiceSelection", user_response_pk)
         const user_response = choices.find(choice => {
             return choice["pk"] === user_response_pk
@@ -79,6 +80,8 @@ export default function ChatPage() {
 
             dispatch({type: "append", payload: [...response.data["history"], ...response.data["bot_responses"]]})
             setChoices({type: "replace", payload: response.data["choices"]})
+            //TODO var elem = document.getElementById('ChatPage-scroll');
+            //elem.scrollTop = elem.scrollHeight;
         });
     }
 
@@ -95,7 +98,7 @@ export default function ChatPage() {
                     </Col>
                 </Row>
 
-                <Row className="justify-content-center">
+                <Row className="justify-content-center"  id="ChatMessangesList-scroll">
                     <Col sx={12} sm={8}>
                         <ChatMessagesList messages={messages}/>
                     </Col>

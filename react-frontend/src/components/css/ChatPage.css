@@ -12,7 +12,10 @@
 }
 
 .ChatPage-grid-item-1{
-
+    overflow-y: scroll
+}
+.ChatPage-grid-item-1::-webkit-scrollbar {
+    display: none;
 }
 .ChatPage-grid-item-2{
     border-style: dashed;

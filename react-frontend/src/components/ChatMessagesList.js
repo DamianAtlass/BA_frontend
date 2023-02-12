@@ -19,9 +19,12 @@ export default function ChatMessagesList({messages}) {
     }
 
     return (
+        <div>
         <Container fluid>
             {createMessages()}
         </Container>
+        </div>
+
 
     )
 }
