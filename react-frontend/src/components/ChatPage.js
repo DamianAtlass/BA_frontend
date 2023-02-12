@@ -63,27 +63,31 @@ export default function ChatPage() {
     }
 
     return (
-        <>
+        <Container fluid id="chatwindow">
+            <Row className="justify-content-center">
+                <Col sx={12} sm={8}>
+                    <Navbar bg="light" expand="lg">
+                        <Container>
+                            <Navbar.Brand>[ChatbotName]</Navbar.Brand>
+                        </Container>
+                    </Navbar>
+                </Col>
+            </Row>
 
-            <Container fluid id="chatwindow">
-                <Row className="justify-content-center">
-                    <Col sx={12} sm={8}>
-                        <Navbar bg="light" expand="lg">
-                            <Container>
-                                <Navbar.Brand>[ChatbotName]</Navbar.Brand>
-                            </Container>
-                        </Navbar>
-                        <ChatMessagesList messages={messages}/>
-                    </Col>
-                </Row>
-                <Row className="justify-content-center" sx={12} sm={8}>
-                    <Col sx={12} sm={8}>
-                        <ChoiceList choices={choices} handleClick={handleClick}/>
-                    </Col>
-                </Row>
-            </Container>
+            <Row className="justify-content-center">
+                <Col sx={12} sm={8}>
+                    <ChatMessagesList messages={messages}/>
+                </Col>
+            </Row>
 
-        </>
+            <Row className="justify-content-center">
+                <Col sx={12} sm={8}>
+                    <ChoiceList choices={choices} handleClick={handleClick}/>
+                </Col>
+            </Row>
+
+        </Container>
+
     )
 
 }
