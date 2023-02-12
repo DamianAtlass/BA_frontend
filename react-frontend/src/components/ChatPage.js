@@ -19,6 +19,8 @@ function reducer(state, action) {
     switch (action.type) {
         case "append":
             return [...state, ...action.payload]
+        case "replace":
+            return [...action.payload]
         default:
             throw Error('Unknown action.');
     }
@@ -42,7 +44,7 @@ export default function ChatPage() {
         const user_response = choices.find(choice => {
             return choice["pk"] === user_response_pk
         })
-        dispatch({type: "update_messages", payload: [user_response]})
+        dispatch({type: "append", payload: [user_response]})
 
         //await sleep(3000)
         getMessage(user_response_pk)
@@ -58,7 +60,7 @@ export default function ChatPage() {
         axios.post(API_URL + "getchatdata/", request_data).then((response) => {
 
             dispatch({type: "append", payload: [...response.data["history"], ...response.data["bot_responses"]]})
-            setChoices({type: "append", payload: response.data["choices"]})
+            setChoices({type: "replace", payload: response.data["choices"]})
         });
     }
 

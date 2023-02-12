@@ -9,21 +9,19 @@ export default function ChatMessagesList({messages}) {
     function createMessages() {
         return messages.map(msg => {
             return (
-                <Container fluid key={v4()}>
-                    <Row>
+                    <Row key={v4()}>
                         <Col>
                             <ChatMessage content={msg["content"]} author={msg["author"]}/>
                         </Col>
                     </Row>
-                </Container>
             )
         })
     }
 
     return (
-        <>
+        <Container fluid>
             {createMessages()}
-        </>
+        </Container>
 
     )
 }
