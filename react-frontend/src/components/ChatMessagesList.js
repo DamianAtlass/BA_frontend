@@ -9,7 +9,7 @@ export default function ChatMessagesList({messages}) {
     function createMessages() {
         return messages.map(msg => {
             return (
-                    <Row key={v4()}>
+                    <Row key={v4()} className="Row justify-content-center">
                         <Col>
                             <ChatMessage content={msg["content"]} author={msg["author"]}/>
                         </Col>

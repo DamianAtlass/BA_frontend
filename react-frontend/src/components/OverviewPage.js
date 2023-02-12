@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react"
 import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
 import Button from 'react-bootstrap/Button';
-import ChatPage from "./ChatPage";
 import {useNavigate, Link} from "react-router-dom";
 
 

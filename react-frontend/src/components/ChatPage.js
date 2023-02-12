@@ -6,12 +6,12 @@ import {API_URL} from "../constants";
 import ChoiceList from "./ChoiceList";
 import {INITIAL_USER} from "./contexts/UserDataContext";
 import {useNavigate} from "react-router-dom";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import "./css/ChatPage.css"
+import InputField from "./InputField";
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -30,6 +30,8 @@ export default function ChatPage() {
     const userData = useUserData()
     const [messages, dispatch] = useReducer(reducer, []); //underline is 'ok'
     const [choices, setChoices] = useReducer(reducer, []);
+    const [selectedChoice, setSelectedChoice] = useState(null)
+    const [defaultInput, setDefaultInput] = useState(undefined)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -39,15 +41,28 @@ export default function ChatPage() {
         getMessage()
     }, [])
 
-    async function handleClick(user_response_pk) {
+    useEffect(() => {
+        console.log("selectedChoice changed to:", selectedChoice)
+    }, [selectedChoice])
 
+    function handelChoiceSelection(user_response_pk) {
+        console.log("handelChoiceSelection", user_response_pk)
         const user_response = choices.find(choice => {
             return choice["pk"] === user_response_pk
         })
-        dispatch({type: "append", payload: [user_response]})
+        setSelectedChoice(user_response)
+        setDefaultInput(user_response.content)
+    }
 
-        //await sleep(3000)
-        getMessage(user_response_pk)
+    function handleSubmit(){
+        console.log("handleSubmit")
+        console.log("selectedChoice:", selectedChoice)
+
+        dispatch({type: "append", payload: [selectedChoice]})
+
+        console.log("selectedChoice[\"pk\"]:", selectedChoice["pk"])
+
+        getMessage(selectedChoice["pk"])
     }
 
     function getMessage(user_response_pk = null) {
@@ -66,25 +81,31 @@ export default function ChatPage() {
 
     return (
         <Container fluid id="chatwindow">
-            <Row className="justify-content-center">
-                <Col sx={12} sm={8}>
+            <Row className="Row justify-content-center">
+                <Col >
                     <Navbar bg="light" expand="lg">
-                        <Container>
+                        <Container fluid>
                             <Navbar.Brand>[ChatbotName]</Navbar.Brand>
                         </Container>
                     </Navbar>
                 </Col>
             </Row>
 
-            <Row className="justify-content-center">
+            <Row className="Row justify-content-center">
                 <Col sx={12} sm={8}>
                     <ChatMessagesList messages={messages}/>
                 </Col>
             </Row>
 
-            <Row className="justify-content-center">
+            <Row className="Row justify-content-center">
                 <Col sx={12} sm={8}>
-                    <ChoiceList choices={choices} handleClick={handleClick}/>
+                    <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
+                </Col>
+            </Row>
+
+            <Row className="Row justify-content-center">
+                <Col sx={12} sm={8}>
+                    <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
                 </Col>
             </Row>
 
