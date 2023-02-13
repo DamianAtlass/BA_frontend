@@ -8,7 +8,7 @@ import "./css/InputField.css"
 export default function InputField({handleSubmit, defaultInput}) {
 
     return (
-        <div class ="InputField-container">
+        <div className ="InputField-container">
             <form>
                 <input className="InputField-input" type="text" required readOnly placeholder="Select a message" value={defaultInput}/>
             </form>

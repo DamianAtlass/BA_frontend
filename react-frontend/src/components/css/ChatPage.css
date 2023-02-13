@@ -6,7 +6,7 @@
 .ChatPage-grid-container{
     height: 100vh;
     display: grid;
-    grid-template-rows: minmax(50px, 85px);
+    grid-template-rows: auto auto;
 
 }
 
