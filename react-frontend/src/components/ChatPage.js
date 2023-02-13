@@ -55,17 +55,22 @@ export default function ChatPage() {
         setDefaultInput(user_response.content)
     }
 
-    function handleSubmit(){
-        console.log("handleSubmit")
-        console.log("selectedChoice:", selectedChoice)
+    function handleSubmit() {
+        let elem = document.getElementById('scroll');
+        elem.scrollTop = elem.scrollHeight;
+        if (selectedChoice !== null) {
+            console.log("selectedChoice:", selectedChoice)
 
-        dispatch({type: "append", payload: [selectedChoice]})
-        console.log("selectedChoice[\"pk\"]:", selectedChoice["pk"])
+            dispatch({type: "append", payload: [selectedChoice]})
+            console.log("selectedChoice[\"pk\"]:", selectedChoice["pk"])
 
-        setSelectedChoice(null)
-        setDefaultInput("")
+            setSelectedChoice(null)
+            setDefaultInput("")
 
-        getMessage(selectedChoice["pk"])
+            getMessage(selectedChoice["pk"])
+        } else {
+            console.log("is null")
+        }
 
     }
 
@@ -80,32 +85,31 @@ export default function ChatPage() {
 
             dispatch({type: "append", payload: [...response.data["history"], ...response.data["bot_responses"]]})
             setChoices({type: "replace", payload: response.data["choices"]})
-            //TODO var elem = document.getElementById('ChatPage-scroll');
-            //elem.scrollTop = elem.scrollHeight;
+
         });
     }
 
     return (
         <div className="ChatPage-grid-container">
-            <Container fluid className="ChatPage-grid-item-1">
+            <Container fluid id="scroll" className="ChatPage-grid-item-1">
                 <Row className="justify-content-center">
                     <Col className="nopadding" sx={12} sm={8}>
-                        <Navbar className="" bg="light" expand="lg">
+                        <Navbar className="nav-color" expand="lg">
                             <Container fluid>
-                                <Navbar.Brand>[ChatbotName]</Navbar.Brand>
+                                <Navbar.Brand className="nav-text">[ChatbotName]</Navbar.Brand>
                             </Container>
                         </Navbar>
                     </Col>
                 </Row>
 
-                <Row className="justify-content-center"  id="ChatMessangesList-scroll">
+                <Row className="justify-content-center">
                     <Col sx={12} sm={8}>
                         <ChatMessagesList messages={messages}/>
                     </Col>
                 </Row>
 
-
             </Container>
+
             <Container fluid className="ChatPage-grid-item-2">
                 <Row className="justify-content-center">
                     <Col sx={12} sm={8}>
@@ -113,7 +117,7 @@ export default function ChatPage() {
                     </Col>
                 </Row>
                 <Row className="justify-content-center">
-                    <Col sx={12} sm={8}>
+                    <Col sx={12} sm={8} className="ChatPage-input-bg">
                         <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
                     </Col>
                 </Row>
