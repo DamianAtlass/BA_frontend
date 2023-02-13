@@ -4,10 +4,13 @@
 }
 
 .ChatPage-grid-container{
-
     height: 100vh;
     display: grid;
-    grid-template-rows: auto auto;
+    grid-template-rows: minmax(50px, 85px);
+
+}
+
+.ChatPage-grid-item-1{
 
 }
 
@@ -17,10 +20,12 @@
 #scroll::-webkit-scrollbar {
     display: none;
 }
+
 .ChatPage-grid-item-2{
-    height: 50px;
     align-self: end;
 }
+
+
 .nav-color{
     background-color: #008dff;
 }
@@ -30,4 +35,9 @@
 
 .ChatPage-input-bg{
     background-color: #008dff;
+}
+
+.ChatPage-grid-container-2{
+    display: grid;
+    grid-template-rows: auto 50px;
 }

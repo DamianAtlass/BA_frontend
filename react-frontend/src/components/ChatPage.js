@@ -109,18 +109,21 @@ export default function ChatPage() {
                 </Row>
 
             </Container>
-
             <Container fluid className="ChatPage-grid-item-2">
-                <Row className="justify-content-center">
-                    <Col sx={12} sm={8}>
-                        <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
-                    </Col>
-                </Row>
-                <Row className="justify-content-center">
-                    <Col sx={12} sm={8} className="ChatPage-input-bg">
-                        <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
-                    </Col>
-                </Row>
+                <div className="ChatPage-grid-container-2">
+
+                    <Row className="justify-content-center ChatPage-grid-item-2-1">
+                        <Col sx={12} sm={8}>
+                            <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
+                        </Col>
+                    </Row>
+
+                    <Row className="justify-content-center ChatPage-grid-item-1">
+                        <Col sx={12} sm={8} className="ChatPage-input-bg">
+                            <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
+                        </Col>
+                    </Row>
+                </div>
             </Container>
 
         </div>

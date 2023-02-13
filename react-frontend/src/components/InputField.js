@@ -10,10 +10,10 @@ export default function InputField({handleSubmit, defaultInput}) {
     return (
         <div class ="InputField-container">
             <form>
-                <input type="text" required readOnly placeholder="Select a message" value={defaultInput}/>
+                <input className="InputField-input" type="text" required readOnly placeholder="Select a message" value={defaultInput}/>
             </form>
 
-            <button onClick={handleSubmit}>Button</button>
+            <button className="InputField-button" onClick={handleSubmit}>Button</button>
 
         </div>
     )

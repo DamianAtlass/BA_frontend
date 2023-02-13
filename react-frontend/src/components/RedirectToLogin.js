@@ -13,7 +13,7 @@ export default function RedirectToLogin({children}){
         if(local_username && userData.username === INITIAL_USER){
             setUserData({"type": "update", "payload": {"username": local_username}})
         } else {
-            console.log("no local user data")
+            navigate("login")
         }
     }, [])
 

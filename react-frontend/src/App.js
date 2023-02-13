@@ -1,5 +1,5 @@
 import './App.css';
-import WelcomePage from "./components/WelcomePage";
+import LoginPage from "./components/LoginPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
 import Container from 'react-bootstrap/Container';
@@ -20,7 +20,7 @@ function App() {
                       <BrowserRouter>
                           <RedirectToLogin>
                               <Routes>
-                                  <Route path="welcome" element={ <WelcomePage/> }/>
+                                  <Route path="login" element={ <LoginPage/> }/>
                                   <Route path="overview" element={ <OverviewPage/> }/>
                                   <Route path="chat" element={ <ChatPage/> }/>
                                   <Route index element={ <Navigate to={"/welcome"}/> }/>

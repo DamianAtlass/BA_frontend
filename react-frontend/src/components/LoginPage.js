@@ -1,14 +1,14 @@
 import React from "react"
 import CreateUserModal from "./CreateUserModal";
 import LoginModal from "./LoginModal";
-import "./css/WelcomePage.css"
+import "./css/LoginPage.css"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
 
-export default function WelcomePage(){
+export default function LoginPage(){
     return (
         <Card>
             <Container fluid className="WelcomePage" >

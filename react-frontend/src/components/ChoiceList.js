@@ -4,15 +4,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from 'react-bootstrap/Container';
 import {v4} from 'uuid';
+import "./css/ChoiceList.css"
 
 export default function ChoiceList({choices, handelChoiceSelection}) {
     function createChoiceButtons(){
         return choices.map(choice => {
-            return (<Button key={v4()} onClick={()=>{handelChoiceSelection(choice["pk"])}} >{choice["content"]}</Button>)
+            return (<button key={v4()} onClick={()=>{handelChoiceSelection(choice["pk"])}} >{choice["content"]}</button>)
         })
     }
     return (
-        <Container fluid >
+        <Container className="ChoiceList-container" fluid >
             <Row  className="justify-content-center">
                 <Col className="nopadding">
                     {createChoiceButtons()}

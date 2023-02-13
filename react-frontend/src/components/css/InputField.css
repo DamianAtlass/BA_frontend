@@ -8,12 +8,12 @@ form{
     margin-bottom: 11px;
 }
 
-input{
+.InputField-input{
     width: 100%;
     border-style: none;
 }
 
-button{
+.InputField-button{
     margin-top: 11px;
     margin-right: 7px;
     margin-bottom: 11px;
