@@ -7,7 +7,7 @@ export default function ChatMessage({author, content}){
 
 
     return(
-        <div className="ChatMessage-item">
+        <div>
             {author}: {content}
         </div>
     )

@@ -2,7 +2,3 @@
     background: rgb(161,245,255);
     background: linear-gradient(45deg, rgba(161,245,255,1) 0%, rgba(63,147,255,1) 100%);
 }
-
-.ChatMessagesList-container{
-    display: grid;
-}

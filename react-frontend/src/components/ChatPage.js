@@ -90,9 +90,9 @@ export default function ChatPage() {
     }
 
     return (
-        <div className="ChatPage-grid-container">
-            <Container fluid id="scroll" className="ChatPage-grid-item-1">
-                <Row className="justify-content-center">
+        <div className="ChatPage-grid-container-1">
+            <Container fluid id="scroll">
+                <Row className="justify-content-center topbar">
                     <Col className="nopadding" sx={12} sm={8}>
                         <Navbar className="nav-color" expand="lg">
                             <Container fluid>
@@ -109,21 +109,18 @@ export default function ChatPage() {
                 </Row>
 
             </Container>
-            <Container fluid className="ChatPage-grid-item-3">
-                <div className="ChatPage-grid-container-2">
+            <Container fluid className="ChatPage-grid-item-1-2">
+                <Row className="justify-content-center">
+                    <Col sx={12} sm={8}>
+                        <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
+                    </Col>
+                </Row>
 
-                    <Row className="justify-content-center ChatPage-grid-item-2-1">
-                        <Col sx={12} sm={8}>
-                            <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
-                        </Col>
-                    </Row>
-
-                    <Row className="justify-content-center ChatPage-grid-item-1">
-                        <Col sx={12} sm={8} className="ChatPage-input-bg">
-                            <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
-                        </Col>
-                    </Row>
-                </div>
+                <Row className="justify-content-center">
+                    <Col sx={12} sm={8} className="ChatPage-input-bg">
+                        <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
+                    </Col>
+                </Row>
             </Container>
 
         </div>

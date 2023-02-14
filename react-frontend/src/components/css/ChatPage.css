@@ -3,15 +3,20 @@
     padding-right: 0;
 }
 
-.ChatPage-grid-container{
+.ChatPage-grid-container-1{
     height: 100vh;
     display: grid;
     grid-template-rows: auto auto;
 
 }
 
-.ChatPage-grid-item-1{
+.ChatPage-grid-item-1-2{
+    align-self: end;
+}
 
+.topbar{
+    position: sticky;
+    top: 0;
 }
 
 #scroll{
@@ -21,9 +26,6 @@
     display: none;
 }
 
-.ChatPage-grid-item-3{
-    align-self: end;
-}
 
 
 .nav-color{
@@ -37,7 +39,3 @@
     background-color: #008dff;
 }
 
-.ChatPage-grid-container-2{
-    display: grid;
-    grid-template-rows: auto 50px;
-}
