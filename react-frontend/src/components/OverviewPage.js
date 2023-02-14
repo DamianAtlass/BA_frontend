@@ -14,7 +14,7 @@ export default function OverviewPage(){
         localStorage.removeItem('user')
 
         updateUserData({"type": "update", "payload": {"username": ""}})
-        navigate("/welcome")
+        navigate("/login")
     }
 
     useEffect(()=>{

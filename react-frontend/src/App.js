@@ -23,7 +23,7 @@ function App() {
                                   <Route path="login" element={ <LoginPage/> }/>
                                   <Route path="overview" element={ <OverviewPage/> }/>
                                   <Route path="chat" element={ <ChatPage/> }/>
-                                  <Route index element={ <Navigate to={"/welcome"}/> }/>
+                                  <Route index element={ <Navigate to={"/login"}/> }/>
                                   <Route path="*"  element={<div> oh no, you're lost! 404 </div>} />
                               </Routes>
                           </RedirectToLogin>

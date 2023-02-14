@@ -36,7 +36,7 @@ export default function ChatPage() {
 
     useEffect(() => {
         if (userData.username === INITIAL_USER && !localStorage.getItem("user")) {
-            navigate("/welcome")
+            navigate("/login")
         }
         getMessage()
     }, [])
@@ -109,7 +109,7 @@ export default function ChatPage() {
                 </Row>
 
             </Container>
-            <Container fluid className="ChatPage-grid-item-2">
+            <Container fluid className="ChatPage-grid-item-3">
                 <div className="ChatPage-grid-container-2">
 
                     <Row className="justify-content-center ChatPage-grid-item-2-1">
