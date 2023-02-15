@@ -21,7 +21,7 @@ export default function ChatMessagesList({messages}) {
 
     return (
         <div>
-        <Container className="ChatMessagesList-bg" fluid>
+        <Container className="" fluid>
             {createMessages()}
         </Container>
         </div>

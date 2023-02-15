@@ -90,40 +90,45 @@ export default function ChatPage() {
     }
 
     return (
-        <div className="ChatPage-grid-container-1">
-            <Container fluid id="scroll">
-                <Row className="justify-content-center topbar">
-                    <Col className="nopadding" sx={12} sm={8}>
-                        <Navbar className="nav-color" expand="lg">
-                            <Container fluid>
-                                <Navbar.Brand className="nav-text">[ChatbotName]</Navbar.Brand>
-                            </Container>
-                        </Navbar>
-                    </Col>
-                </Row>
+        <Container fluid>
+            <Row className="justify-content-center">
+                <Col className="nopadding ChatMessagesList-bg" sx={12} sm={8}>
+                    <div className="ChatPage-grid-container-1">
+                        <Container fluid id="scroll">
+                            <Row className="justify-content-center topbar">
+                                <Col className="nopadding">
+                                    <Navbar className="nav-color" expand="lg">
+                                        <Container fluid>
+                                            <Navbar.Brand className="nav-text">[ChatbotName]</Navbar.Brand>
+                                        </Container>
+                                    </Navbar>
+                                </Col>
+                            </Row>
 
-                <Row className="justify-content-center">
-                    <Col sx={12} sm={8}>
-                        <ChatMessagesList messages={messages}/>
-                    </Col>
-                </Row>
+                            <Row className="justify-content-center">
+                                <Col className="nopadding">
+                                    <ChatMessagesList messages={messages}/>
+                                </Col>
+                            </Row>
 
-            </Container>
-            <Container fluid className="ChatPage-grid-item-1-2">
-                <Row className="justify-content-center">
-                    <Col sx={12} sm={8}>
-                        <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
-                    </Col>
-                </Row>
+                        </Container>
+                        <Container fluid className="ChatPage-grid-item-1-2">
+                            <Row className="justify-content-center">
+                                <Col>
+                                    <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
+                                </Col>
+                            </Row>
 
-                <Row className="justify-content-center">
-                    <Col sx={12} sm={8} className="ChatPage-input-bg">
-                        <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
-                    </Col>
-                </Row>
-            </Container>
-
-        </div>
+                            <Row className="justify-content-center">
+                                <Col className="ChatPage-input-bg">
+                                    <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
 
     )
 
