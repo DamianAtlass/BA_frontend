@@ -46,7 +46,7 @@ export default function ChatPage() {
     }, [selectedChoice])
 
     function handelChoiceSelection(user_response_pk) {
-        console.log("buttzon pressed")
+        console.log("button pressed")
         console.log("handelChoiceSelection", user_response_pk)
         const user_response = choices.find(choice => {
             return choice["pk"] === user_response_pk
@@ -69,7 +69,7 @@ export default function ChatPage() {
 
             getMessage(selectedChoice["pk"])
         } else {
-            console.log("is null")
+            console.log("nothing selected")
         }
 
     }
@@ -112,16 +112,16 @@ export default function ChatPage() {
                             </Row>
 
                         </Container>
-                        <Container fluid className="ChatPage-grid-item-1-2">
+                        <Container fluid className="ChatPage-input-bg ChatPage-grid-item-1-2">
                             <Row className="justify-content-center">
-                                <Col>
-                                    <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
+                                <Col className="nopadding">
+                                    <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
                                 </Col>
                             </Row>
 
                             <Row className="justify-content-center">
-                                <Col className="ChatPage-input-bg">
-                                    <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
+                                <Col>
+                                    <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
                                 </Col>
                             </Row>
                         </Container>

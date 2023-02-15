@@ -1,21 +1,36 @@
 .InputField-container{
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: auto 40px;
+
 }
-form{
-    margin-top: 11px;
-    margin-left: 7px;
-    margin-bottom: 11px;
+.InputField-container form{
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
 }
 
-.InputField-input{
+.InputField-container input{
     width: 100%;
+    border-radius: 20px;
     border-style: none;
+    height: 30px
 }
 
-.InputField-button{
-    margin-top: 11px;
-    margin-right: 7px;
-    margin-bottom: 11px;
-    border: none;
+.InputField-container input:focus{
+    outline: none;
+}
+
+.InputField-container img{
+    border-radius: 20px;
+    margin: 5px;
+    align-self: center;
+    justify-self: end;
+}
+.InputField-container img:hover{
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}
+.InputField-container img:active{
+    box-shadow: 0 1px #666;
+    transform: translateY(1px);
 }
