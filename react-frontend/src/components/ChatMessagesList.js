@@ -7,6 +7,7 @@ import {v4} from 'uuid';
 import "./css/ChatMessagesList.css"
 
 export default function ChatMessagesList({messages}) {
+
     function createMessages() {
         return messages.map(msg => {
             return (

@@ -14,7 +14,9 @@
     width: 100%;
     border-radius: 20px;
     border-style: none;
-    height: 30px
+    height: 36px;
+    font-size: 1.2em;
+    padding: 0px 10px;
 }
 
 .InputField-container input:focus{
@@ -23,14 +25,15 @@
 
 .InputField-container img{
     border-radius: 20px;
-    margin: 5px;
     align-self: center;
     justify-self: end;
+    box-shadow: 0 2px #666;
+    height: 36px;
 }
 .InputField-container img:hover{
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+
 }
 .InputField-container img:active{
-    box-shadow: 0 1px #666;
     transform: translateY(1px);
 }

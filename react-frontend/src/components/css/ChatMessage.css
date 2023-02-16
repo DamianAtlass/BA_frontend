@@ -1,0 +1,30 @@
+.ChatMessage-container {
+    display: grid;
+
+}
+    /*justify-items: end*/
+
+.message{
+    margin: 2px 5px;
+    border-style: none;
+    max-width: 70%;
+    width: fit-content;
+    background-color: #fff4e4;
+    padding: 3px;
+    border-radius: 0 10px 10px 10px;
+
+    display: grid;
+}
+
+.author{
+    font-size: 0.8em;
+}
+.content{
+    font-size: 1em;
+}
+.date{
+    font-size: 0.8em;
+    justify-self: end;
+    position: relative;
+}
+

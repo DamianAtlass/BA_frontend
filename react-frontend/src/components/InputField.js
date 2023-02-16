@@ -9,11 +9,11 @@ import "./css/InputField.css"
 export default function InputField({handleSubmit, defaultInput}) {
 
     return (
-        <div className="InputField-container">
+        <div className="InputField-container ">
             <form>
                 <input type="text" required readOnly placeholder="Select a message" value={defaultInput}/>
             </form>
-            <img onClick={handleSubmit} src={sendImage} alt="send" height="30"/>
+            <img onClick={handleSubmit} src={sendImage} alt="send"/>
         </div>
     )
 

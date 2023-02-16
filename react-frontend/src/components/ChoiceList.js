@@ -13,9 +13,9 @@ export default function ChoiceList({choices, handelChoiceSelection}) {
         })
     }
     return (
-        <Container className="ChoiceList-container" fluid>
+        <Container className="" fluid>
             <Row  className="justify-content-center">
-                <Col className="nopadding">
+                <Col className="ChoiceList-container nopadding">
                     {createChoiceButtons()}
                 </Col>
             </Row>

@@ -120,7 +120,7 @@ export default function ChatPage() {
                             </Row>
 
                             <Row className="justify-content-center">
-                                <Col>
+                                <Col className="nopadding">
                                     <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
                                 </Col>
                             </Row>
