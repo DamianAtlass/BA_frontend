@@ -3,10 +3,17 @@
     grid-template-columns: 40px auto;
 }
 
+.bot .img-bg{
+    background-color: lightblue;
+    border-radius: 50%;
+    padding: 5px;
+    width: fit-content;
+    height: fit-content;
+}
+
 .bot .message{
     background-color: lightblue;
     border-top-left-radius: 0;
-
 }
 
 .ChatMessage-container .profile-picture{
