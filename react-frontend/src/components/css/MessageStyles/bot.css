@@ -16,14 +16,17 @@
     border-top-left-radius: 0;
 }
 
-.ChatMessage-container .profile-picture{
+.bot .profile-picture{
 
 }
-.ChatMessage-container .author{
+
+.bot .author{
 }
-.ChatMessage-container .content{
+
+.bot .content{
 }
-.ChatMessage-container .date{
+
+.bot .date{
 
 }
 

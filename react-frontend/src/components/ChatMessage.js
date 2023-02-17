@@ -12,7 +12,7 @@ export default function ChatMessage({author, content}) {
 
     return (
         <div className={"ChatMessage-container "}>
-            <div id="test" className="message">
+            <div className="message">
 
 
                 { author!=="USER" && <div className="author"><b>{author}:</b></div>}

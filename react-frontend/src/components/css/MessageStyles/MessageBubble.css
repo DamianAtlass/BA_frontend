@@ -1,0 +1,32 @@
+.ChatMessage-container.MessageBubble{
+}
+
+.MessageBubble .img-bg{
+}
+
+.MessageBubble .message{
+    border-top-left-radius: 0;
+}
+
+.MessageBubble .profile-picture{
+}
+
+.MessageBubble .author{
+}
+
+.MessageBubble .content{
+}
+
+.MessageBubble .date{
+}
+
+.MessageBubble.MOSES .message{
+    background-color: #ff547a;
+}
+.MessageBubble.ISIS .message{
+    background-color: #f9ff54;
+}
+.MessageBubble.SEK .message{
+    background-color: #54f1ff;
+}
+

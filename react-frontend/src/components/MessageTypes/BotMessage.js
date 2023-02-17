@@ -12,7 +12,7 @@ export default function BotMessage({author, content}) {
                 <img className="profil-picture" src={robot}/>
             </div>
 
-            <div id="test" className="message">
+            <div className="message">
                 <div className="content">{content} asdklfjasd f sadlkf sadfsd asdfasdf </div>
                 <div className="date">date</div>
             </div>
