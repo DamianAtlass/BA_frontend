@@ -16,7 +16,7 @@ export default function BotMessage({message}) {
             </div>
 
             <div className="message">
-                <div className="content">{content} asdklfjasd f sadlkf sadfsd asdfasdf </div>
+                <div className="content">{content}</div>
                 <div className="date">{date}</div>
             </div>
         </div>

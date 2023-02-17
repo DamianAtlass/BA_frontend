@@ -15,7 +15,7 @@ export default function MessageClassic({message}) {
         <div className={"ChatMessage-container MessageClassic " + setStyling(author)}>
             <div className="message">
                 <b>{author}:</b>
-                <div className="content">{content} asdklfjasd f sadlkf sadfsd asdfasdf </div>
+                <div className="content">{content}</div>
                 <div className="date">{date}</div>
             </div>
         </div>

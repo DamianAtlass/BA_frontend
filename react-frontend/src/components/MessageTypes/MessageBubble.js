@@ -13,7 +13,7 @@ export default function MessageBubble({message}) {
     return (
         <div className={"ChatMessage-container MessageBubble " + setStyling(author)}>
             <div className="message">
-                <div className="content">{content} asdklfjasd f sadlkf sadfsd asdfasdf </div>
+                <div className="content">{content}</div>
                 <div className="date">{date}</div>
             </div>
         </div>

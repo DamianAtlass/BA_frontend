@@ -18,7 +18,7 @@ export default function ChatMessage({message}) {
 
 
                 { author!=="USER" && <div className="author"><b>{author}:</b></div>}
-                <div className="content">{content} asdklfjasd f sadlkf sadfsd asdfasdf </div>
+                <div className="content">{content}</div>
                 <div className="date">date</div>
             </div>
         </div>
