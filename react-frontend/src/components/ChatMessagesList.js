@@ -37,27 +37,21 @@ export default function ChatMessagesList({messages}) {
 
     function calculateMessageType(message){
         let author = message["author"]
-        switch (dialog_style){
-            case DIALOG_STYLE_ONE_ON_ONE:
-                switch (author){
-                    case "USER":
-                        return <UserMessage message={message}/>
-                    default:
+
+        switch(author){
+            case "USER":
+                return <UserMessage message={message}/>
+            default:
+                switch (dialog_style){
+                    case DIALOG_STYLE_ONE_ON_ONE:
                         return <BotMessage message={message}/>
-                }
-            case DIALOG_STYLE_COLORED_BUBBLES:
-                switch (author){
-                    case "USER":
-                        return <UserMessage message={message}/>
-                    default:
+                    case DIALOG_STYLE_COLORED_BUBBLES:
                         return <MessageBubble message={message}/>
-                }
-            case DIALOG_STYLE_CLASSIC_GROUP:
-                switch (author){
-                    case "USER":
-                        return <UserMessage message={message}/>
-                    default:
+                    case DIALOG_STYLE_CLASSIC_GROUP:
                         return <MessageClassic message={message}/>
+                    case DIALOG_STYLE_PICTURE:
+                        //TODO
+                        return "TODO"
                 }
         }
     }
