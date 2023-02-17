@@ -41,23 +41,23 @@ export default function ChatMessagesList({messages}) {
             case DIALOG_STYLE_ONE_ON_ONE:
                 switch (author){
                     case "USER":
-                        return <UserMessage content={message["content"]} author={message["author"]}/>
+                        return <UserMessage message={message}/>
                     default:
-                        return <BotMessage content={message["content"]} author={message["author"]}/>
+                        return <BotMessage message={message}/>
                 }
             case DIALOG_STYLE_COLORED_BUBBLES:
                 switch (author){
                     case "USER":
-                        return <UserMessage content={message["content"]} author={message["author"]}/>
+                        return <UserMessage message={message}/>
                     default:
-                        return <MessageBubble content={message["content"]} author={message["author"]}/>
+                        return <MessageBubble message={message}/>
                 }
             case DIALOG_STYLE_CLASSIC_GROUP:
                 switch (author){
                     case "USER":
-                        return <UserMessage content={message["content"]} author={message["author"]}/>
+                        return <UserMessage message={message}/>
                     default:
-                        return <MessageClassic content={message["content"]} author={message["author"]}/>
+                        return <MessageClassic message={message}/>
                 }
         }
     }

@@ -7,8 +7,10 @@ import robot from '../img/robot.png'
 
 
 
-export default function ChatMessage({author, content}) {
+export default function ChatMessage({message}) {
 
+    let author = message["author"]
+    let content = message["content"]
 
     return (
         <div className={"ChatMessage-container "}>

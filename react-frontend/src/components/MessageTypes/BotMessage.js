@@ -4,7 +4,10 @@ import "../css/MessageStyles/bot.css"
 import robot from '../../img/robot.png'
 
 
-export default function BotMessage({author, content}) {
+export default function BotMessage({message}) {
+    let author = message["author"]
+    let content = message["content"]
+    let date = message["date"]
 
     return (
         <div className={"ChatMessage-container bot"}>
@@ -14,7 +17,7 @@ export default function BotMessage({author, content}) {
 
             <div className="message">
                 <div className="content">{content} asdklfjasd f sadlkf sadfsd asdfasdf </div>
-                <div className="date">date</div>
+                <div className="date">{date}</div>
             </div>
         </div>
     )
