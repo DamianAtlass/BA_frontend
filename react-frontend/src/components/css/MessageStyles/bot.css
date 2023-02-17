@@ -1,0 +1,19 @@
+.ChatMessage-container.bot{
+    justify-items: start;
+}
+
+.bot .message{
+    background-color: lightblue;
+    border-top-left-radius: 0;
+
+}
+
+.ChatMessage-container .author{
+}
+.ChatMessage-container .content{
+}
+.ChatMessage-container .date{
+
+}
+
+

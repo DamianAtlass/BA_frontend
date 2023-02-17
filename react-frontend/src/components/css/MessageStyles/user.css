@@ -1,0 +1,17 @@
+.ChatMessage-container.user{
+    justify-items: end;
+}
+
+.user .message{
+    background-color: wheat;
+    border-top-right-radius: 0;
+}
+
+.user .author{
+}
+.user .content{
+}
+.user .date{
+
+}
+

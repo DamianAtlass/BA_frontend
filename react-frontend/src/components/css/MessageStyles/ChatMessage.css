@@ -4,27 +4,28 @@
 }
     /*justify-items: end*/
 
-.message{
-    margin: 2px 5px;
+.ChatMessage-container .message{
+    border-radius: 10px;
     border-style: none;
+
+    margin: 2px 5px;
+    padding: 5px 3px 0px 3px;
+
     max-width: 70%;
     width: fit-content;
-    background-color: #fff4e4;
-    padding: 3px;
-    border-radius: 0 10px 10px 10px;
 
     display: grid;
 }
 
-.author{
+.ChatMessage-container .author{
     font-size: 0.8em;
 }
-.content{
+.ChatMessage-container .content{
     font-size: 1em;
 }
-.date{
+.ChatMessage-container .date{
     font-size: 0.8em;
     justify-self: end;
-    position: relative;
+
 }
 
