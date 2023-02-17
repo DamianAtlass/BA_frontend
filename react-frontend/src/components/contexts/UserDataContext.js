@@ -23,7 +23,7 @@ export function UserContext({children}){
     ////////////////////////////
     const default_state = {
         "username": INITIAL_USER,
-        "current_node": -1,
+        "dialog_style": undefined,
 
     }
     //const [userData, setUserData] = useState(default_state)

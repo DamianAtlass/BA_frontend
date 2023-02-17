@@ -37,8 +37,10 @@ export default function LoginModal() {
 
                 setUserData({"type": "update", "payload": {
                         "username": email.current.value,
+                        "dialog_style": response.data["dialog_style"],
                     }})
                 localStorage.setItem("user", email.current.value)
+                localStorage.setItem("dialog_style", response.data["dialog_style"])
 
                 console.log("updated userdata: ",UserData)
                 navigate("/overview")

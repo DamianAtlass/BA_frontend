@@ -4,6 +4,10 @@
 }
     /*justify-items: end*/
 
+.ChatMessage-container .profil-picture{
+    height: 40px;
+    margin: 10px 5px 0px 5px;
+}
 .ChatMessage-container .message{
     border-radius: 10px;
     border-style: none;

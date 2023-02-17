@@ -1,5 +1,6 @@
 .ChatMessage-container.bot{
     justify-items: start;
+    grid-template-columns: 40px auto;
 }
 
 .bot .message{
@@ -8,6 +9,9 @@
 
 }
 
+.ChatMessage-container .profile-picture{
+
+}
 .ChatMessage-container .author{
 }
 .ChatMessage-container .content{

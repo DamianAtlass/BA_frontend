@@ -39,10 +39,10 @@ export default function ChatPage() {
             navigate("/login")
         }
         getMessage()
+
     }, [])
 
     useEffect(() => {
-        console.log("selectedChoice changed to:", selectedChoice)
     }, [selectedChoice])
 
     function handelChoiceSelection(user_response_pk) {
@@ -56,8 +56,6 @@ export default function ChatPage() {
     }
 
     function handleSubmit() {
-        let elem = document.getElementById('scroll');
-        elem.scrollTop = elem.scrollHeight;
         if (selectedChoice !== null) {
             console.log("selectedChoice:", selectedChoice)
 
@@ -75,17 +73,20 @@ export default function ChatPage() {
     }
 
     function getMessage(user_response_pk = null) {
-        console.log("REQUEST response")
 
         const request_data = {
             "username": userData.username === INITIAL_USER ? localStorage.getItem("user") : userData.username,
             "user_response_pk": user_response_pk
         }
-        axios.post(API_URL + "getchatdata/", request_data).then((response) => {
+        axios.post(API_URL + "getchatdata/", request_data).then(async (response) => {
 
             dispatch({type: "append", payload: [...response.data["history"], ...response.data["bot_responses"]]})
             setChoices({type: "replace", payload: response.data["choices"]})
 
+            await sleep(100);
+
+            let elem = document.getElementById('scroll');
+            elem.scrollTop = elem.scrollHeight;
         });
     }
 
