@@ -1,32 +1,24 @@
-.ChatMessage-container.MessageBubble{
+.ChatMessage-container.MessageClassic{
 }
 
-.MessageBubble .img-bg{
-}
-
-.MessageBubble .message{
+.MessageClassic .message{
+    background-color: white;
     border-top-left-radius: 0;
 }
 
-.MessageBubble .profile-picture{
+.MessageClassic b{
+    font-size: 0.75em;
 }
 
-.MessageBubble .author{
+.MessageClassic.MOSES b{
+    color: #ff547a;
+}
+.MessageClassic.ISIS b{
+    color: #f9ff54
+}
+.MessageClassic.SEK b{
+    color: #54f1ff;
 }
 
-.MessageBubble .content{
-}
 
-.MessageBubble .date{
-}
-
-.MOSES .message{
-    background-color: #ff547a;
-}
-.ISIS .message{
-    background-color: #f9ff54;
-}
-.SEK .message{
-    background-color: #54f1ff;
-}
 

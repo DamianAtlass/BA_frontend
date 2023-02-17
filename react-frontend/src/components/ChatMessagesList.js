@@ -9,6 +9,7 @@ import UserMessage from "./MessageTypes/UserMessage";
 import BotMessage from "./MessageTypes/BotMessage";
 import MessageBubble from "./MessageTypes/MessageBubble";
 import {useUserData} from "./contexts/UserDataContext";
+import MessageClassic from "./MessageTypes/MessageClassic";
 
 const DIALOG_STYLE_ONE_ON_ONE = "ONE_ON_ONE"
 const DIALOG_STYLE_COLORED_BUBBLES = "COLORED_BUBBLES"
@@ -56,7 +57,7 @@ export default function ChatMessagesList({messages}) {
                     case "USER":
                         return <UserMessage content={message["content"]} author={message["author"]}/>
                     default:
-                        return <MessageBubble content={message["content"]} author={message["author"]}/>
+                        return <MessageClassic content={message["content"]} author={message["author"]}/>
                 }
         }
     }
