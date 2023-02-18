@@ -10,6 +10,7 @@ import BotMessage from "./MessageTypes/BotMessage";
 import MessageBubble from "./MessageTypes/MessageBubble";
 import {useUserData} from "./contexts/UserDataContext";
 import MessageClassic from "./MessageTypes/MessageClassic";
+import PictureMessage from "./MessageTypes/PictureMessage";
 
 const DIALOG_STYLE_ONE_ON_ONE = "ONE_ON_ONE"
 const DIALOG_STYLE_COLORED_BUBBLES = "COLORED_BUBBLES"
@@ -50,8 +51,7 @@ export default function ChatMessagesList({messages}) {
                     case DIALOG_STYLE_CLASSIC_GROUP:
                         return <MessageClassic message={message}/>
                     case DIALOG_STYLE_PICTURE:
-                        //TODO
-                        return "TODO"
+                        return <PictureMessage message={message}/>
                 }
         }
     }

@@ -1,0 +1,29 @@
+.ChatMessage-container.PictureMessage{
+    justify-items: start;
+    grid-template-columns: 50px auto;
+}
+
+.PictureMessage .img-bg{
+    background-color: lightblue;
+    border-radius: 50%;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.PictureMessage .message{
+    background-color: white;
+    border-top-left-radius: 0;
+}
+
+.PictureMessage.MOSES .img-bg{
+    background-color: #ff547a;
+}
+.PictureMessage.ISIS .img-bg{
+    background-color: #f9ff54;
+}
+.PictureMessage.SEK .img-bg{
+    background-color: #54f1ff;
+}
+
+

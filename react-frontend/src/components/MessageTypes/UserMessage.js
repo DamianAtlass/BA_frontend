@@ -4,12 +4,18 @@ import "../css/MessageStyles/user.css"
 
 
 export default function UserMessage({message}) {
+    function getTime(){
+        let current_date = new Date();
+        let hours_str = String(current_date.getHours()).padStart(2, '0')
+        let min_str = String(current_date.getMinutes()).padStart(2, '0')
+        return hours_str + ":" + min_str
+    }
+
     let author = message["author"]
     let content = message["content"]
 
-    let currentdate = new Date();
-    let time_now = currentdate.getHours()+":"+currentdate.getMinutes()
-    let date = message["date"] === undefined ? time_now : message["date"]
+
+    let date = message["date"] === undefined ? getTime() : message["date"]
 
     return (
         <div className={"ChatMessage-container user"}>
