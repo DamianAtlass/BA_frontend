@@ -5,11 +5,12 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {BrowserRouter, Routes, Route, useNavigate, Navigate} from "react-router-dom";
+import {BrowserRouter, Routes, Route, useNavigate, Navigate, Link} from "react-router-dom";
 import OverviewPage from "./components/OverviewPage";
 import {UserContext} from "./components/contexts/UserDataContext";
 import RedirectToLogin from "./components/RedirectToLogin";
 import ChatPage from "./components/ChatPage";
+import SurveyComponent from "./components/SurveyComponent";
 function App() {
   return(
 
@@ -22,9 +23,10 @@ function App() {
                               <Routes>
                                   <Route path="login" element={ <LoginPage/> }/>
                                   <Route path="overview" element={ <OverviewPage/> }/>
+                                  <Route path="survey" element={ <SurveyComponent/> }/>
                                   <Route path="chat" element={ <ChatPage/> }/>
                                   <Route index element={ <Navigate to={"/login"}/> }/>
-                                  <Route path="*"  element={<div> oh no, you're lost! 404 </div>} />
+                                  <Route path="*"  element={<div> oh no, you're lost! 404  Go to <Link to="/login"> Login </Link></div>} />
                               </Routes>
                           </RedirectToLogin>
                       </BrowserRouter>

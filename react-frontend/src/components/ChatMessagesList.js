@@ -11,6 +11,7 @@ import MessageBubble from "./MessageTypes/MessageBubble";
 import {useUserData} from "./contexts/UserDataContext";
 import MessageClassic from "./MessageTypes/MessageClassic";
 import PictureMessage from "./MessageTypes/PictureMessage";
+import {dialogComplete} from "./ChatPage";
 
 const DIALOG_STYLE_ONE_ON_ONE = "ONE_ON_ONE"
 const DIALOG_STYLE_COLORED_BUBBLES = "COLORED_BUBBLES"
@@ -38,8 +39,9 @@ export default function ChatMessagesList({messages}) {
 
     function calculateMessageType(message){
         let author = message["author"]
-
+        dialogComplete(message["dialogIsComplete"])
         switch(author){
+
             case "USER":
                 return <UserMessage message={message}/>
             default:
