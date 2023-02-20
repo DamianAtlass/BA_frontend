@@ -20,27 +20,6 @@ const surveyJson = {
             type: "rating",
             rateMin: 0,
             rateMax: 10
-        },{
-            name: "nps-score2",
-            isRequired: true,
-            title: "On a scale of zero to ten, how likely are you to recommend our product to a friend or colleague?",
-            type: "rating",
-            rateMin: 0,
-            rateMax: 10
-        },{
-            name: "nps-score3",
-            isRequired: true,
-            title: "On a scale of zero to ten, how likely are you to recommend our product to a friend or colleague?",
-            type: "rating",
-            rateMin: 0,
-            rateMax: 10
-        },{
-            name: "nps-score4",
-            isRequired: true,
-            title: "On a scale of zero to ten, how likely are you to recommend our product to a friend or colleague?",
-            type: "rating",
-            rateMin: 0,
-            rateMax: 10
         },],
     }]
 };
@@ -49,17 +28,15 @@ const surveyJson = {
 export default function SurveyComponent() {
 
     const userData = useUserData()
-    const user_pk_str_pad = userData.user_pk.toString().padStart(3, '0')
-    console.log("user_pk_str_pad:", user_pk_str_pad)
+    let user_pk = userData.user_pk === undefined ? localStorage.getItem("user_pk") : userData.user_pk
+    const user_pk_str_pad = user_pk.toString().padStart(3, '0')
 
     async function saveSurveyResults(url, json) {
-
-        //////////////////////////////
         try {
             let res = await axios.post(url, json).then((response) => {
             });
         } catch (err) {
-
+            console.log("ERROR", err)
         }
     }
 

@@ -1,7 +1,7 @@
 import './App.css';
 import LoginPage from "./components/LoginPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from "react";
+import React, {useEffect} from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,6 +12,10 @@ import RedirectToLogin from "./components/RedirectToLogin";
 import ChatPage from "./components/ChatPage";
 import SurveyComponent from "./components/SurveyComponent";
 function App() {
+    useEffect(()=>{
+        console.log("url:", window.location.href)
+        //TODO switch
+    },[])
   return(
 
       <UserContext>
