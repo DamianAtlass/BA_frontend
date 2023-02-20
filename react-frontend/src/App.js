@@ -12,10 +12,7 @@ import RedirectToLogin from "./components/RedirectToLogin";
 import ChatPage from "./components/ChatPage";
 import SurveyComponent from "./components/SurveyComponent";
 function App() {
-    useEffect(()=>{
-        console.log("url:", window.location.href)
-        //TODO switch
-    },[])
+
   return(
 
       <UserContext>
@@ -30,7 +27,7 @@ function App() {
                                   <Route path="survey" element={ <SurveyComponent/> }/>
                                   <Route path="chat" element={ <ChatPage/> }/>
                                   <Route index element={ <Navigate to={"/login"}/> }/>
-                                  <Route path="*"  element={<div> oh no, you're lost! 404  Go to <Link to="/login"> Login </Link></div>} />
+                                  <Route path="*" element={<div> oh no, you're lost! 404  Go to <Link to="/login"> Login </Link></div>} />
                               </Routes>
                           </RedirectToLogin>
                       </BrowserRouter>

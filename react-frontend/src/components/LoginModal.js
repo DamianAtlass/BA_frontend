@@ -44,7 +44,6 @@ export default function LoginModal() {
                     }})
                 localStorage.setItem("user", username)
                 localStorage.setItem("dialog_style", response.data["dialog_style"])
-                console.log("userpk", response.data["user_pk"], "in storage!")
                 localStorage.setItem("user_pk", response.data["user_pk"])
 
 
