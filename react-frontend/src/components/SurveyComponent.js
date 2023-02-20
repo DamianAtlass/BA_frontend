@@ -2,6 +2,8 @@ import 'survey-core/defaultV2.min.css';
 import {Model} from 'survey-core';
 import {Survey} from 'survey-react-ui';
 import {useCallback} from 'react';
+import {useUserData} from "./contexts/UserDataContext";
+import { API_URL } from "../constants";
 
 const surveyJson = {
     title: "Give your opinion!",
@@ -42,13 +44,30 @@ const surveyJson = {
     }]
 };
 
-const SURVEY_ID = 1;
 
 export default function SurveyComponent() {
+
+    const userData = useUserData()
+    const user_pk_str_pad = userData.user_pk.toString().padStart(3, '0')
+    console.log("user_pk_str_pad:", user_pk_str_pad)
+
+    function saveSurveyResults(url, json) {
+        const request = new XMLHttpRequest();
+        request.open('POST', url);
+        request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        request.addEventListener('load', () => {
+            // Handle "load"
+        });
+        request.addEventListener('error', () => {
+            // Handle "error"
+        });
+        request.send(JSON.stringify(json));
+    }
+
     const survey = new Model(surveyJson);
     const surveyComplete = useCallback((sender) => {
         saveSurveyResults(
-            "http://localhost:8000/api/ok/" + SURVEY_ID,
+            API_URL + "surveydata/" + user_pk_str_pad,
             sender.data
         )
     }, []);
@@ -58,15 +77,3 @@ export default function SurveyComponent() {
     return <Survey model={survey}/>;
 }
 
-function saveSurveyResults(url, json) {
-    const request = new XMLHttpRequest();
-    request.open('POST', url);
-    request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    request.addEventListener('load', () => {
-        // Handle "load"
-    });
-    request.addEventListener('error', () => {
-        // Handle "error"
-    });
-    request.send(JSON.stringify(json));
-}

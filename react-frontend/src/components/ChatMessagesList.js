@@ -39,7 +39,7 @@ export default function ChatMessagesList({messages}) {
     async function onDialogComplete(isComplete){
         if (isComplete){
             console.log("dialog done")
-            await sleep(3000)
+            await sleep(1000)
             navigate("/survey")
         }
     }

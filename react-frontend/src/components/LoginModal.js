@@ -20,7 +20,7 @@ export default function LoginModal() {
     const handleClose = () => set_show(false);
     const handleShow = () => set_show(true);
 
-    const email = useRef()
+    const username = useRef()
     const password = useRef()
 
 
@@ -28,19 +28,23 @@ export default function LoginModal() {
     async function sendLoginCredentials(){
         set_response_message("")
         const data = {
-            "username": email.current.value,
+            "username": username.current.value,
             "password": password.current.value,
         }
         try {
             let res = await axios.post(API_URL +"login/", data).then((response) => {
                 set_response_message(response.data["success-message"])
+                console.log("data:", response.data)
+                const username = response.data["username"]
 
                 setUserData({"type": "update", "payload": {
-                        "username": email.current.value,
+                        "username": username,
                         "dialog_style": response.data["dialog_style"],
+                        "user_pk": response.data["user_pk"]
                     }})
-                localStorage.setItem("user", email.current.value)
+                localStorage.setItem("user", username)
                 localStorage.setItem("dialog_style", response.data["dialog_style"])
+
 
                 console.log("updated userdata: ",UserData)
                 navigate("/overview")
@@ -75,16 +79,16 @@ export default function LoginModal() {
                     {/*additional info here*/}
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control ref={email}
-                                          type="email"
-                                          placeholder="name@example.com"
+                            <Form.Label>Username:</Form.Label>
+                            <Form.Control ref={username}
+                                          type="username"
+                                          placeholder="Timmi1234"
                                           autoFocus
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label>Password:</Form.Label>
                             <Form.Control ref={password}
                                           type="password"
                                           placeholder="***********"
