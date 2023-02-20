@@ -13,7 +13,7 @@ import Col from 'react-bootstrap/Col'
 import "./css/ChatPage.css"
 import InputField from "./InputField";
 
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+export const sleep = ms => new Promise(r => setTimeout(r, ms));
 function reducer(state, action) {
     switch (action.type) {
         case "append":
@@ -28,12 +28,7 @@ function reducer(state, action) {
 
 
 export default function ChatPage() {
-    async function dialogComplete(isComplete){
-        if (isComplete){
-            await sleep(2000)
-            navigate("login")
-        }
-    }
+
 
     const userData = useUserData()
     const [messages, dispatch] = useReducer(reducer, []); //underline is 'ok'

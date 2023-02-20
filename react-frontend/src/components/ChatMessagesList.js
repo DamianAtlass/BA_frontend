@@ -11,7 +11,9 @@ import MessageBubble from "./MessageTypes/MessageBubble";
 import {useUserData} from "./contexts/UserDataContext";
 import MessageClassic from "./MessageTypes/MessageClassic";
 import PictureMessage from "./MessageTypes/PictureMessage";
-import {dialogComplete} from "./ChatPage";
+import {useNavigate} from "react-router-dom";
+import {sleep} from "./ChatPage";
+
 
 const DIALOG_STYLE_ONE_ON_ONE = "ONE_ON_ONE"
 const DIALOG_STYLE_COLORED_BUBBLES = "COLORED_BUBBLES"
@@ -33,13 +35,21 @@ export function setStyling(author){
 }
 
 export default function ChatMessagesList({messages}) {
+    const navigate = useNavigate()
+    async function onDialogComplete(isComplete){
+        if (isComplete){
+            console.log("dialog done")
+            await sleep(3000)
+            navigate("/survey")
+        }
+    }
 
     const userData = useUserData()
     let dialog_style = userData.dialog_style === undefined ? localStorage.getItem("dialog_style") : userData.dialog_style
 
     function calculateMessageType(message){
         let author = message["author"]
-        dialogComplete(message["dialogIsComplete"])
+        onDialogComplete(message["dialogIsComplete"])
         switch(author){
 
             case "USER":
@@ -47,13 +57,13 @@ export default function ChatMessagesList({messages}) {
             default:
                 switch (dialog_style){
                     case DIALOG_STYLE_ONE_ON_ONE:
-                        return <BotMessage message={message}/>
+                        return <BotMessage message={message} onDialogComplete={onDialogComplete}/>
                     case DIALOG_STYLE_COLORED_BUBBLES:
-                        return <MessageBubble message={message}/>
+                        return <MessageBubble message={message} onDialogComplete={onDialogComplete}/>
                     case DIALOG_STYLE_CLASSIC_GROUP:
-                        return <MessageClassic message={message}/>
+                        return <MessageClassic message={message} onDialogComplete={onDialogComplete}/>
                     case DIALOG_STYLE_PICTURE:
-                        return <PictureMessage message={message}/>
+                        return <PictureMessage message={message} onDialogComplete={onDialogComplete}/>
                 }
         }
     }
