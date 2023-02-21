@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -9,6 +9,8 @@ export default function CreateUserModal() {
     const [show, setShow] = useState(false);
     const [response_message, set_response_message] = useState("")
 
+    const [invetedBy, setInvetedBy] = useState(null)
+
     let username = useRef("")
     let email = useRef("")
     let password= useRef("")
@@ -16,18 +18,22 @@ export default function CreateUserModal() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    function foo(){
-        console.log(username.current.value, email.current.value, password.current.value)
-    }
+    useEffect(()=>{
+        const queryParams = new URLSearchParams(window.location.search)
+        console.log("invetedby:", queryParams.get("invitedby"))
+        setInvetedBy(queryParams.get("invitedby"))
+    },[])
+
 
 
     async function sendusercredentials(){
         set_response_message("")
         //TODO: validate input data here
         const data = {
-            "alias": username.current.value,
+            "username": username.current.value,
             "email": email.current.value,
             "password": password.current.value,
+            "invetedBy": invetedBy,
         }
         try {
             let res = await axios.post(API_URL +"accounts/", data).then((response) => {
@@ -40,9 +46,7 @@ export default function CreateUserModal() {
             const err_msg = err.response.data["error"]
             console.log(err_msg)
             set_response_message(err.response.data["error-message"])
-
         }
-
     }
 
 
@@ -87,8 +91,8 @@ export default function CreateUserModal() {
                                           ref={password}
                             />
                         </Form.Group>
-
                     </Form>
+                        {invetedBy && `You've been invited by ${invetedBy}!`}
                     <p>{response_message}</p>
                 </Modal.Body>
                 <Modal.Footer>
