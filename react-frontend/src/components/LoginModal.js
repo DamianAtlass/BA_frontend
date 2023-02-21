@@ -34,7 +34,6 @@ export default function LoginModal() {
         try {
             let res = await axios.post(API_URL +"login/", data).then((response) => {
                 set_response_message(response.data["success-message"])
-                console.log("data:", response.data)
                 const username = response.data["username"]
 
                 setUserData({"type": "update", "payload": {
@@ -42,12 +41,8 @@ export default function LoginModal() {
                         "dialog_style": response.data["dialog_style"],
                         "user_pk": response.data["user_pk"]
                     }})
-                localStorage.setItem("user", username)
-                localStorage.setItem("dialog_style", response.data["dialog_style"])
-                localStorage.setItem("user_pk", response.data["user_pk"])
 
 
-                console.log("updated userdata: ",UserData)
                 navigate("/overview")
             });
 

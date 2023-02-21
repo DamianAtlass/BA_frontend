@@ -18,7 +18,7 @@ export default function OverviewPage(){
     }
 
     useEffect(()=>{
-        console.log("OverviewPage",localStorage.getItem("user"))
+        console.log(userData.username)
     }, [])
 
     return (

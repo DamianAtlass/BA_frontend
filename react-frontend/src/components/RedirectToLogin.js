@@ -9,10 +9,8 @@ export default function RedirectToLogin({children}){
     const userData = useUserData()
 
     useEffect(()=>{
-        let local_username = localStorage.getItem("user")
-        if(local_username && userData.username === INITIAL_USER){
-            setUserData({"type": "update", "payload": {"username": local_username}})
-        } else {
+        if(userData.username === INITIAL_USER){
+            console.log("[Redirect]userData.username:", userData.username)
             navigate("login")
         }
     }, [])

@@ -45,7 +45,7 @@ export default function ChatMessagesList({messages}) {
     }
 
     const userData = useUserData()
-    let dialog_style = userData.dialog_style === undefined ? localStorage.getItem("dialog_style") : userData.dialog_style
+    let dialog_style = userData.dialog_style
 
     function calculateMessageType(message){
         let author = message["author"]

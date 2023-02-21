@@ -28,7 +28,7 @@ const surveyJson = {
 export default function SurveyComponent() {
 
     const userData = useUserData()
-    let user_pk = userData.user_pk === undefined ? localStorage.getItem("user_pk") : userData.user_pk
+    let user_pk = userData.user_pk
     const user_pk_str_pad = user_pk.toString().padStart(3, '0')
 
     async function saveSurveyResults(url, json) {

@@ -38,7 +38,7 @@ export default function ChatPage() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (userData.username === INITIAL_USER && !localStorage.getItem("user")) {
+        if (userData.username === INITIAL_USER) {
             navigate("/login")
         }
         getMessage()
@@ -78,7 +78,7 @@ export default function ChatPage() {
     function getMessage(user_response_pk = null) {
 
         const request_data = {
-            "username": userData.username === INITIAL_USER ? localStorage.getItem("user") : userData.username,
+            "username": userData.username,
             "user_response_pk": user_response_pk
         }
         axios.post(API_URL + "getchatdata/", request_data).then(async (response) => {
