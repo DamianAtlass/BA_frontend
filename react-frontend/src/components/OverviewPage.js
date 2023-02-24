@@ -13,7 +13,7 @@ export default function OverviewPage(){
     function logout(){
         localStorage.removeItem('user')
 
-        updateUserData({"type": "update", "payload": {"username": ""}})
+        updateUserData({"type": "delete", "payload": { } })
         navigate("/login")
     }
 

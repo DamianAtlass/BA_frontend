@@ -19,6 +19,9 @@ export function UserContext({children}){
                 localStorage.setItem('state', JSON.stringify(new_state));
                 console.log("set state in storage", new_state)
                 return new_state
+            case "delete":
+                localStorage.removeItem('state')
+                return {}
         }
 
     }
