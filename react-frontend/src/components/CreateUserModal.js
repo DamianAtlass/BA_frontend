@@ -20,8 +20,22 @@ export default function CreateUserModal() {
 
     useEffect(()=>{
         const queryParams = new URLSearchParams(window.location.search)
-        console.log("invetedby:", queryParams.get("invitedby"))
-        setInvetedBy(queryParams.get("invitedby"))
+        let invited_pk = queryParams.get("invitedby")
+
+        const fetchData = async () => {
+            const res = await axios.get(API_URL + `invite/${invited_pk}/`);
+            console.log("SUCCESS")
+            console.log(res)
+            return res
+        }
+
+        // call the function
+        fetchData()
+            // make sure to catch any error
+            .catch((err)=>{
+                console.log("ERROR:", err.response.data.error)
+            });
+
     },[])
 
 
