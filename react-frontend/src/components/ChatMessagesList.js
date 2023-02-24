@@ -36,6 +36,8 @@ export function setStyling(author){
 
 export default function ChatMessagesList({messages}) {
     const navigate = useNavigate()
+    const userData = useUserData()
+
     async function onDialogComplete(isComplete){
         if (isComplete){
             console.log("dialog done")
@@ -44,7 +46,6 @@ export default function ChatMessagesList({messages}) {
         }
     }
 
-    const userData = useUserData()
     let dialog_style = userData.dialog_style
 
     function calculateMessageType(message){

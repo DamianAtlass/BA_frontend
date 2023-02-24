@@ -1,9 +1,9 @@
 @media only screen and (min-width: 576px) {
-    .LoginPageCard{
+    .CompleteCard{
         margin: 100px 0;
     }
 }
 
-.LoginPageCard>.container-fluid>*{
+.CompleteCard>.container-fluid>*{
     margin: 30px;
 }

@@ -9,7 +9,7 @@ export default function CreateUserModal() {
     const [show, setShow] = useState(false);
     const [response_message, set_response_message] = useState("")
 
-    const [invetedBy, setInvetedBy] = useState(null)
+    const [invitedBy, setInvitedBy] = useState(null)
 
     let username = useRef("")
     let email = useRef("")
@@ -25,16 +25,18 @@ export default function CreateUserModal() {
         const fetchData = async () => {
             const res = await axios.get(API_URL + `invite/${invited_pk}/`);
             console.log("SUCCESS")
-            console.log(res)
+            setInvitedBy(res.data["inviting_user"])
             return res
         }
 
         // call the function
-        fetchData()
-            // make sure to catch any error
-            .catch((err)=>{
-                console.log("ERROR:", err.response.data.error)
-            });
+        if(invitedBy){
+            fetchData()
+                // make sure to catch any error
+                .catch((err)=>{
+                    console.log("ERROR:", err.response.data.error)
+                });
+        }
 
     },[])
 
@@ -47,7 +49,7 @@ export default function CreateUserModal() {
             "username": username.current.value,
             "email": email.current.value,
             "password": password.current.value,
-            "invetedBy": invetedBy,
+            "invitedBy": invitedBy,
         }
         try {
             let res = await axios.post(API_URL +"accounts/", data).then((response) => {
@@ -62,7 +64,6 @@ export default function CreateUserModal() {
             set_response_message(err.response.data["error-message"])
         }
     }
-
 
     return (
         <>
@@ -106,7 +107,7 @@ export default function CreateUserModal() {
                             />
                         </Form.Group>
                     </Form>
-                        {invetedBy && `You've been invited by ${invetedBy}!`}
+                        {invitedBy && `You've been invited by ${invitedBy}!`}
                     <p>{response_message}</p>
                 </Modal.Body>
                 <Modal.Footer>

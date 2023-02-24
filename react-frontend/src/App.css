@@ -1,5 +1,4 @@
-.MainContainer {
-  height: 100vh;
+.MainContainer,html, body {
   background-color: #3b9eff;
 }
 

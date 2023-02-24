@@ -3,12 +3,16 @@ import {Model} from 'survey-core';
 import {Survey} from 'survey-react-ui';
 import {useCallback, useState} from 'react';
 import {useUserData} from "./contexts/UserDataContext";
+import React, {useEffect} from "react";
 import { API_URL } from "../constants";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import "./css/CompleteCard.css"
 import CreateUserModal from "./CreateUserModal";
 import LoginModal from "./LoginModal";
 
@@ -42,7 +46,7 @@ function CompleteCard(){
 
 
     return (
-        <Card>
+        <Card className="CompleteCard">
             <Container fluid>
                 <Row className="justify-content-center">
                     <Col className="justify-content-center" align="center">
@@ -54,6 +58,11 @@ function CompleteCard(){
                         {customLink}
                     </Col>
                 </Row>
+                <Row>
+                    <Col align="center">
+                        <Button onClick={() => {navigator.clipboard.writeText(customLink)}}>Copy</Button>
+                    </Col>
+                </Row>
             </Container>
         </Card>
     )
@@ -61,10 +70,12 @@ function CompleteCard(){
 
 
 export default function SurveyComponent() {
+    const userData = useUserData()
+    const navigate = useNavigate()
+
 
     const [complete, setComplete] = useState(false)
 
-    const userData = useUserData(false)
     let user_pk = userData.user_pk
     const user_pk_str_pad = user_pk.toString().padStart(3, '0')
 
