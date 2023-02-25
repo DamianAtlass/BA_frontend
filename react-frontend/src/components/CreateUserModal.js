@@ -7,7 +7,7 @@ import { API_URL } from "../constants";
 
 export default function CreateUserModal() {
     const [show, setShow] = useState(false);
-    const [response_message, set_response_message] = useState("")
+    const [infoMessage, setInfoMessage] = useState("")
 
     const [invitedBy, setInvitedBy] = useState(null)
 
@@ -24,17 +24,18 @@ export default function CreateUserModal() {
 
         const fetchData = async () => {
             const res = await axios.get(API_URL + `invite/${invited_pk}/`);
-            console.log("SUCCESS")
             setInvitedBy(res.data["inviting_user"])
             return res
         }
 
         // call the function
-        if(invitedBy){
+        if(invited_pk){
             fetchData()
                 // make sure to catch any error
                 .catch((err)=>{
+                    console.log(err)
                     console.log("ERROR:", err.response.data.error)
+                    setInfoMessage(err.response.data["error-message"])
                 });
         }
 
@@ -43,7 +44,6 @@ export default function CreateUserModal() {
 
 
     async function sendusercredentials(){
-        set_response_message("")
         //TODO: validate input data here
         const data = {
             "username": username.current.value,
@@ -53,7 +53,7 @@ export default function CreateUserModal() {
         }
         try {
             let res = await axios.post(API_URL +"accounts/", data).then((response) => {
-            set_response_message(response.data["success-message"])
+            setInfoMessage(response.data["success-message"])
             });
 
         } catch (err) {
@@ -61,7 +61,7 @@ export default function CreateUserModal() {
 
             const err_msg = err.response.data["error"]
             console.log(err_msg)
-            set_response_message(err.response.data["error-message"])
+            setInfoMessage(err.response.data["error-message"])
         }
     }
 
@@ -108,7 +108,7 @@ export default function CreateUserModal() {
                         </Form.Group>
                     </Form>
                         {invitedBy && `You've been invited by ${invitedBy}!`}
-                    <p>{response_message}</p>
+                    <p>{infoMessage}</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
