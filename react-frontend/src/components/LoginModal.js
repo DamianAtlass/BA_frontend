@@ -8,36 +8,40 @@ import {useNavigate} from "react-router-dom";
 import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
 
 export default function LoginModal() {
-    const [show, set_show] = useState(false);
-    const [show_button, set_show_button] = useState(false)
-    const [response_message, set_response_message] = useState("")
+    const [show, setShow] = useState(false);
+    const [verificationNeeded, setVerificationNeeded] = useState(false);
+    const [responseMessage, setResponseMessage] = useState("")
     const navigate = useNavigate()
 
     const UserData = useUserData()
     const setUserData = useUserDataUpdate()
 
 
-    const handleClose = () => set_show(false);
-    const handleShow = () => set_show(true);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const username = useRef()
     const password = useRef()
+    const verification_code = useRef()
 
 
 
 
 
     async function sendLoginCredentials(){
-        set_response_message("")
+        setResponseMessage("")
         const data = {
             "username": username.current.value,
             "password": password.current.value,
+            "verification_code": verificationNeeded ? verification_code.current.value : undefined,
         }
+
         try {
             let res = await axios.post(API_URL +"login/", data).then((response) => {
-                set_response_message(response.data["success-message"])
+                setResponseMessage(response.data["success-message"])
                 const username = response.data["username"]
 
+                setVerificationNeeded(false)
                 setUserData({"type": "update", "payload": {
                         "username": username,
                         "dialog_style": response.data["dialog_style"],
@@ -49,11 +53,24 @@ export default function LoginModal() {
             });
 
         } catch (err) {
-            //TODO: check for verification
+            let status = err.response.status
+            let error_specific = err.response.data.error
+            let response_message = err.response.data["error-message"]
 
-            const err_msg = err.response.data["error"]
-            console.log(err_msg)
-            set_response_message(err.response.data["error-message"])
+            console.log("status code :", status)
+            console.log("error_specific :", error_specific)
+            switch (error_specific){
+                case "USER_NOT_FOUND":
+                    setResponseMessage(response_message)
+                    break
+                case "VERIFICATION_NECESSARY":
+                    setVerificationNeeded(true)
+                    setResponseMessage(response_message)
+                    break
+                case "WRONG_VERIFICATION_CODE":
+                    setResponseMessage(response_message)
+                    break
+            }
 
         }
     }
@@ -85,7 +102,7 @@ export default function LoginModal() {
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
                             <Form.Label>Password:</Form.Label>
                             <Form.Control ref={password}
                                           type="password"
@@ -93,18 +110,27 @@ export default function LoginModal() {
                             />
                         </Form.Group>
 
+                        {verificationNeeded &&
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>3-digit Authentication Code:</Form.Label>
+                                <Form.Control ref={verification_code}
+                                              type="text"
+                                              placeholder="123456"
+                                />
+                            </Form.Group>
+                        }
+
                     </Form>
-                    <p>{response_message}</p>
+                    <p>{responseMessage}</p>
+
+
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    { show_button ?
-                        <Button variant="primary" >Understood1</Button>
-                        : null }
 
-                    <Button variant="primary" onClick={sendLoginCredentials}>Understood</Button>
+                    <Button variant="primary" onClick={sendLoginCredentials}>Log in</Button>
 
 
                 </Modal.Footer>
