@@ -45,13 +45,13 @@ export default function ChatMessagesList({messages}) {
     })
 
     async function onDialogComplete(isComplete){
-        //leave if isComplete is false or undefined (when message is loaded from history or it's a user message)
+        //leave if isComplete is false or undefined (when message is loaded from history, or it's a user message)
         if(!isComplete){
             return null
         }
 
         await sleep(1000)
-        updateUserData({type: "update", payload: {dialog_complete: isComplete}})
+        updateUserData({type: "update", payload: {completed_dialog: isComplete}})
         navigate("/survey")
 
     }
@@ -62,7 +62,7 @@ export default function ChatMessagesList({messages}) {
         let author = message["author"]
 
         //extremely important, blocks circular rendering
-        if (!userData.dialog_complete) {
+        if (!userData.completed_dialog) {
             onDialogComplete(message["dialogIsComplete"])
         }
 

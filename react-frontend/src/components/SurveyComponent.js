@@ -2,7 +2,7 @@ import 'survey-core/defaultV2.min.css';
 import {Model} from 'survey-core';
 import {Survey} from 'survey-react-ui';
 import {useCallback, useState} from 'react';
-import {useUserData} from "./contexts/UserDataContext";
+import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
 import React, {useEffect} from "react";
 import { API_URL } from "../constants";
 import {useNavigate} from "react-router-dom";
@@ -15,6 +15,8 @@ import Button from 'react-bootstrap/Button';
 import "./css/CompleteCard.css"
 import CreateUserModal from "./CreateUserModal";
 import LoginModal from "./LoginModal";
+export const FRONTEND_API = "http://localhost:3000/"
+
 
 const surveyJson = {
     title: "Give your opinion!",
@@ -33,16 +35,22 @@ const surveyJson = {
 };
 
 function CompleteCard(){
-    const userData = useUserData(false)
+    const userData = useUserData()
+    const setUserdata = useUserDataUpdate()
     let user_pk = userData.user_pk
     const user_pk_str_pad = user_pk.toString().padStart(3, '0')
 
-    const url = window.location.href
-    console.log("currentUrl:",url)
-    //slice last word
-    const customLink = `${url.slice(0, url.length-6)}login?invitedby=${user_pk_str_pad}`
+    const customLink = `${FRONTEND_API}login?invitedby=${user_pk_str_pad}`
 
     console.log("customLink: ", customLink)
+
+    console.log("COMPLETED SURVEY")
+
+    useEffect(()=>{
+        if(!userData.completed_survey){
+            setUserdata({type: "update", payload: {completed_survey: true}})
+        }
+    },[])
 
 
     return (
@@ -63,6 +71,11 @@ function CompleteCard(){
                         <Button onClick={() => {navigator.clipboard.writeText(customLink)}}>Copy</Button>
                     </Col>
                 </Row>
+                <Row>
+                    <Col align="center">
+                        Other users will not see your email, only your username!
+                    </Col>
+                </Row>
             </Container>
         </Card>
     )
@@ -78,6 +91,16 @@ export default function SurveyComponent() {
 
     let user_pk = userData.user_pk
     const user_pk_str_pad = user_pk.toString().padStart(3, '0')
+
+
+    useEffect(()=>{
+        if(userData.completed_survey){
+            setComplete(true)
+        }
+        if(!userData.completed_dialog){
+            navigate("/overview")
+        }
+    },[])
 
     async function saveSurveyResults(url, json) {
         try {

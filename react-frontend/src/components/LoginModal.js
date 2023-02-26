@@ -41,11 +41,14 @@ export default function LoginModal() {
                 setResponseMessage(response.data["success-message"])
                 const username = response.data["username"]
 
+                console.log(response.data)
                 setVerificationNeeded(false)
                 setUserData({"type": "update", "payload": {
                         "username": username,
                         "dialog_style": response.data["dialog_style"],
-                        "user_pk": response.data["user_pk"]
+                        "completed_dialog": response.data["completed_dialog"],
+                        "completed_survey": response.data["completed_survey"],
+                        "user_pk": response.data["user_pk"],
                     }})
 
 

@@ -39,7 +39,8 @@ export function UserContext({children}){
             "username": INITIAL_USER,
             "dialog_style": undefined,
             "user_pk": undefined,
-            "dialog_complete": false
+            "completed_dialog": false,
+            "completed_survey": false
         }
         //console.log("set new state in storage", default_state)
         localStorage.setItem('state', JSON.stringify(default_state));
@@ -48,7 +49,8 @@ export function UserContext({children}){
             "username": local_state.username,
             "dialog_style": local_state.dialog_style,
             "user_pk": local_state.user_pk,
-            "dialog_complete": local_state.dialog_complete
+            "completed_dialog": local_state.completed_dialog,
+            "completed_survey": local_state.completed_survey
         }
         //console.log("state found", default_state)
     }

@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
+import {FRONTEND_API} from "./SurveyComponent";
 
 
 export default function OverviewPage(){
@@ -22,6 +23,12 @@ export default function OverviewPage(){
         navigate("/login")
     }
 
+    let user_pk = userData.user_pk
+    const user_pk_str_pad = user_pk.toString().padStart(3, '0')
+
+    const customLink = `${FRONTEND_API}login?invitedby=${user_pk_str_pad}`
+
+
     useEffect(()=>{
         console.log(userData.username)
     }, [])
@@ -32,14 +39,40 @@ export default function OverviewPage(){
         <Container fluid >
             <Row className="justify-content-center">
                 <Col className="justify-content-center" align="center">
-                    <h1>OverviewPage {userData.username} </h1>
+                    <h1>Hallo {userData.username}</h1>
                 </Col>
             </Row>
-            <Row>
-                <Col  align="center">
-                    <Button onClick={()=>{navigate("/chat")}}> Start Study</Button>
+
+            {userData.completed_survey &&
+                <>
+                    <Row className="justify-content-evenly">
+                        <Col align="center">
+                            {customLink}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col align="center">
+                            <Button onClick={() => {navigator.clipboard.writeText(customLink)}}>Copy</Button>
+                        </Col>
+                    </Row>
+                </>
+            }
+
+            <Row className="justify-content-evenly">
+                <Col align="center">
+                    <Button onClick={() => {navigate("/chat")}}>
+                        {userData.completed_dialog ? "View Interaction" : "Start Interaction"}
+                    </Button>
                 </Col>
+
+                {(!userData.completed_survey && userData.completed_dialog) &&
+                    <Col align="center">
+                        <Button variant="success" onClick={()=>{navigate("/survey")}}> Survey </Button>
+                    </Col>
+                }
             </Row>
+
+            {/*ACCORDION PART*/}
             <Row>
                 <Col>
                     <Accordion defaultActiveKey="0">
