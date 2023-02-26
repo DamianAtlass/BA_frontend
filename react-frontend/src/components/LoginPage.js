@@ -13,7 +13,7 @@ export default function LoginPage(){
     return (
         <Card className="LoginPageCard align-content-center">
             <Container fluid >
-                <Row className="justify-content-center">
+                <Row>
                     <Col className="justify-content-center" align="center">
                         <h1>Welcome</h1>
                     </Col>
