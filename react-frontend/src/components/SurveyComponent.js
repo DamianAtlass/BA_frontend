@@ -11,11 +11,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import "./css/CompleteCard.css"
-import CreateUserModal from "./CreateUserModal";
-import LoginModal from "./LoginModal";
-export const FRONTEND_API = "http://localhost:3000/"
+
+import CopyLinkComponent from "./CopyLinkComponent";
 
 
 const surveyJson = {
@@ -37,14 +35,6 @@ const surveyJson = {
 function CompleteCard(){
     const userData = useUserData()
     const setUserdata = useUserDataUpdate()
-    let user_pk = userData.user_pk
-    const user_pk_str_pad = user_pk.toString().padStart(3, '0')
-
-    const customLink = `${FRONTEND_API}login?invitedby=${user_pk_str_pad}`
-
-    console.log("customLink: ", customLink)
-
-    console.log("COMPLETED SURVEY")
 
     useEffect(()=>{
         if(!userData.completed_survey){
@@ -61,19 +51,10 @@ function CompleteCard(){
                         <h1>Thx for your partaking</h1>
                     </Col>
                 </Row>
-                <Row className="justify-content-evenly">
-                    <Col align="center">
-                        {customLink}
-                    </Col>
-                </Row>
+                <CopyLinkComponent/>
                 <Row>
                     <Col align="center">
-                        <Button onClick={() => {navigator.clipboard.writeText(customLink)}}>Copy</Button>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col align="center">
-                        Other users will not see your email, only your username!
+                        Other users will not see your email, just your username!
                     </Col>
                 </Row>
             </Container>
@@ -86,8 +67,8 @@ export default function SurveyComponent() {
     const userData = useUserData()
     const navigate = useNavigate()
 
+    const [completeSurveyState, setCompleteSurveyState] = useState(false)
 
-    const [complete, setComplete] = useState(false)
 
     let user_pk = userData.user_pk
     const user_pk_str_pad = user_pk.toString().padStart(3, '0')
@@ -95,7 +76,7 @@ export default function SurveyComponent() {
 
     useEffect(()=>{
         if(userData.completed_survey){
-            setComplete(true)
+            setCompleteSurveyState(true)
         }
         if(!userData.completed_dialog){
             navigate("/overview")
@@ -117,12 +98,11 @@ export default function SurveyComponent() {
             API_URL + "surveydata/" + user_pk_str_pad+"/",
             sender.data
         )
-        setComplete(true)
+        setCompleteSurveyState(true)
     }, []);
 
     survey.onComplete.add(surveyComplete);
 
-
-    return complete ? <CompleteCard/> : <Survey model={survey}/>;
+    return completeSurveyState ? <CompleteCard/> : <Survey model={survey}/>;
 }
 

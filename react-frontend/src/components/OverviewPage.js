@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
-import {FRONTEND_API} from "./SurveyComponent";
+import CopyLinkComponent from "./CopyLinkComponent";
 
 
 export default function OverviewPage(){
@@ -23,10 +23,6 @@ export default function OverviewPage(){
         navigate("/login")
     }
 
-    let user_pk = userData.user_pk
-    const user_pk_str_pad = user_pk.toString().padStart(3, '0')
-
-    const customLink = `${FRONTEND_API}login?invitedby=${user_pk_str_pad}`
 
 
     useEffect(()=>{
@@ -44,18 +40,7 @@ export default function OverviewPage(){
             </Row>
 
             {userData.completed_survey &&
-                <>
-                    <Row className="justify-content-evenly">
-                        <Col align="center">
-                            {customLink}
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col align="center">
-                            <Button onClick={() => {navigator.clipboard.writeText(customLink)}}>Copy</Button>
-                        </Col>
-                    </Row>
-                </>
+                <CopyLinkComponent/>
             }
 
             <Row className="justify-content-evenly">
