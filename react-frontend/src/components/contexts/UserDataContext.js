@@ -39,31 +39,22 @@ export function UserContext({children}){
             "username": INITIAL_USER,
             "dialog_style": undefined,
             "user_pk": undefined,
+            "dialog_complete": false
         }
         //console.log("set new state in storage", default_state)
         localStorage.setItem('state', JSON.stringify(default_state));
     } else {
         default_state = {
-            "username": local_state.name === INITIAL_USER ? INITIAL_USER : local_state.username,
-            "dialog_style": local_state.dialog_style === undefined ? undefined : local_state.dialog_style,
-            "user_pk": local_state.dialog_style === undefined ? undefined : local_state.user_pk
+            "username": local_state.username,
+            "dialog_style": local_state.dialog_style,
+            "user_pk": local_state.user_pk,
+            "dialog_complete": local_state.dialog_complete
         }
         //console.log("state found", default_state)
     }
+    console.log("default_state:", default_state)
 
     const [state, dispatch] = useReducer(reducer, default_state);
-
-    /*function changeUserData(newUserData){
-        for (const [key, value] of Object.entries(newUserData)) {
-            if (userData.hasOwnProperty(key)) {
-                const updated_state = {...userData}
-                updated_state[key] = value
-                setUserData(updated_state)
-            } else {
-                console.log("No prop", key, "!")
-            }
-        }
-    }*/
 
 
     return(
