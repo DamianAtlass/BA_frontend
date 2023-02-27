@@ -4,7 +4,6 @@ import {Survey} from 'survey-react-ui';
 import {useCallback, useState} from 'react';
 import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
 import React, {useEffect} from "react";
-import { API_URL } from "../constants";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import Container from 'react-bootstrap/Container';
@@ -14,6 +13,7 @@ import Card from 'react-bootstrap/Card';
 import "./css/CompleteCard.css"
 
 import CopyLinkComponent from "./CopyLinkComponent";
+import {BACKEND_API_URL} from "../env";
 
 
 const surveyJson = {
@@ -95,7 +95,7 @@ export default function SurveyComponent() {
     const survey = new Model(surveyJson);
     const surveyComplete = useCallback((sender) => {
         saveSurveyResults(
-            API_URL + "surveydata/" + user_pk_str_pad+"/",
+            BACKEND_API_URL + "surveydata/" + user_pk_str_pad+"/",
             sender.data
         )
         setCompleteSurveyState(true)

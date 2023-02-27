@@ -3,8 +3,8 @@ import Modal from 'react-bootstrap/Modal';
 import Button from "react-bootstrap/Button"
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
-import { API_URL } from "../constants";
 import {findFormErrors_createUser} from "../validateInput";
+import {BACKEND_API_URL} from "../env";
 
 export default function CreateUserModal() {
     const [show, setShow] = useState(false);
@@ -23,7 +23,7 @@ export default function CreateUserModal() {
         let invited_pk = queryParams.get("invitedby")
 
         const fetchData = async () => {
-            const res = await axios.get(API_URL + `invite/${invited_pk}/`);
+            const res = await axios.get(BACKEND_API_URL + `invite/${invited_pk}/`);
             setInvitedBy(res.data["inviting_user"])
             return res
         }
@@ -63,7 +63,7 @@ export default function CreateUserModal() {
         }
 
         try {
-            let res = await axios.post(API_URL +"accounts/", data).then((response) => {
+            let res = await axios.post(BACKEND_API_URL +"accounts/", data).then((response) => {
             setInfoMessage(response.data["success-message"])
             });
 

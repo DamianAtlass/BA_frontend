@@ -2,7 +2,6 @@ import React, {useEffect, useState, useReducer} from "react"
 import {useUserData} from "./contexts/UserDataContext";
 import ChatMessagesList from "./ChatMessagesList";
 import axios from "axios";
-import {API_URL} from "../constants";
 import ChoiceList from "./ChoiceList";
 import {INITIAL_USER} from "./contexts/UserDataContext";
 import {useNavigate} from "react-router-dom";
@@ -12,6 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import "./css/ChatPage.css"
 import InputField from "./InputField";
+import {BACKEND_API_URL} from "../env";
 
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
 function reducer(state, action) {
@@ -81,7 +81,7 @@ export default function ChatPage() {
             "username": userData.username,
             "user_response_pk": user_response_pk
         }
-        axios.post(API_URL + "getchatdata/", request_data).then(async (response) => {
+        axios.post(BACKEND_API_URL + "getchatdata/", request_data).then(async (response) => {
 
             dispatch({type: "append", payload: [...response.data["history"], ...response.data["bot_responses"]]})
             setChoices({type: "replace", payload: response.data["choices"]})

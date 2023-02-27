@@ -1,11 +1,9 @@
-import React, {useState, useEffect} from "react";
-import Container from 'react-bootstrap/Container';
+import React from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
+import {useUserData} from "./contexts/UserDataContext";
 import Button from 'react-bootstrap/Button';
-//TODO export in .env
-const FRONTEND_API = "http://localhost:3000/"
+import {FRONTEND_API_URL} from "../env";
 
 
 export default function CopyLinkComponent() {
@@ -13,7 +11,7 @@ export default function CopyLinkComponent() {
 
     let user_pk = userData.user_pk
     const user_pk_str_pad = user_pk.toString().padStart(3, '0')
-    const customLink = `${FRONTEND_API}login?invitedby=${user_pk_str_pad}`
+    const customLink = `${FRONTEND_API_URL}login?invitedby=${user_pk_str_pad}`
 
     return (
         <>

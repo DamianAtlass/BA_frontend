@@ -1,11 +1,11 @@
 import './App.css';
 import LoginPage from "./components/LoginPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, {useEffect} from "react";
+import React from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {BrowserRouter, Routes, Route, useNavigate, Navigate, Link} from "react-router-dom";
+import {BrowserRouter, Routes, Route, Navigate, Link} from "react-router-dom";
 import OverviewPage from "./components/OverviewPage";
 import {UserContext} from "./components/contexts/UserDataContext";
 import RedirectToLogin from "./components/RedirectToLogin";

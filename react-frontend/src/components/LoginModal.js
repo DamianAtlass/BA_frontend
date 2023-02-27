@@ -3,10 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
-import { API_URL } from "../constants";
 import {useNavigate} from "react-router-dom";
 import {useUserDataUpdate} from "./contexts/UserDataContext";
 import {findFormErrors_login} from "../validateInput";
+import {BACKEND_API_URL} from "../env";
 
 export default function LoginModal() {
     const [show, setShow] = useState(false);
@@ -73,7 +73,7 @@ export default function LoginModal() {
         }
 
         try {
-            let res = await axios.post(API_URL +"login/", data).then((response) => {
+            let res = await axios.post(BACKEND_API_URL +"login/", data).then((response) => {
                 setResponseMessage(response.data["success-message"])
                 const username = response.data["username"]
 
