@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button"
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import { API_URL } from "../constants";
+import {findFormErrors_createUser} from "../validateInput";
 
 export default function CreateUserModal() {
     const [show, setShow] = useState(false);
@@ -45,6 +46,7 @@ export default function CreateUserModal() {
         sendUserCredentials()
     }
 
+    /*send credentials to server to create new user, checks input beforehand*/
     async function sendUserCredentials(){
 
         //validate input data
@@ -72,7 +74,8 @@ export default function CreateUserModal() {
         }
     }
 
-    const setField = (field, value) => {
+    /*updates formState fields*/
+    const updateField = (field, value) => {
         console.log("setField()")
         setFormState({
             ...formState,
@@ -83,51 +86,23 @@ export default function CreateUserModal() {
 
     }
 
+    /*can be used to check input in real time*/
     useEffect(()=>{
-        checkForErrors()
+        //checkForErrors()
     },[formState])
 
-
+    /* handels result of user input check and sets error messages
+    * returns TRUE or FALSE of input is OK or not*/
     function checkForErrors(){
-        const newErrors = findFormErrors()
+        const newErrors = findFormErrors_createUser(formState)
 
-        // Conditional logic:
         if ( Object.keys(newErrors).length > 0 ) {
-
             setErrorsState(newErrors)
-            console.log("INPUT BAD")
             return false
         } else {
-            console.log("INPUT FINE")
             return true
         }
     }
-
-
-    const findFormErrors = () => {
-        console.log("findFormErrors()")
-        const { username,password, email } = formState
-        console.log("form:", formState)
-        const newErrors = {}
-
-        // name errors
-        if ( !username || username === '' ) newErrors.username = 'cannot be blank!'
-        else if ( username.length > 30 ) newErrors.username = 'username is too long!'
-
-        // email errors
-        if ( !email || email === '' ) newErrors.email = 'cannot be blank!'
-        else if ( email.length > 30 ) newErrors.email = 'email is too long!'
-
-        // password errors
-        if ( !password || password === '' ) newErrors.password = 'cannot be blank!'
-        else if ( password.length > 30 ) newErrors.password = 'password is too long!'
-
-
-
-        console.log("newErrors:", newErrors)
-        return newErrors
-    }
-
 
     return (
         <>
@@ -153,7 +128,7 @@ export default function CreateUserModal() {
                                 type="email"
                                 placeholder="name@example.com"
                                 autoFocus
-                                onChange={ e => setField('email', e.target.value) }
+                                onChange={ e => updateField('email', e.target.value) }
                                 isInvalid={ !!errorsState.email }
                             />
                             <Form.Control.Feedback type='invalid'>
@@ -165,7 +140,7 @@ export default function CreateUserModal() {
                             <Form.Label>Username</Form.Label>
                             <Form.Control type="text"
                                           placeholder="username"
-                                          onChange={ e => setField('username', e.target.value) }
+                                          onChange={ e => updateField('username', e.target.value) }
                                           isInvalid={ !!errorsState.username }
                             />
                             <Form.Control.Feedback type='invalid'>
@@ -177,7 +152,7 @@ export default function CreateUserModal() {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password"
                                           placeholder="***********"
-                                          onChange={ e => setField('password', e.target.value) }
+                                          onChange={ e => updateField('password', e.target.value) }
                                           isInvalid={ !!errorsState.password }
                             />
                             <Form.Control.Feedback type='invalid'>

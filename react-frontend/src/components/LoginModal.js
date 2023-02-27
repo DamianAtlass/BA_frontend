@@ -1,11 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import { API_URL } from "../constants";
 import {useNavigate} from "react-router-dom";
-import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
+import {useUserDataUpdate} from "./contexts/UserDataContext";
+import {findFormErrors_login} from "../validateInput";
 
 export default function LoginModal() {
     const [show, setShow] = useState(false);
@@ -13,27 +14,62 @@ export default function LoginModal() {
     const [responseMessage, setResponseMessage] = useState("")
     const navigate = useNavigate()
 
-    const UserData = useUserData()
+    const [ formState, setFormState ] = useState({})
+    const [ errorsState, setErrorsState ] = useState({})
+
     const setUserData = useUserDataUpdate()
 
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const username = useRef()
-    const password = useRef()
-    const verification_code = useRef()
 
+    /*updates formState fields*/
+    const setField = (field, value) => {
+        console.log("setField()")
+        setFormState({
+            ...formState,
+            [field]: value
+        })
+        // remove old errors
+        setErrorsState({})
+    }
+    /*can be used to check input in real time*/
+    useEffect(()=>{
+        checkForErrors()
+    },[formState])
 
+    /* handels result of user input check and sets error messages
+    * returns TRUE or FALSE of input is OK or not*/
+    function checkForErrors(){
+        const newErrors = findFormErrors_login(formState, verificationNeeded)
 
+        if ( Object.keys(newErrors).length > 0 ) {
+            setErrorsState(newErrors)
+            return false
+        } else {
+            return true
+        }
+    }
 
+    function handleSubmit(e){
+        e.preventDefault()
+        sendLoginCredentials()
+    }
 
+    /*send credentials to server to log in, checks input beforehand*/
     async function sendLoginCredentials(){
+
+        if(!checkForErrors()){
+            console.log("BAD INPUT")
+            return null
+        }
+
         setResponseMessage("")
         const data = {
-            "username": username.current.value,
-            "password": password.current.value,
-            "verification_code": verificationNeeded ? verification_code.current.value : undefined,
+            "username": formState.username,
+            "password": formState.password,
+            "verification_code": verificationNeeded ? formState.verification_code : undefined,
         }
 
         try {
@@ -94,32 +130,44 @@ export default function LoginModal() {
                     <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/*additional info here*/}
+
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Username:</Form.Label>
-                            <Form.Control ref={username}
-                                          type="username"
-                                          placeholder="Timmi1234"
+                            <Form.Control type="username"
+                                          placeholder="Your username"
                                           autoFocus
+                                          onChange={ e => setField('username', e.target.value) }
+                                          isInvalid={ !!errorsState.username }
                             />
+                            <Form.Control.Feedback type='invalid'>
+                                { errorsState.username }
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
                             <Form.Label>Password:</Form.Label>
-                            <Form.Control ref={password}
-                                          type="password"
+                            <Form.Control type="password"
                                           placeholder="***********"
+                                          onChange={ e => setField('password', e.target.value) }
+                                          isInvalid={ !!errorsState.password }
                             />
+                            <Form.Control.Feedback type='invalid'>
+                                { errorsState.password }
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         {verificationNeeded &&
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Label>3-digit Authentication Code:</Form.Label>
-                                <Form.Control ref={verification_code}
-                                              type="text"
+                                <Form.Control type="text"
                                               placeholder="123456"
+                                              onChange={ e => setField('verification_code', e.target.value) }
+                                              isInvalid={ !!errorsState.verification_code }
                                 />
+                                <Form.Control.Feedback type='invalid'>
+                                    { errorsState.verification_code}
+                                </Form.Control.Feedback>
                             </Form.Group>
                         }
 
@@ -133,7 +181,7 @@ export default function LoginModal() {
                         Close
                     </Button>
 
-                    <Button variant="primary" onClick={sendLoginCredentials}>Log in</Button>
+                    <Button variant="primary" onClick={handleSubmit}>Log in</Button>
 
 
                 </Modal.Footer>
