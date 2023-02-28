@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import {findFormErrors_createUser} from "../validateInput";
 import {BACKEND_API_URL} from "../env";
+import "./css/CreateUserModal.css"
 
 export default function CreateUserModal() {
     const [show, setShow] = useState(false);
@@ -58,7 +59,6 @@ export default function CreateUserModal() {
         const data = {
             "username": formState.username,
             "email": formState.email,
-            "password": formState.password,
             "invitedBy": invitedBy,
         }
 
@@ -111,6 +111,7 @@ export default function CreateUserModal() {
             </Button>
 
             <Modal
+                className="CreateUserModal"
                 show={show}
                 onHide={handleClose}
                 backdrop="static"
@@ -124,6 +125,7 @@ export default function CreateUserModal() {
                     <Form>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Email address</Form.Label>
+
                             <Form.Control
                                 type="email"
                                 placeholder="name@example.com"
@@ -134,6 +136,7 @@ export default function CreateUserModal() {
                             <Form.Control.Feedback type='invalid'>
                                 { errorsState.email }
                             </Form.Control.Feedback>
+                            <p className="form-description">Use your educational email to verify your identidy. It won't be shared with anyone and is only used for this purpose!</p>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -146,18 +149,7 @@ export default function CreateUserModal() {
                             <Form.Control.Feedback type='invalid'>
                                 { errorsState.username }
                             </Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password"
-                                          placeholder="***********"
-                                          onChange={ e => updateField('password', e.target.value) }
-                                          isInvalid={ !!errorsState.password }
-                            />
-                            <Form.Control.Feedback type='invalid'>
-                                { errorsState.password }
-                            </Form.Control.Feedback>
+                            <p className="form-description">Users who will be invited by you will see your username, choose wisely!</p>
                         </Form.Group>
                     </Form>
 

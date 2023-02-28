@@ -68,7 +68,6 @@ export default function LoginModal() {
         setResponseMessage("")
         const data = {
             "username": formState.username,
-            "password": formState.password,
             "verification_code": verificationNeeded ? formState.verification_code : undefined,
         }
 
@@ -109,6 +108,9 @@ export default function LoginModal() {
                 case "WRONG_VERIFICATION_CODE":
                     setResponseMessage(response_message)
                     break
+                case "WRONG_CREDENTIALS":
+                    setResponseMessage(response_message)
+                    break
             }
 
         }
@@ -142,18 +144,6 @@ export default function LoginModal() {
                             />
                             <Form.Control.Feedback type='invalid'>
                                 { errorsState.username }
-                            </Form.Control.Feedback>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Password:</Form.Label>
-                            <Form.Control type="password"
-                                          placeholder="***********"
-                                          onChange={ e => setField('password', e.target.value) }
-                                          isInvalid={ !!errorsState.password }
-                            />
-                            <Form.Control.Feedback type='invalid'>
-                                { errorsState.password }
                             </Form.Control.Feedback>
                         </Form.Group>
 

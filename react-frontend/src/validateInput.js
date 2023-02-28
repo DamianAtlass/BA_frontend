@@ -8,7 +8,7 @@ function check(str, arr) {
 /*validates some specific fields vaguely for creating a new user*/
 export const findFormErrors_createUser = (form) => {
     console.log("findFormErrors()")
-    const {  username, email, password} = form
+    const {username, email} = form
     console.log("form:", form)
     const newErrors = {}
 
@@ -23,13 +23,6 @@ export const findFormErrors_createUser = (form) => {
     else if ( !/^[ -~]+$/.test(username) ) newErrors.username = 'Non ascii not allowed'
     else if ( username.length < 3 ) newErrors.username = 'username is too short!'
     else if ( username.length > 30 ) newErrors.username = 'username is too long!'
-    //¢
-
-    // password errors
-    if ( !password || password === '' ) newErrors.password = 'cannot be blank!'
-    else if ( !/^[ -~]+$/.test(password) ) newErrors.password = 'Non ascii not allowed'
-    else if ( password.length < 8 ) newErrors.password = 'password is too short!'
-    else if ( password.length > 40 ) newErrors.password = 'password is too long!'
 
     console.log("newErrors:", newErrors)
     return newErrors
@@ -39,7 +32,7 @@ export const findFormErrors_createUser = (form) => {
 * takes into account if verification_code is set*/
 export const findFormErrors_login = (form, verificationNeeded) => {
     console.log("findFormErrors()")
-    const {  username, password, verification_code} = form
+    const {username, verification_code} = form
     console.log("form:", form)
     const newErrors = {}
 
@@ -49,11 +42,6 @@ export const findFormErrors_login = (form, verificationNeeded) => {
     else if ( username.length < 3 ) newErrors.username = 'username is too short!'
     else if ( username.length > 30 ) newErrors.username = 'username is too long!'
 
-    // password errors
-    if ( !password || password === '' ) newErrors.password = 'cannot be blank!'
-    else if ( !/^[ -~]+$/.test(password) ) newErrors.password = 'Non ascii not allowed'
-    else if ( password.length < 8 ) newErrors.password = 'password is too short!'
-    else if ( password.length > 40 ) newErrors.password = 'password is too long!'
 
     if(verificationNeeded){
         // verification_code errors
