@@ -22,7 +22,7 @@ export default function CopyLinkComponent() {
             </Row>
             <Row>
                 <Col align="center">
-                    <Button variant="success" onClick={() => {navigator.clipboard.writeText(customLink)}}>Copy</Button>
+                    <Button variant="success" onClick={() => {navigator.clipboard.writeText(customLink)}}>Copy Link</Button>
                 </Col>
             </Row>
         </>

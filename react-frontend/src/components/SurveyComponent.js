@@ -7,6 +7,7 @@ import React, {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -35,6 +36,7 @@ const surveyJson = {
 function CompleteCard(){
     const userData = useUserData()
     const setUserdata = useUserDataUpdate()
+    const navigate = useNavigate()
 
     useEffect(()=>{
         if(!userData.completed_survey){
@@ -55,6 +57,11 @@ function CompleteCard(){
                 <Row>
                     <Col align="center">
                         Other users will not see your email, just your username!
+                    </Col>
+                </Row>
+                <Row>
+                    <Col align="center">
+                        <Button onClick={() => {navigate("/overview")}}>Go Back</Button>
                     </Col>
                 </Row>
             </Container>
@@ -94,10 +101,7 @@ export default function SurveyComponent() {
 
     const survey = new Model(surveyJson);
     const surveyComplete = useCallback((sender) => {
-        saveSurveyResults(
-            BACKEND_API_URL + "surveydata/" + user_pk_str_pad+"/",
-            sender.data
-        )
+        saveSurveyResults(BACKEND_API_URL + "surveydata/" + user_pk_str_pad+"/",sender.data)
         setCompleteSurveyState(true)
     }, []);
 
