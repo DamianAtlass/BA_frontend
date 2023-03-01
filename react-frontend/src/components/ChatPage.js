@@ -102,9 +102,9 @@ export default function ChatPage() {
                             <Row className="justify-content-center topbar">
                                 <Col className="nopadding">
                                     <Navbar className="nav-color" expand="lg">
-                                        <Container fluid>
-                                            <Navbar.Brand className="nav-text">[ChatbotName]</Navbar.Brand>
-                                        </Container>
+                                        <div className="nav-text" >
+                                            ChaTU
+                                        </div>
                                     </Navbar>
                                 </Col>
                             </Row>

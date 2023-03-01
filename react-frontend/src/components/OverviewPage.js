@@ -3,11 +3,43 @@ import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
 import Button from 'react-bootstrap/Button';
 import {useNavigate, Navigate,  Link} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
+import axios from "axios";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import CopyLinkComponent from "./CopyLinkComponent";
+import {BACKEND_API_URL, FRONTEND_API_URL} from "../env";
+
+function ScoreBoard({user_pk}){
+    const user_pk_str_pad = user_pk.toString().padStart(3, '0')
+    const url_end = `accounts/inv/${user_pk_str_pad}/`
+
+    const [numberInv, setNumberInv] = useState(null)
+
+    const fetchDataNumberOfInv = async ()=>{
+        return await axios.get(BACKEND_API_URL + url_end);
+    }
+
+    useEffect(()=>{
+        try{
+            let res = fetchDataNumberOfInv()
+            console.log(res)
+            setNumberInv(res.data["invited_users_len"])
+        } catch(err){
+            console.log(err)
+        }
+
+
+    },[])
+
+
+    return (
+        <>
+            numberInv: {numberInv}
+        </>
+    )
+}
 
 
 export default function OverviewPage(){
@@ -22,6 +54,7 @@ export default function OverviewPage(){
         updateUserData({"type": "delete", "payload": { } })
         navigate("/login")
     }
+
 
 
 
@@ -40,7 +73,11 @@ export default function OverviewPage(){
             </Row>
 
             {userData.completed_survey &&
-                <CopyLinkComponent/>
+                <>
+                    <CopyLinkComponent/>
+                    <ScoreBoard user_pk={userData.user_pk}/>
+                </>
+
             }
 
             <Row className="justify-content-evenly">

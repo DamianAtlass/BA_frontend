@@ -23,7 +23,7 @@ export default function CreateUserModal() {
         const queryParams = new URLSearchParams(window.location.search)
         let invited_pk = queryParams.get("invitedby")
 
-        const fetchData = async () => {
+        const fetchData_check_inviting_user = async () => {
             const res = await axios.get(BACKEND_API_URL + `invite/${invited_pk}/`);
             setInvitedBy(res.data["inviting_user"])
             return res
@@ -31,7 +31,7 @@ export default function CreateUserModal() {
 
         // call the function
         if(invited_pk){
-            fetchData()
+            fetchData_check_inviting_user()
                 // make sure to catch any error
                 .catch((err)=>{
                     console.log(err)
@@ -39,6 +39,8 @@ export default function CreateUserModal() {
                     setInfoMessage(err.response.data["error-message"])
                 });
         }
+
+
 
     },[])
 

@@ -30,9 +30,12 @@
 
 .nav-color{
     background-color: #008dff;
+    height: 70px
 }
 .nav-text{
     color: white;
+    margin-left: 15px;
+    font-size: 1.5em;
 }
 
 .ChatPage-input-bg{
