@@ -1,0 +1,19 @@
+.ScoreBoard{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: center;
+    align-items: center;
+}
+.ScoreBoard .outer{
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    background-color: #3b9eff;
+    color: white;
+    border-radius: 15px;
+    padding: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    height: 100px;
+    width: 160px;
+}

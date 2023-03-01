@@ -10,34 +10,46 @@ import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import CopyLinkComponent from "./CopyLinkComponent";
 import {BACKEND_API_URL, FRONTEND_API_URL} from "../env";
+import "./css/ScoreBoard.css"
 
 function ScoreBoard({user_pk}){
     const user_pk_str_pad = user_pk.toString().padStart(3, '0')
     const url_end = `accounts/inv/${user_pk_str_pad}/`
 
     const [numberInv, setNumberInv] = useState(null)
+    const [userScore, setUserScore] = useState(null)
 
     const fetchDataNumberOfInv = async ()=>{
-        return await axios.get(BACKEND_API_URL + url_end);
+        const res =  await axios.get(BACKEND_API_URL + url_end);
+        console.log(res)
+        setNumberInv(res.data["invited_users_len"])
+        setUserScore(res.data["user_score"])
     }
 
     useEffect(()=>{
-        try{
-            let res = fetchDataNumberOfInv()
-            console.log(res)
-            setNumberInv(res.data["invited_users_len"])
-        } catch(err){
-            console.log(err)
-        }
-
-
+        fetchDataNumberOfInv()
+            // make sure to catch any error
+            .catch((err)=>{
+                console.log(err)
+                console.log("ERROR:", err.response.data.error)
+            });
     },[])
 
 
     return (
-        <>
-            numberInv: {numberInv}
-        </>
+        <div className="ScoreBoard">
+            <div className="outer">
+                <div className="inner">teilgenommene <br/></div>
+                <div>Freunde:</div>
+                <div className="inner">{numberInv}</div>
+            </div>
+
+            <div className="outer">
+                <div className="inner">dein</div>
+                <div className="inner">Punktestand:</div>
+                <div className="inner">{userScore}</div>
+            </div>
+        </div>
     )
 }
 
@@ -74,8 +86,8 @@ export default function OverviewPage(){
 
             {userData.completed_survey &&
                 <>
-                    <CopyLinkComponent/>
                     <ScoreBoard user_pk={userData.user_pk}/>
+                    <CopyLinkComponent/>
                 </>
 
             }

@@ -45,8 +45,6 @@ export default function ChatPage() {
 
     }, [])
 
-    useEffect(() => {
-    }, [selectedChoice])
 
     function handelChoiceSelection(user_response_pk) {
         console.log("button pressed")

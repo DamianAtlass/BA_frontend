@@ -40,10 +40,6 @@ export default function ChatMessagesList({messages}) {
     const userData = useUserData()
     const updateUserData = useUserDataUpdate()
 
-    useEffect(()=>{
-
-    })
-
     async function onDialogComplete(isComplete){
         //leave if isComplete is false or undefined (when message is loaded from history, or it's a user message)
         if(!isComplete){
