@@ -56,7 +56,61 @@ export default function LoginModal() {
 
     function handleSubmit(e){
         e.preventDefault()
+        if(adminLogin){
+            sendAdminLoginCredentials()
+        } else {
         sendLoginCredentials()
+        }
+    }
+
+    async function sendAdminLoginCredentials(){
+
+        if(!checkForErrors()){
+            console.log("BAD INPUT")
+            return null
+        }
+
+        setResponseMessage("")
+        const data = {
+            "username": formState.username,
+            "admin_password": formState.admin_password,
+        }
+
+        try {
+            let res = await axios.post(BACKEND_API_URL +"adminlogin/", data).then((response) => {
+                setResponseMessage(response.data["success-message"])
+                const username = response.data["username"]
+
+                console.log(response.data)
+                setAdminLogin(false)
+                setUserData({"type": "update", "payload": {
+                        "username": username,
+                        "dialog_style": undefined,
+                        "completed_dialog": undefined,
+                        "completed_survey": undefined,
+                        "user_pk": undefined,
+                    }})
+
+                navigate("/admin")
+            });
+
+        } catch (err) {
+            let status = err.response.status
+            let error_specific = err.response.data.error
+            let response_message = err.response.data["error-message"]
+
+            console.log("status code :", status)
+            console.log("error_specific :", error_specific)
+            switch (error_specific){
+                case "USER_NOT_FOUND":
+                    setResponseMessage(response_message)
+                    break
+                case "WRONG_CREDENTIALS":
+                    setResponseMessage(response_message)
+                    break
+            }
+
+        }
     }
 
     /*send credentials to server to log in, checks input beforehand*/

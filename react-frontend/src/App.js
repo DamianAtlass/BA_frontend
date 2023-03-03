@@ -26,6 +26,7 @@ function App() {
                                   <Route path="overview" element={ <OverviewPage/> }/>
                                   <Route path="survey" element={ <SurveyComponent/> }/>
                                   <Route path="chat" element={ <ChatPage/> }/>
+                                  <Route path="admin" element={ <>admin page bro</> }/>
                                   <Route index element={ <Navigate to={"/login"}/> }/>
                                   <Route path="*" element={<div> oh no, you're lost! 404  Go to <Link to="/login"> Login </Link></div>} />
                               </Routes>
