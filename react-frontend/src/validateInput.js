@@ -1,21 +1,35 @@
 let signs = ["'","'","-","\\", "/"];
-function check(str, arr) {
-    return arr.filter(function(e) {
-        return str.indexOf(e) != -1
-    })
+function stringContains(str, arr) {
+    for(let i = 0;i<arr.length;  i++){
+        if(str.indexOf(arr[i]) !== -1){
+            return true
+        }
+    }
+    return false
 }
 
+const ALLOWED_SUFFIXES = ["@tu-berlin.de", "@fu-berlin.de"]
+function StrEndsWithOneOf(str, arr){
+    for(let i = 0;i<arr.length;  i++){
+        if(str.endsWith(arr[i])){
+            return true
+        }
+    }
+    return false
+}
+
+
 /*validates some specific fields vaguely for creating a new user*/
-export const findFormErrors_createUser = (form) => {
-    console.log("findFormErrors()")
+export const findFormErrorsCreateUser = (form) => {
     const {username, email} = form
-    console.log("form:", form)
     const newErrors = {}
 
     // email errors
     if ( !email || email === '' ) newErrors.email = 'cannot be blank!'
     else if ( !/^[ -~]+$/.test(email) ) newErrors.email = 'Non ascii not allowed'
     else if ( email.length > 60 ) newErrors.email = 'email is too long!'
+    else if ( !stringContains(email, ["@"]) ) newErrors.email = 'no valid email!'
+    else if ( !StrEndsWithOneOf(email, ALLOWED_SUFFIXES) ) newErrors.email = `Email of this type not allowed! Allowed: ${ALLOWED_SUFFIXES}`
 
 
     // name errors
@@ -30,7 +44,7 @@ export const findFormErrors_createUser = (form) => {
 
 /*validates some specific fields vaguely for logging in
 * takes into account if verification_code is set*/
-export const findFormErrors_login = (form, verificationNeeded) => {
+export const findFormErrorsLogin = (form, verificationNeeded) => {
     console.log("findFormErrors()")
     const {username, verification_code} = form
     console.log("form:", form)

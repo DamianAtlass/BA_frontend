@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from "react-bootstrap/Button"
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
-import {findFormErrors_createUser} from "../validateInput";
+import {findFormErrorsCreateUser} from "../validateInput";
 import {BACKEND_API_URL} from "../env";
 import "./css/CreateUserModal.css"
 
@@ -21,7 +21,7 @@ export default function CreateUserModal() {
 
     useEffect(()=>{
         const queryParams = new URLSearchParams(window.location.search)
-        let invited_pk = queryParams.get("invitedby")
+        let invited_pk = queryParams.get("h")
 
         const fetchData_check_inviting_user = async () => {
             const res = await axios.get(BACKEND_API_URL + `invite/${invited_pk}/`);
@@ -96,7 +96,7 @@ export default function CreateUserModal() {
     /* handels result of user input check and sets error messages
     * returns TRUE or FALSE of input is OK or not*/
     function checkForErrors(){
-        const newErrors = findFormErrors_createUser(formState)
+        const newErrors = findFormErrorsCreateUser(formState)
 
         if ( Object.keys(newErrors).length > 0 ) {
             setErrorsState(newErrors)

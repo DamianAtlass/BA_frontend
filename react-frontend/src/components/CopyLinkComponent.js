@@ -11,7 +11,7 @@ export default function CopyLinkComponent() {
 
     let user_pk = userData.user_pk
     const user_pk_str_pad = user_pk.toString().padStart(3, '0')
-    const customLink = `${FRONTEND_API_URL}login?invitedby=${user_pk_str_pad}`
+    const customLink = `${FRONTEND_API_URL}login?h=${user_pk_str_pad}`
 
     return (
         <>

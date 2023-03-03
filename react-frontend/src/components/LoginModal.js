@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {useUserDataUpdate} from "./contexts/UserDataContext";
-import {findFormErrors_login} from "../validateInput";
+import {findFormErrorsLogin} from "../validateInput";
 import {BACKEND_API_URL} from "../env";
 
 export default function LoginModal() {
@@ -42,7 +42,7 @@ export default function LoginModal() {
     /* handels result of user input check and sets error messages
     * returns TRUE or FALSE of input is OK or not*/
     function checkForErrors(){
-        const newErrors = findFormErrors_login(formState, verificationNeeded)
+        const newErrors = findFormErrorsLogin(formState, verificationNeeded)
 
         if ( Object.keys(newErrors).length > 0 ) {
             setErrorsState(newErrors)
