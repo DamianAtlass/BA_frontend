@@ -22,9 +22,10 @@ function ScoreBoard({user_pk}){
     const fetchDataNumberOfInv = async ()=>{
         const res =  await axios.get(BACKEND_API_URL + url_end);
         console.log(res)
-        setNumberInv(res.data["invited_users_len"])
+        setNumberInv(res.data["indirectly_recruited_len"])
         setUserScore(res.data["user_score"])
     }
+
 
     useEffect(()=>{
         fetchDataNumberOfInv()
