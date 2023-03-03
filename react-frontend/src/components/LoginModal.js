@@ -6,7 +6,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {useUserDataUpdate} from "./contexts/UserDataContext";
 import {findFormErrorsLogin} from "../validateInput";
-import {BACKEND_API_URL} from "../env";
+import {BACKEND_API_URL, ADMIN_USERNAME} from "../env";
 
 export default function LoginModal() {
     const [show, setShow] = useState(false);
@@ -17,6 +17,8 @@ export default function LoginModal() {
     const [ formState, setFormState ] = useState({})
     const [ errorsState, setErrorsState ] = useState({})
 
+    const [adminLogin, setAdminLogin] = useState(false)
+
     const setUserData = useUserDataUpdate()
 
 
@@ -26,7 +28,6 @@ export default function LoginModal() {
 
     /*updates formState fields*/
     const setField = (field, value) => {
-        console.log("setField()")
         setFormState({
             ...formState,
             [field]: value
@@ -36,13 +37,14 @@ export default function LoginModal() {
     }
     /*can be used to check input in real time*/
     useEffect(()=>{
+        setAdminLogin(formState.username===ADMIN_USERNAME)
         checkForErrors()
     },[formState])
 
     /* handels result of user input check and sets error messages
     * returns TRUE or FALSE of input is OK or not*/
     function checkForErrors(){
-        const newErrors = findFormErrorsLogin(formState, verificationNeeded)
+        const newErrors = findFormErrorsLogin(formState, verificationNeeded, adminLogin)
 
         if ( Object.keys(newErrors).length > 0 ) {
             setErrorsState(newErrors)
@@ -147,9 +149,23 @@ export default function LoginModal() {
                             </Form.Control.Feedback>
                         </Form.Group>
 
+                        {adminLogin &&
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                                <Form.Label>Admin password:</Form.Label>
+                                <Form.Control type="text"
+                                              placeholder="..."
+                                              onChange={ e => setField('admin_password', e.target.value) }
+                                              isInvalid={ !!errorsState.admin_password }
+                                />
+                                <Form.Control.Feedback type='invalid'>
+                                    { errorsState.admin_password}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        }
+
                         {verificationNeeded &&
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Label>3-digit Authentication Code:</Form.Label>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+                                <Form.Label>6-digit Authentication Code:</Form.Label>
                                 <Form.Control type="text"
                                               placeholder="123456"
                                               onChange={ e => setField('verification_code', e.target.value) }
