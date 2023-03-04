@@ -28,9 +28,10 @@
     display: grid;
 }
 
-.ChatMessage-container .author{
+.ChatMessage-container b{
     font-size: 0.8em;
 }
+
 .ChatMessage-container .content{
     font-size: 1em;
 }

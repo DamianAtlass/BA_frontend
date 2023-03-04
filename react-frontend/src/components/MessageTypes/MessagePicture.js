@@ -7,7 +7,7 @@ import {setStyling} from "../ChatMessagesList";
 
 
 
-export default function MessagePicture({message}) {
+export default function MessagePicture({message, same_author}) {
     let author = message["author"]
     let content = message["content"]
     let date = message["date"]
@@ -19,6 +19,7 @@ export default function MessagePicture({message}) {
             </div>
 
             <div className="message">
+                {!same_author && <b>{author}:</b>}
                 <div className="content">{content}</div>
                 <div className="date">{date}</div>
             </div>

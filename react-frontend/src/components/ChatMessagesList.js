@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import ChatMessage from "./ChatMessage";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -54,7 +53,7 @@ export default function ChatMessagesList({messages}) {
 
     let dialog_style = userData.dialog_style
 
-    function calculateMessageType(message){
+    function calculateMessageType(message, same_author){
         let author = message["author"]
 
         //extremely important, blocks circular rendering
@@ -69,13 +68,13 @@ export default function ChatMessagesList({messages}) {
             default:
                 switch (dialog_style){
                     case DIALOG_STYLE_ONE_ON_ONE:
-                        return <MessageOneOnOne message={message}/>
+                        return <MessageOneOnOne message={message} same_author={same_author}/>
                     case DIALOG_STYLE_COLORED_BUBBLES:
-                        return <MessageBubble message={message}/>
+                        return <MessageBubble message={message} same_author={same_author}/>
                     case DIALOG_STYLE_CLASSIC_GROUP:
-                        return <MessageClassic message={message}/>
+                        return <MessageClassic message={message} same_author={same_author}/>
                     case DIALOG_STYLE_PICTURE:
-                        return <MessagePicture message={message}/>
+                        return <MessagePicture message={message} same_author={same_author}/>
                 }
 
         }
@@ -83,11 +82,14 @@ export default function ChatMessagesList({messages}) {
     }
 
     function createMessages() {
-        return messages.map(msg => {
+        return messages.map((msg, index) => {
+            // check if previous message (exists and) was from same author, don't display author again of so
+
+            let same_author = index-1 >= 0 && messages[index-1]["author"] === msg["author"]
             return (
                     <Row key={v4()} className="justify-content-center">
                         <Col className="nopadding ChatMessagesList-container">
-                            {calculateMessageType(msg)}
+                            {calculateMessageType(msg, same_author)}
                         </Col>
                     </Row>
             )

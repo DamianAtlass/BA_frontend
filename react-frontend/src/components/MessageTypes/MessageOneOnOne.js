@@ -4,7 +4,7 @@ import "../css/MessageStyles/MessageOneOnOne.css"
 import robot from '../../img/robot.png'
 
 
-export default function MessageOneOnOne({message}) {
+export default function MessageOneOnOne({message, same_author}) {
     let author = message["author"]
     let content = message["content"]
     let date = message["date"]
@@ -16,6 +16,7 @@ export default function MessageOneOnOne({message}) {
             </div>
 
             <div className="message">
+                {!same_author && <b>ChaTU:</b>}
                 <div className="content">{content}</div>
                 <div className="date">{date}</div>
             </div>

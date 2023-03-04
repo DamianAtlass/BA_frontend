@@ -6,7 +6,7 @@ import robot from '../../img/robot.png'
 import {setStyling} from "../ChatMessagesList";
 
 
-export default function MessageClassic({message}) {
+export default function MessageClassic({message, same_author}) {
     let author = message["author"]
     let content = message["content"]
     let date = message["date"]
@@ -14,7 +14,7 @@ export default function MessageClassic({message}) {
     return (
         <div className={"ChatMessage-container MessageClassic " + setStyling(author)}>
             <div className="message">
-                <b>{author}:</b>
+                {!same_author && <b>{author}:</b>}
                 <div className="content">{content}</div>
                 <div className="date">{date}</div>
             </div>
