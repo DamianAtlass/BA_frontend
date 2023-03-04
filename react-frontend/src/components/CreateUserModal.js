@@ -124,7 +124,7 @@ export default function CreateUserModal() {
                 </Modal.Header>
                 <Modal.Body>
                     {/*additional info here*/}
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Email address</Form.Label>
 

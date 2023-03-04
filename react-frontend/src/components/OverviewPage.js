@@ -10,6 +10,7 @@ import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import CopyLinkComponent from "./CopyLinkComponent";
 import {BACKEND_API_URL, FRONTEND_API_URL} from "../env";
+import MainContainer from "./MainContainer";
 import "./css/ScoreBoard.css"
 
 function ScoreBoard({user_pk}){
@@ -76,81 +77,83 @@ export default function OverviewPage(){
 
 
     return (
-    <Card className="LoginPageCard align-content-center">
-        <Container fluid >
-            <Row className="justify-content-center">
-                <Col className="justify-content-center" align="center">
-                    <h1>Hallo {userData.username}</h1>
-                </Col>
-            </Row>
+        <MainContainer>
+            <Card className="LoginPageCard align-content-center">
+                <Container fluid >
+                    <Row className="justify-content-center">
+                        <Col className="justify-content-center" align="center">
+                            <h1>Hallo {userData.username}</h1>
+                        </Col>
+                    </Row>
 
-            {userData.completed_survey &&
-                <>
-                    <ScoreBoard user_pk={userData.user_pk}/>
-                    <CopyLinkComponent/>
-                </>
+                    {userData.completed_survey &&
+                        <>
+                            <ScoreBoard user_pk={userData.user_pk}/>
+                            <CopyLinkComponent/>
+                        </>
 
-            }
+                    }
 
-            <Row className="justify-content-evenly">
-                <Col align="center">
-                    <Button onClick={() => {navigate("/chat")}}>
-                        {userData.completed_dialog ? "View Interaction" : "Start Interaction"}
-                    </Button>
-                </Col>
+                    <Row className="justify-content-evenly">
+                        <Col align="center">
+                            <Button onClick={() => {navigate("/chat")}}>
+                                {userData.completed_dialog ? "View Interaction" : "Start Interaction"}
+                            </Button>
+                        </Col>
 
-                {(!userData.completed_survey && userData.completed_dialog) &&
-                    <Col align="center">
-                        <Button variant="success" onClick={()=>{navigate("/survey")}}> Survey </Button>
-                    </Col>
-                }
-            </Row>
+                        {(!userData.completed_survey && userData.completed_dialog) &&
+                            <Col align="center">
+                                <Button variant="success" onClick={()=>{navigate("/survey")}}> Survey </Button>
+                            </Col>
+                        }
+                    </Row>
 
-            {/*ACCORDION PART*/}
-            <Row>
-                <Col>
-                    <Accordion defaultActiveKey="0">
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header>Accordion Item #1</Accordion.Header>
-                            <Accordion.Body>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum.
-                            </Accordion.Body>
-                        </Accordion.Item>
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header>Accordion Item #2</Accordion.Header>
-                            <Accordion.Body>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum.
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum.
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Button variant="secondary" onClick={logout}>Logout</Button>
-                </Col>
-            </Row>
+                    {/*ACCORDION PART*/}
+                    <Row>
+                        <Col>
+                            <Accordion defaultActiveKey="0">
+                                <Accordion.Item eventKey="0">
+                                    <Accordion.Header>Accordion Item #1</Accordion.Header>
+                                    <Accordion.Body>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum.
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                                <Accordion.Item eventKey="1">
+                                    <Accordion.Header>Accordion Item #2</Accordion.Header>
+                                    <Accordion.Body>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum.
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Button variant="secondary" onClick={logout}>Logout</Button>
+                        </Col>
+                    </Row>
 
-        </Container>
-    </Card>
+                </Container>
+            </Card>
+        </MainContainer>
     )
 }

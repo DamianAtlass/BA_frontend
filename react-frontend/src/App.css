@@ -1,16 +1,8 @@
-.MainContainer,html, body {
-  background-color: #3b9eff;
-}
-
-
 div.container-fluid {
   padding-left: 0;
   padding-right: 0;
 }
 
-.dashed{
-  border-style: dashed;
-}
 
 div.row {
   margin-right: 0;

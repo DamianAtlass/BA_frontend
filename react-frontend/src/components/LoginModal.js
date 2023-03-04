@@ -56,10 +56,11 @@ export default function LoginModal() {
 
     function handleSubmit(e){
         e.preventDefault()
+        console.log("foo")
         if(adminLogin){
             sendAdminLoginCredentials()
         } else {
-        sendLoginCredentials()
+            sendLoginCredentials()
         }
     }
 
@@ -82,7 +83,6 @@ export default function LoginModal() {
                 const username = response.data["username"]
 
                 console.log(response.data)
-                setAdminLogin(false)
                 setUserData({"type": "update", "payload": {
                         "username": username,
                         "dialog_style": undefined,
@@ -129,6 +129,7 @@ export default function LoginModal() {
 
         try {
             let res = await axios.post(BACKEND_API_URL +"login/", data).then((response) => {
+                console.log("here")
                 setResponseMessage(response.data["success-message"])
                 const username = response.data["username"]
 
@@ -189,7 +190,7 @@ export default function LoginModal() {
                 </Modal.Header>
                 <Modal.Body>
 
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Username:</Form.Label>
                             <Form.Control type="username"

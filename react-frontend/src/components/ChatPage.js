@@ -12,6 +12,7 @@ import Col from 'react-bootstrap/Col'
 import "./css/ChatPage.css"
 import InputField from "./InputField";
 import {BACKEND_API_URL} from "../env";
+import MainContainer from "./MainContainer";
 
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
 function reducer(state, action) {
@@ -92,45 +93,48 @@ export default function ChatPage() {
     }
 
     return (
-        <Container fluid>
-            <Row className="justify-content-center">
-                <Col className="nopadding ChatMessagesList-bg" sx={12} sm={8}>
-                    <div className="ChatPage-grid-container-1">
-                        <Container fluid id="scroll">
-                            <Row className="justify-content-center topbar">
-                                <Col className="nopadding">
-                                    <Navbar className="nav-color" expand="lg">
-                                        <div className="nav-text" >
-                                            ChaTU
-                                        </div>
-                                    </Navbar>
-                                </Col>
-                            </Row>
+        <MainContainer>
+            <Container fluid>
+                <Row className="justify-content-center">
+                    <Col className="nopadding ChatMessagesList-bg" sx={12} sm={8}>
+                        <div className="ChatPage-grid-container-1">
+                            <Container fluid id="scroll">
+                                <Row className="justify-content-center topbar">
+                                    <Col className="nopadding">
+                                        <Navbar className="nav-color" expand="lg">
+                                            <div className="nav-text" >
+                                                ChaTU
+                                            </div>
+                                        </Navbar>
+                                    </Col>
+                                </Row>
 
-                            <Row className="justify-content-center">
-                                <Col className="nopadding">
-                                    <ChatMessagesList messages={messages}/>
-                                </Col>
-                            </Row>
+                                <Row className="justify-content-center">
+                                    <Col className="nopadding">
+                                        <ChatMessagesList messages={messages}/>
+                                    </Col>
+                                </Row>
 
-                        </Container>
-                        <Container fluid className="ChatPage-input-bg ChatPage-grid-item-1-2">
-                            <Row className="justify-content-center">
-                                <Col className="nopadding">
-                                    <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
-                                </Col>
-                            </Row>
+                            </Container>
+                            <Container fluid className="ChatPage-input-bg ChatPage-grid-item-1-2">
+                                <Row className="justify-content-center">
+                                    <Col className="nopadding">
+                                        <InputField handleSubmit={handleSubmit} defaultInput={defaultInput}/>
+                                    </Col>
+                                </Row>
 
-                            <Row className="justify-content-center">
-                                <Col className="nopadding">
-                                    <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </div>
-                </Col>
-            </Row>
-        </Container>
+                                <Row className="justify-content-center">
+                                    <Col className="nopadding">
+                                        <ChoiceList choices={choices} handelChoiceSelection={handelChoiceSelection}/>
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        </MainContainer>
+
 
     )
 

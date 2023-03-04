@@ -12,6 +12,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import "./css/CompleteCard.css"
+import MainContainer from "./MainContainer";
 
 import CopyLinkComponent from "./CopyLinkComponent";
 import {BACKEND_API_URL} from "../env";
@@ -46,26 +47,28 @@ function CompleteCard(){
 
 
     return (
-        <Card className="CompleteCard">
-            <Container fluid>
-                <Row className="justify-content-center">
-                    <Col className="justify-content-center" align="center">
-                        <h1>Thx for your partaking</h1>
-                    </Col>
-                </Row>
-                <CopyLinkComponent/>
-                <Row>
-                    <Col align="center">
-                        Other users will not see your email, just your username!
-                    </Col>
-                </Row>
-                <Row>
-                    <Col align="center">
-                        <Button onClick={() => {navigate("/overview")}}>Go Back</Button>
-                    </Col>
-                </Row>
-            </Container>
-        </Card>
+        <MainContainer>
+            <Card className="CompleteCard">
+                <Container fluid>
+                    <Row className="justify-content-center">
+                        <Col className="justify-content-center" align="center">
+                            <h1>Thx for your partaking</h1>
+                        </Col>
+                    </Row>
+                    <CopyLinkComponent/>
+                    <Row>
+                        <Col align="center">
+                            Other users will not see your email, just your username!
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col align="center">
+                            <Button onClick={() => {navigate("/overview")}}>Go Back</Button>
+                        </Col>
+                    </Row>
+                </Container>
+            </Card>
+        </MainContainer>
     )
 }
 
@@ -107,6 +110,6 @@ export default function SurveyComponent() {
 
     survey.onComplete.add(surveyComplete);
 
-    return completeSurveyState ? <CompleteCard/> : <Survey model={survey}/>;
+    return completeSurveyState ? <CompleteCard/> : <MainContainer> <Survey model={survey}/> </MainContainer>;
 }
 

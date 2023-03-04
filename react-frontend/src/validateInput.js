@@ -38,7 +38,6 @@ export const findFormErrorsCreateUser = (form) => {
     else if ( username.length < 3 ) newErrors.username = 'username is too short!'
     else if ( username.length > 30 ) newErrors.username = 'username is too long!'
 
-    console.log("newErrors:", newErrors)
     return newErrors
 }
 
@@ -67,6 +66,5 @@ export const findFormErrorsLogin = (form, verificationNeeded, adminLogin) => {
         else if ( !/^[ -~]+$/.test(admin_password) ) newErrors.admin_password = 'Non ascii not allowed'
     }
 
-    console.log("newErrors:", newErrors)
     return newErrors
 }

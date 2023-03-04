@@ -11,14 +11,13 @@ import {UserContext} from "./components/contexts/UserDataContext";
 import RedirectToLogin from "./components/RedirectToLogin";
 import ChatPage from "./components/ChatPage";
 import SurveyComponent from "./components/SurveyComponent";
+import AdminPage from "./components/AdminPage";
 function App() {
 
   return(
 
       <UserContext>
-          <Container fluid className="MainContainer">
-              <Row className="justify-content-center">
-                  <Col sx={12} sm={10} md={8}>
+
                       <BrowserRouter>
                           <RedirectToLogin>
                               <Routes>
@@ -26,16 +25,13 @@ function App() {
                                   <Route path="overview" element={ <OverviewPage/> }/>
                                   <Route path="survey" element={ <SurveyComponent/> }/>
                                   <Route path="chat" element={ <ChatPage/> }/>
-                                  <Route path="admin" element={ <>admin page bro</> }/>
+                                  <Route path="admin" element={ <AdminPage/> }/>
                                   <Route index element={ <Navigate to={"/login"}/> }/>
                                   <Route path="*" element={<div> oh no, you're lost! 404  Go to <Link to="/login"> Login </Link></div>} />
                               </Routes>
                           </RedirectToLogin>
                       </BrowserRouter>
-                  </Col>
-              </Row>
 
-          </Container>
       </UserContext>
 
 
