@@ -5,12 +5,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {v4} from 'uuid';
 import "./css/ChatMessagesList.css"
-import UserMessage from "./MessageTypes/UserMessage";
-import BotMessage from "./MessageTypes/BotMessage";
+import MessageUser from "./MessageTypes/MessageUser";
+import MessageOneOnOne from "./MessageTypes/MessageOneOnOne";
 import MessageBubble from "./MessageTypes/MessageBubble";
 import {useUserData} from "./contexts/UserDataContext";
 import MessageClassic from "./MessageTypes/MessageClassic";
-import PictureMessage from "./MessageTypes/PictureMessage";
+import MessagePicture from "./MessageTypes/MessagePicture";
 import {useNavigate} from "react-router-dom";
 import {sleep} from "./ChatPage";
 import {useUserDataUpdate} from "./contexts/UserDataContext";
@@ -65,17 +65,17 @@ export default function ChatMessagesList({messages}) {
         switch(author){
 
             case "USER":
-                return <UserMessage message={message}/>
+                return <MessageUser message={message}/>
             default:
                 switch (dialog_style){
                     case DIALOG_STYLE_ONE_ON_ONE:
-                        return <BotMessage message={message}/>
+                        return <MessageOneOnOne message={message}/>
                     case DIALOG_STYLE_COLORED_BUBBLES:
                         return <MessageBubble message={message}/>
                     case DIALOG_STYLE_CLASSIC_GROUP:
                         return <MessageClassic message={message}/>
                     case DIALOG_STYLE_PICTURE:
-                        return <PictureMessage message={message}/>
+                        return <MessagePicture message={message}/>
                 }
 
         }

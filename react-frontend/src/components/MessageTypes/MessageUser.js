@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
-import "../css/MessageStyles/ChatMessage.css"
-import "../css/MessageStyles/user.css"
+import "../css/MessageStyles/MessageBasic.css"
+import "../css/MessageStyles/MessageUser.css"
 
 
-export default function UserMessage({message}) {
+export default function MessageUser({message}) {
     function getTime(){
         let current_date = new Date();
         let hours_str = String(current_date.getHours()).padStart(2, '0')

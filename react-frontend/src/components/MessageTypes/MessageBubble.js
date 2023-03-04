@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import "../css/MessageStyles/ChatMessage.css"
+import "../css/MessageStyles/MessageBasic.css"
 import "../css/MessageStyles/MessageBubble.css"
 
 import {setStyling} from "../ChatMessagesList";

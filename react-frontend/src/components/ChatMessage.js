@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {useUserData} from "./contexts/UserDataContext";
-import "./css/MessageStyles/ChatMessage.css"
-import "./css/MessageStyles/bot.css"
-import "./css/MessageStyles/user.css"
+import "./css/MessageStyles/MessageBasic.css"
+import "./css/MessageStyles/MessageOneOnOne.css"
+import "./css/MessageStyles/MessageUser.css"
 import robot from '../img/robot.png'
 
 

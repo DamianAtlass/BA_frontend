@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
-import "../css/MessageStyles/ChatMessage.css"
-import "../css/MessageStyles/bot.css"
+import "../css/MessageStyles/MessageBasic.css"
+import "../css/MessageStyles/MessageOneOnOne.css"
 import robot from '../../img/robot.png'
 
 
-export default function BotMessage({message}) {
+export default function MessageOneOnOne({message}) {
     let author = message["author"]
     let content = message["content"]
     let date = message["date"]

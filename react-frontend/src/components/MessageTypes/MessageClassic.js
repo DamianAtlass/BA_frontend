@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import "../css/MessageStyles/ChatMessage.css"
+import "../css/MessageStyles/MessageBasic.css"
 import "../css/MessageStyles/MessageClassic.css"
 import robot from '../../img/robot.png'
 
