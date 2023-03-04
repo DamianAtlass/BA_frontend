@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {INITIAL_USER} from "./contexts/UserDataContext";
 import axios from "axios";
 import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
@@ -10,24 +10,18 @@ export default function AdminPage() {
     const navigate = useNavigate()
     const userData = useUserData()
     const setUserData = useUserDataUpdate()
+    const [fetchedDate, setFetchedDate] = useState(null)
 
     useEffect(()=>{
-        if(userData.username !== ADMIN_USERNAME){
-            //navigate("/login")
-        }
-    })
+        console.log("userData. username: ", userData.username)
+    }, [])
 
     async function fetchData(){
         try {
             console.log("fire get")
-            await axios.get(BACKEND_API_URL +"accounts/").then((response) => {
-                const username = response.data["username"]
+            await axios.post(BACKEND_API_URL +"admin/getuserdata/", {"token": JSON.parse(localStorage.getItem('state')).token}).then((response) => {
 
-                console.log(response.data)
-                setUserData({"type": "update", "payload": {
-                        "username": username,
-                        "token": response.data["token"]
-                    }})
+                console.log("response.data: ",response.data)
 
             });
             console.log("success")

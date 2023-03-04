@@ -89,6 +89,7 @@ export default function LoginModal() {
                         "completed_dialog": undefined,
                         "completed_survey": undefined,
                         "user_pk": undefined,
+                        "token": response.data["token"]
                     }})
 
                 navigate("/admin")
