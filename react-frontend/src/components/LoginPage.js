@@ -8,9 +8,13 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import MainContainer from "./MainContainer";
+import {useUserDataUpdate} from "./contexts/UserDataContext";
 
 
 export default function LoginPage(){
+    const setUserData = useUserDataUpdate()
+    setUserData({type: "update", payload: {token: undefined}})
+
     return (
         <MainContainer>
             <Card className="LoginPageCard align-content-center">

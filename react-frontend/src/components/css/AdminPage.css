@@ -1,0 +1,26 @@
+.AdminPage {
+    background-color: white;
+}
+th{
+    padding-right: 15px;
+}
+
+td{
+    padding: 4px 15px 4px 4px;
+}
+
+td.true{
+    color: green;
+}
+
+td.false{
+    color: red;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+tr:hover{
+    background-color: #ddd;
+}
+
