@@ -1,9 +1,9 @@
-.ChatMessage-container.PictureMessage{
+.ChatMessage-container.MessagePicture{
     justify-items: start;
     grid-template-columns: 50px auto;
 }
 
-.PictureMessage .img-bg{
+.MessagePicture .img-bg{
     background-color: lightblue;
     border-radius: 50%;
     padding: 10px;
@@ -11,18 +11,18 @@
     height: fit-content;
 }
 
-.PictureMessage .message{
+.MessagePicture .message{
     background-color: white;
     border-top-left-radius: 0;
 }
 
-.PictureMessage.MOSES .img-bg{
+.MessagePicture.MOSES .img-bg{
     background-color: #ff547a;
 }
-.PictureMessage.ISIS .img-bg{
+.MessagePicture.ISIS .img-bg{
     background-color: #f9ff54;
 }
-.PictureMessage.SEK .img-bg{
+.MessagePicture.SEK .img-bg{
     background-color: #54f1ff;
 }
 
