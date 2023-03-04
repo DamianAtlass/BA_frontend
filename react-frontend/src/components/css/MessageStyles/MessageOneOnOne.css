@@ -1,4 +1,4 @@
-.ChatMessage-container.bot{
+.MessageOneOnOne.bot{
     justify-items: start;
     grid-template-columns: 40px auto;
 }
@@ -16,18 +16,5 @@
     border-top-left-radius: 0;
 }
 
-.bot .profile-picture{
-
-}
-
-.bot .author{
-}
-
-.bot .content{
-}
-
-.bot .date{
-
-}
 
 

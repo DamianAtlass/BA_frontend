@@ -4,26 +4,20 @@
 }
 
 .MessagePicture .img-bg{
-    background-color: lightblue;
     border-radius: 50%;
     padding: 10px;
     width: fit-content;
     height: fit-content;
 }
+.ChatMessage-container.MessagePicture img{
+    height: 40px;
+}
 
 .MessagePicture .message{
-    background-color: white;
+    background-color: #cccccc;
     border-top-left-radius: 0;
 }
 
-.MessagePicture.MOSES .img-bg{
-    background-color: #ff547a;
-}
-.MessagePicture.ISIS .img-bg{
-    background-color: #f9ff54;
-}
-.MessagePicture.SEK .img-bg{
-    background-color: #54f1ff;
-}
+
 
 

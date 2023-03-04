@@ -14,14 +14,13 @@ import {useNavigate} from "react-router-dom";
 import {sleep} from "./ChatPage";
 import {useUserDataUpdate} from "./contexts/UserDataContext";
 
-
 const DIALOG_STYLE_ONE_ON_ONE = "ONE_ON_ONE"
 const DIALOG_STYLE_COLORED_BUBBLES = "COLORED_BUBBLES"
 const DIALOG_STYLE_CLASSIC_GROUP = "CLASSIC_GROUP"
 const DIALOG_STYLE_PICTURE = "PROFILE_PICTURES"
-const BOT_TYPE_MOSES = "MOSES"
-const BOT_TYPE_ISIS = "ISIS"
-const BOT_TYPE_STUDIERENDEN_SEK = "STUDIERENDEN-SEKRÄTARIAT"
+export const BOT_TYPE_MOSES = "MOSES"
+export const BOT_TYPE_ISIS = "ISIS"
+export const BOT_TYPE_STUDIERENDEN_SEK = "STUDIERENDEN-SEKRÄTARIAT"
 
 export function setStyling(author){
     switch (author){

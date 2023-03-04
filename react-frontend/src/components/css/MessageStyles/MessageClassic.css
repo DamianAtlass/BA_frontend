@@ -2,18 +2,18 @@
 }
 
 .MessageClassic .message{
-    background-color: white;
+    background-color: #cccccc;
     border-top-left-radius: 0;
 }
 
 .MessageClassic.MOSES b{
-    color: #ff547a;
+    color: #a856ff;
 }
 .MessageClassic.ISIS b{
-    color: #f9ff54
+    color: #34a4de;
 }
 .MessageClassic.SEK b{
-    color: #54f1ff;
+    color: #3d9633;
 }
 
 

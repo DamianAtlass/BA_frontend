@@ -11,6 +11,7 @@ export default function MessageBubble({message, same_author}) {
     let date = message["date"]
 
     return (
+        //TODO ISIS NEED TO BE EXCHANGED WITH 'MENTOR'
         <div className={"ChatMessage-container MessageBubble " + setStyling(author)}>
             <div className="message">
                 {!same_author && <b>{author}:</b>}
