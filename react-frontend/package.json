@@ -1,6 +1,6 @@
 {
   "name": "react-frontend",
-  "homepage": "https://DamianAtlass.github.io/BA_frontend",
+  "homepage": "BA_frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
