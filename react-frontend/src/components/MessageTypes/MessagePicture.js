@@ -18,11 +18,11 @@ export default function MessagePicture({message, same_author}) {
     function chooseImage(author){
         switch (author){
             case BOT_TYPE_MOSES:
-                return <img className="profil-picture" src={secretary_woman}/>
+                return <img src={secretary_woman}/>
             case BOT_TYPE_ISIS:
-                return <img className="profil-picture" src={hackerman}/>
+                return <img src={hackerman}/>
             case BOT_TYPE_STUDIERENDEN_SEK:
-                return <img className="profil-picture" src={secretary}/>
+                return <img  src={secretary}/>
         }
     }
 

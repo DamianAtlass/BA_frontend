@@ -10,9 +10,9 @@ export default function MessageOneOnOne({message, same_author}) {
     let date = message["date"]
 
     return (
-        <div className={"MessageOneOnOne-container bot"}>
+        <div className={"ChatMessage-container MessageOneOnOne"}>
             <div className="img-bg">
-                <img className="profil-picture" src={robot}/>
+                <img src={robot}/>
             </div>
 
             <div className="message">

@@ -4,16 +4,6 @@
 }
     /*justify-items: end*/
 
-.ChatMessage-container .img-bg{
-    border-radius: 50%;
-    padding: 5px;
-    width: fit-content;
-    height: fit-content;
-}
-
-.ChatMessage-container .profil-picture{
-    height: 30px;
-}
 
 .ChatMessage-container .message{
     margin-left: 5px;

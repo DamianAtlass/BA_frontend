@@ -1,17 +1,21 @@
-.MessageOneOnOne.bot{
+.MessageOneOnOne{
     justify-items: start;
-    grid-template-columns: 40px auto;
+    grid-template-columns: 50px auto;
 }
 
-.bot .img-bg{
-    background-color: lightblue;
+.MessageOneOnOne .img-bg{
     border-radius: 50%;
     padding: 5px;
     width: fit-content;
     height: fit-content;
+    background-color: lightblue;
 }
 
-.bot .message{
+.MessageOneOnOne img{
+    height: 40px;
+}
+
+.MessageOneOnOne .message{
     background-color: lightblue;
     border-top-left-radius: 0;
 }
