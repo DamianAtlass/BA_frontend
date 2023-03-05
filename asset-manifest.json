@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/BA_frontend/static/css/main.e20928fc.css",
+    "main.js": "/BA_frontend/static/js/main.c05ce9d8.js",
+    "static/js/787.0f148dca.chunk.js": "/BA_frontend/static/js/787.0f148dca.chunk.js",
+    "static/media/secretary_woman_red.png": "/BA_frontend/static/media/secretary_woman_red.df0e07a438449ac206c3.png",
+    "static/media/robot.png": "/BA_frontend/static/media/robot.e71dce45b7dcc2c7791d.png",
+    "static/media/sendButton.png": "/BA_frontend/static/media/sendButton.f246d487a7e5c4aeb569.png",
+    "index.html": "/BA_frontend/index.html",
+    "main.e20928fc.css.map": "/BA_frontend/static/css/main.e20928fc.css.map",
+    "main.c05ce9d8.js.map": "/BA_frontend/static/js/main.c05ce9d8.js.map",
+    "787.0f148dca.chunk.js.map": "/BA_frontend/static/js/787.0f148dca.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e20928fc.css",
+    "static/js/main.c05ce9d8.js"
+  ]
+}
