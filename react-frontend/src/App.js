@@ -2,9 +2,6 @@ import './App.css';
 import LoginPage from "./components/LoginPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import {BrowserRouter, Routes, Route, Navigate, Link} from "react-router-dom";
 import OverviewPage from "./components/OverviewPage";
 import {UserContext} from "./components/contexts/UserDataContext";
@@ -19,7 +16,7 @@ function App() {
 
       <UserContext>
 
-                      <HashRouter>
+                      <BrowserRouter>
                           <RedirectToLogin>
                               <Routes>
                                   <Route path="login" element={ <LoginPage/> }/>
@@ -31,7 +28,7 @@ function App() {
                                   <Route path="*" element={<div> oh no, you're lost! 404  Go to <Link to="/login"> Login </Link></div>} />
                               </Routes>
                           </RedirectToLogin>
-                      </HashRouter>
+                      </BrowserRouter>
 
       </UserContext>
 
