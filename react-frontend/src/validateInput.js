@@ -1,3 +1,5 @@
+import {ALLOWED_EMAIL_SUFFIXES} from "./env";
+
 let signs = ["'","'","-","\\", "/"];
 function stringContains(str, arr) {
     for(let i = 0;i<arr.length;  i++){
@@ -8,7 +10,6 @@ function stringContains(str, arr) {
     return false
 }
 
-const ALLOWED_SUFFIXES = ["@tu-berlin.de", "@fu-berlin.de"]
 function StrEndsWithOneOf(str, arr){
     for(let i = 0;i<arr.length;  i++){
         if(str.endsWith(arr[i])){
@@ -29,7 +30,8 @@ export const findFormErrorsCreateUser = (form) => {
     else if ( !/^[ -~]+$/.test(email) ) newErrors.email = 'Non ascii not allowed'
     else if ( email.length > 60 ) newErrors.email = 'email is too long!'
     else if ( !stringContains(email, ["@"]) ) newErrors.email = 'no valid email!'
-    else if ( !StrEndsWithOneOf(email, ALLOWED_SUFFIXES) ) newErrors.email = `Email of this type not allowed! Allowed: ${ALLOWED_SUFFIXES}`
+    //TODO uncomment when deployed
+    //else if ( !StrEndsWithOneOf(email, ALLOWED_EMAIL_SUFFIXES) ) newErrors.email = `Email of this type not allowed! Allowed: ${ALLOWED_EMAIL_SUFFIXES}`
 
 
     // name errors
