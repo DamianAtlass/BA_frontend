@@ -19,7 +19,7 @@ function App() {
 
       <UserContext>
 
-                      <BrowserRouter basename="/BA_frontend">
+                      <HashRouter>
                           <RedirectToLogin>
                               <Routes>
                                   <Route path="login" element={ <LoginPage/> }/>
@@ -31,7 +31,7 @@ function App() {
                                   <Route path="*" element={<div> oh no, you're lost! 404  Go to <Link to="/login"> Login </Link></div>} />
                               </Routes>
                           </RedirectToLogin>
-                      </BrowserRouter>
+                      </HashRouter>
 
       </UserContext>
 
