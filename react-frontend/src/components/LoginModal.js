@@ -177,7 +177,7 @@ export default function LoginModal() {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Log in
+                Login
             </Button>
 
             <Modal
@@ -193,9 +193,9 @@ export default function LoginModal() {
 
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Username:</Form.Label>
+                            <Form.Label>Benutzername:</Form.Label>
                             <Form.Control type="username"
-                                          placeholder="Your username"
+                                          placeholder="Benutzername"
                                           autoFocus
                                           onChange={ e => setField('username', e.target.value) }
                                           isInvalid={ !!errorsState.username }
@@ -240,10 +240,10 @@ export default function LoginModal() {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Schließen
                     </Button>
 
-                    <Button variant="primary" onClick={handleSubmit}>Log in</Button>
+                    <Button variant="primary" onClick={handleSubmit}>Login</Button>
 
 
                 </Modal.Footer>

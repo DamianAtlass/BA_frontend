@@ -28,19 +28,19 @@ export const findFormErrorsCreateUser = (form) => {
     let is_empty = ALLOWED_EMAIL_SUFFIXES.length===1 && ALLOWED_EMAIL_SUFFIXES[0]===""
 
     // email errors
-    if ( !email || email === '' ) newErrors.email = 'cannot be blank!'
-    else if ( !/^[ -~]+$/.test(email) ) newErrors.email = 'Non ascii not allowed'
-    else if ( email.length > 60 ) newErrors.email = 'email is too long!'
-    else if ( !stringContains(email, ["@"]) ) newErrors.email = 'no valid email!'
+    if ( !email || email === '' ) newErrors.email = 'Kann nicht leer sein!'
+    else if ( !/^[ -~]+$/.test(email) ) newErrors.email = 'Keine Nicht-ASCII-Zeichen!'
+    else if ( email.length > 60 ) newErrors.email = 'Email zu lang!!'
+    else if ( !stringContains(email, ["@"]) ) newErrors.email = 'Keine gültige Adresse!'
     //don't check emails if no pattern is given
-    else if ( !is_empty && !StrEndsWithOneOf(email, ALLOWED_EMAIL_SUFFIXES) ) newErrors.email = `Email of this type not allowed! Allowed: ${ALLOWED_EMAIL_SUFFIXES}`
+    else if ( !is_empty && !StrEndsWithOneOf(email, ALLOWED_EMAIL_SUFFIXES) ) newErrors.email = `Email von dem Typ nicht erlaubt, erlaubt sind:: ${ALLOWED_EMAIL_SUFFIXES}`
 
 
     // name errors
-    if ( !username || username === '' ) newErrors.username = 'cannot be blank!'
-    else if ( !/^[ -~]+$/.test(username) ) newErrors.username = 'Non ascii not allowed'
-    else if ( username.length < 3 ) newErrors.username = 'username is too short!'
-    else if ( username.length > 30 ) newErrors.username = 'username is too long!'
+    if ( !username || username === '' ) newErrors.username = 'Kann nicht leer sein!'
+    else if ( !/^[ -~]+$/.test(username) ) newErrors.username = 'Keine Nicht-ASCII-Zeichen!'
+    else if ( username.length < 3 ) newErrors.username = 'Benutzername zu kurz!'
+    else if ( username.length > 30 ) newErrors.username = 'Benutzername zu lang!'
 
     return newErrors
 }
@@ -52,22 +52,22 @@ export const findFormErrorsLogin = (form, verificationNeeded, adminLogin) => {
     const newErrors = {}
 
     // name errors
-    if ( !username || username === '' ) newErrors.username = 'cannot be blank!'
-    else if ( !/^[ -~]+$/.test(username) ) newErrors.username = 'Non ascii not allowed'
-    else if ( username.length < 3 ) newErrors.username = 'username is too short!'
-    else if ( username.length > 30 ) newErrors.username = 'username is too long!'
+    if ( !username || username === '' ) newErrors.username = 'Kann nicht leer sein!'
+    else if ( !/^[ -~]+$/.test(username) ) newErrors.username = 'Keine Nicht-ASCII-Zeichen!'
+    else if ( username.length < 3 ) newErrors.username = 'Benutzername zu kurz!'
+    else if ( username.length > 30 ) newErrors.username = 'Benutzername zu lang!'
 
 
     if(verificationNeeded){
         // verification_code errors
-        if (verification_code === '' ) newErrors.verification_code = 'cannot be blank!'
-        else if ( !/^[ -~]+$/.test(verification_code) ) newErrors.verification_code = 'Non ascii not allowed'
-        else if ( !(parseInt(verification_code) >= 100000) || !(parseInt(verification_code) <= 999999) ) newErrors.verification_code = '6digit number!'
+        if (verification_code === '' ) newErrors.verification_code = 'Kann nicht leer sein!'
+        else if ( !/^[ -~]+$/.test(verification_code) ) newErrors.verification_code = 'Keine Nicht-ASCII-Zeichen!'
+        else if ( !(parseInt(verification_code) >= 100000) || !(parseInt(verification_code) <= 999999) ) newErrors.verification_code = 'Muss 6-stellig sein!'
     }
 
     if(adminLogin){
-        if (admin_password === '' ) newErrors.admin_password = 'cannot be blank!'
-        else if ( !/^[ -~]+$/.test(admin_password) ) newErrors.admin_password = 'Non ascii not allowed'
+        if (admin_password === '' ) newErrors.admin_password = 'Kann nicht leer sein!'
+        else if ( !/^[ -~]+$/.test(admin_password) ) newErrors.admin_password = 'Keine Nicht-ASCII-Zeichen!'
     }
 
     return newErrors

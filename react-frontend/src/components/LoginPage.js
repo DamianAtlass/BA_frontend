@@ -29,7 +29,7 @@ export default function LoginPage(){
                 <Container fluid >
                     <Row>
                         <Col className="justify-content-center" align="center">
-                            <h1>Welcome</h1>
+                            <h1>Willkommen</h1>
                         </Col>
                     </Row>
                     <Row className="justify-content-evenly">

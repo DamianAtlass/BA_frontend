@@ -109,7 +109,7 @@ export default function CreateUserModal() {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Create User
+                Account erstellen
             </Button>
 
             <Modal
@@ -120,17 +120,17 @@ export default function CreateUserModal() {
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Create user</Modal.Title>
+                    <Modal.Title>Account erstellen</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {/*additional info here*/}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Email address</Form.Label>
+                            <Form.Label>Emailadresse</Form.Label>
 
                             <Form.Control
                                 type="email"
-                                placeholder="name@example.com"
+                                placeholder="name@beispiel-uni.de"
                                 autoFocus
                                 onChange={ e => updateField('email', e.target.value) }
                                 isInvalid={ !!errorsState.email }
@@ -138,31 +138,32 @@ export default function CreateUserModal() {
                             <Form.Control.Feedback type='invalid'>
                                 { errorsState.email }
                             </Form.Control.Feedback>
-                            <p className="form-description">Use your educational email to verify your identidy. It won't be shared with anyone and is only used for this purpose!</p>
+                            <p className="form-description">Nutze deine universitäre Emailadresse umd dich zu verifizieren.
+                                Sie wird nicht mit anderen geteilt und nur zu diesem Zweck verwendet, und um dich gegebenenfalls zu kontaktieren.</p>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Username</Form.Label>
+                            <Form.Label>Benutzername</Form.Label>
                             <Form.Control type="text"
-                                          placeholder="username"
+                                          placeholder="Benutzername"
                                           onChange={ e => updateField('username', e.target.value) }
                                           isInvalid={ !!errorsState.username }
                             />
                             <Form.Control.Feedback type='invalid'>
                                 { errorsState.username }
                             </Form.Control.Feedback>
-                            <p className="form-description">Users who will be invited by you will see your username, choose wisely!</p>
+                            <p className="form-description">Nutzer die du einlädst können deinen Benutzernamen sehen, nicht änderbar!</p>
                         </Form.Group>
                     </Form>
 
-                        {invitedBy && `You've been invited by ${invitedBy}!`}
+                        {invitedBy && `Du wurdest eingeladen von ${invitedBy}!`}
                     <p>{infoMessage}</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Schließen
                     </Button>
-                    <Button variant="primary" onClick={handleSubmit} >Create Account</Button>
+                    <Button variant="primary" onClick={handleSubmit} >Account erstellen</Button>
                 </Modal.Footer>
             </Modal>
         </>

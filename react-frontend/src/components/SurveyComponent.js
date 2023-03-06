@@ -19,7 +19,7 @@ import {BACKEND_API_URL} from "../env";
 
 
 const surveyJson = {
-    title: "Give your opinion!",
+    title: "Deine Meinung zählt!",
     firstPageIsStarted: true,
     startSurveyText: "Start Quiz",
     pages: [{
@@ -52,18 +52,18 @@ function CompleteCard(){
                 <Container fluid>
                     <Row className="justify-content-center">
                         <Col className="justify-content-center" align="center">
-                            <h1>Thx for your partaking</h1>
+                            <h1>Vielen Dank für deine Teilnahme!</h1>
                         </Col>
                     </Row>
                     <CopyLinkComponent/>
                     <Row>
                         <Col align="center">
-                            Other users will not see your email, just your username!
+                            Andere Nutzer werden deine Emailadresse nicht sehen können, nur deinen Benutzername.
                         </Col>
                     </Row>
                     <Row>
                         <Col align="center">
-                            <Button onClick={() => {navigate("/overview")}}>Go Back</Button>
+                            <Button onClick={() => {navigate("/overview")}}>Zurück zur Übersicht</Button>
                         </Col>
                     </Row>
                 </Container>
