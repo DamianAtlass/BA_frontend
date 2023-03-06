@@ -25,13 +25,15 @@ export const findFormErrorsCreateUser = (form) => {
     const {username, email} = form
     const newErrors = {}
 
+    let is_empty = ALLOWED_EMAIL_SUFFIXES.length===1 && ALLOWED_EMAIL_SUFFIXES[0]===""
+
     // email errors
     if ( !email || email === '' ) newErrors.email = 'cannot be blank!'
     else if ( !/^[ -~]+$/.test(email) ) newErrors.email = 'Non ascii not allowed'
     else if ( email.length > 60 ) newErrors.email = 'email is too long!'
     else if ( !stringContains(email, ["@"]) ) newErrors.email = 'no valid email!'
-    //TODO uncomment when deployed
-    //else if ( !StrEndsWithOneOf(email, ALLOWED_EMAIL_SUFFIXES) ) newErrors.email = `Email of this type not allowed! Allowed: ${ALLOWED_EMAIL_SUFFIXES}`
+    //don't check emails if no pattern is given
+    else if ( !is_empty && !StrEndsWithOneOf(email, ALLOWED_EMAIL_SUFFIXES) ) newErrors.email = `Email of this type not allowed! Allowed: ${ALLOWED_EMAIL_SUFFIXES}`
 
 
     // name errors
