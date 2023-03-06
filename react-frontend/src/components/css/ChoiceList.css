@@ -1,15 +1,21 @@
 .ChoiceList-container{
-    margin: 5px
-}
-.ChoiceList-container button{
-    border-radius: 25px;
-    border-style: none;
-    margin: 2px;
-    box-shadow: 0 2px #666;
+    margin: 5px;
 }
 
+.ChoiceList-container button{
+    color: white;
+    font-weight: bolder;
+    background-color: rgba(0, 0, 0, 0.18);
+    border-style: none;
+    border-radius: 2px;
+    margin: 2px 4px;
+    padding: 2px 4px;
+}
+
+
+
 .ChoiceList-container button:hover{
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px red;
 }
 .ChoiceList-container button:active{
     transform: translateY(1px);
