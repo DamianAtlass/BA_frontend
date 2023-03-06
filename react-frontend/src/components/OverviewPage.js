@@ -97,13 +97,13 @@ export default function OverviewPage(){
                     <Row className="justify-content-evenly">
                         <Col align="center">
                             <Button onClick={() => {navigate("/chat")}}>
-                                {userData.completed_dialog ? "View Interaction" : "Starte Interaktion"}
+                                {userData.completed_dialog ? "Interaktion ansehen" : "Starte Interaktion"}
                             </Button>
                         </Col>
 
                         {(!userData.completed_survey && userData.completed_dialog) &&
                             <Col align="center">
-                                <Button variant="success" onClick={()=>{navigate("/survey")}}> Survey </Button>
+                                <Button variant="success" onClick={()=>{navigate("/survey")}}> zur Umfrage </Button>
                             </Col>
                         }
                     </Row>

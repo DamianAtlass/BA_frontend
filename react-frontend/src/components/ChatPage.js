@@ -85,7 +85,7 @@ export default function ChatPage() {
             dispatch({type: "append", payload: [...response.data["history"], ...response.data["bot_responses"]]})
             setChoices({type: "replace", payload: response.data["choices"]})
 
-            await sleep(100);
+            await sleep(1000);
 
             let elem = document.getElementById('scroll');
             elem.scrollTop = elem.scrollHeight;
