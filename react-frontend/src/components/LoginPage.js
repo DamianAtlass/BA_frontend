@@ -9,6 +9,7 @@ import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import MainContainer from "./MainContainer";
 import {useUserDataUpdate} from "./contexts/UserDataContext";
+import {FRONTEND_API_URL, BACKEND_API_URL, ALLOWED_EMAIL_SUFFIXES, ADMIN_USERNAME} from "../env";
 
 
 export default function LoginPage(){
@@ -16,6 +17,10 @@ export default function LoginPage(){
 
     useEffect(()=>{
         setUserData({type: "update", payload: {token: undefined}})
+        console.log("FRONTEND_API_URL", FRONTEND_API_URL)
+        console.log("BACKEND_API_URL", BACKEND_API_URL)
+        console.log("ALLOWED_EMAIL_SUFFIXES", ALLOWED_EMAIL_SUFFIXES)
+        console.log("ADMIN_USERNAME", ADMIN_USERNAME)
     },[])
 
     return (
