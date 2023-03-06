@@ -10,6 +10,7 @@
     padding: 3px 5px;
     border-radius: 10px;
     border-style: none;
+    min-width: 90px;
 
     max-width: 70%;
     width: fit-content;
