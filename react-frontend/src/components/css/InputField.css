@@ -1,14 +1,10 @@
 .InputField-container{
     display: grid;
     grid-template-columns: auto 40px;
+    margin: 5px;
 
 }
-.InputField-container form{
-    margin-left: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
 
-}
 
 .InputField-container input{
     width: 100%;

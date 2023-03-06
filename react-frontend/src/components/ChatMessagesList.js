@@ -19,15 +19,18 @@ const DIALOG_STYLE_COLORED_BUBBLES = "COLORED_BUBBLES"
 const DIALOG_STYLE_CLASSIC_GROUP = "CLASSIC_GROUP"
 const DIALOG_STYLE_PICTURE = "PROFILE_PICTURES"
 export const BOT_TYPE_MOSES = "MOSES"
-export const BOT_TYPE_ISIS = "ISIS"
+export const BOT_TYPE_MENTOR = "MENTOR"
 export const BOT_TYPE_STUDIERENDEN_SEK = "STUDIERENDEN-SEKRÄTARIAT"
+export const BOT_TYPE_CHATU = "CHATU"
 
 export function setStyling(author){
     switch (author){
         case BOT_TYPE_MOSES:
             return BOT_TYPE_MOSES
-        case BOT_TYPE_ISIS:
-            return BOT_TYPE_ISIS
+        case BOT_TYPE_MENTOR:
+            return BOT_TYPE_MENTOR
+        case BOT_TYPE_CHATU:
+            return BOT_TYPE_CHATU
         case BOT_TYPE_STUDIERENDEN_SEK:
             return "SEK"
     }

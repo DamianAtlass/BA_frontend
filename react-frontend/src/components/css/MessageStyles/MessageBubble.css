@@ -6,11 +6,14 @@
     background-color: #a856ff;
 }
 
-.MessageBubble.ISIS .message{
+.MessageBubble.MENTOR .message{
     background-color: #34a4de;
 }
 
 .MessageBubble.SEK .message{
     background-color: #3d9633;
+}
+.MessageBubble.CHATU .message{
+    background-color: #c53847;
 }
 

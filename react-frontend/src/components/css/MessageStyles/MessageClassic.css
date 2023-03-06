@@ -9,11 +9,14 @@
 .MessageClassic.MOSES b{
     color: #a856ff;
 }
-.MessageClassic.ISIS b{
+.MessageClassic.MENTOR b{
     color: #34a4de;
 }
 .MessageClassic.SEK b{
     color: #3d9633;
+}
+.MessageClassic.CHATU b{
+    color: #c40d20;
 }
 
 

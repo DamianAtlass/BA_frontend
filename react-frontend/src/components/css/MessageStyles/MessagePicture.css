@@ -4,6 +4,8 @@
 }
 
 .MessagePicture .img-bg{
+    justify-self: center;
+    align-self: start;
     border-radius: 50%;
     padding: 10px;
     width: fit-content;
