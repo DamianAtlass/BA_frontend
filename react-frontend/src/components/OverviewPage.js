@@ -17,13 +17,13 @@ function ScoreBoard({user_pk}){
     const user_pk_str_pad = user_pk.toString().padStart(3, '0')
     const url_end = `accounts/inv/${user_pk_str_pad}/`
 
-    const [numberInv, setNumberInv] = useState(null)
+    const [directlyRecruited, setDirectlyRecruited] = useState(null)
     const [userScore, setUserScore] = useState(null)
 
     const fetchDataNumberOfInv = async ()=>{
         const res =  await axios.get(BACKEND_API_URL + url_end);
         console.log(res)
-        setNumberInv(res.data["total_invited_len"])
+        setDirectlyRecruited(res.data["directly_recruited_len"])
         setUserScore(res.data["user_score"])
     }
 
@@ -43,7 +43,7 @@ function ScoreBoard({user_pk}){
             <div className="outer">
                 <div className="inner">teilgenommene <br/></div>
                 <div>Freunde:</div>
-                <div className="inner">{numberInv}</div>
+                <div className="inner">{directlyRecruited}</div>
             </div>
 
             <div className="outer">
