@@ -6,4 +6,18 @@
 
 .LoginPageCard>.container-fluid>*{
     margin: 30px;
+
 }
+
+.LoginPageCard .accordion button{
+    color: white;
+    background-color: #c40d20;
+}
+
+.accordion-button::after{
+    display: none;
+}
+:focus {
+    box-shadow: 0 0 0 0 white !important;
+}
+

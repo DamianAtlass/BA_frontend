@@ -108,7 +108,7 @@ export default function CreateUserModal() {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button id="CreateUserModalButton" type="secondary" onClick={handleShow}>
                 Account erstellen
             </Button>
 
@@ -138,7 +138,7 @@ export default function CreateUserModal() {
                             <Form.Control.Feedback type='invalid'>
                                 { errorsState.email }
                             </Form.Control.Feedback>
-                            <p className="form-description">Nutze deine universitäre Emailadresse umd dich zu verifizieren.
+                            <p className="form-description">Nutze deine universitäre Emailadresse um dich zu verifizieren.
                                 Sie wird nicht mit anderen geteilt und nur zu diesem Zweck verwendet, und um dich gegebenenfalls zu kontaktieren.</p>
                         </Form.Group>
 
@@ -163,7 +163,7 @@ export default function CreateUserModal() {
                     <Button variant="secondary" onClick={handleClose}>
                         Schließen
                     </Button>
-                    <Button variant="primary" onClick={handleSubmit} >Account erstellen</Button>
+                    <Button onClick={handleSubmit} >Account erstellen</Button>
                 </Modal.Footer>
             </Modal>
         </>

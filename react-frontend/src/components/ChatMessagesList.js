@@ -87,7 +87,15 @@ export default function ChatMessagesList({messages}) {
         return messages.map((msg, index) => {
             // check if previous message (exists and) was from same author, don't display author again of so
 
-            let same_author = index-1 >= 0 && messages[index-1]["author"] === msg["author"]
+            let same_author = false
+            if (index-1 >= 0){
+                if(messages[index-1]["author"] === msg["author"]){
+                    same_author = true
+                } else if(userData.dialog_style === DIALOG_STYLE_ONE_ON_ONE && messages[index-1]["author"] !== "USER" ){
+                    same_author = true
+                }
+            }
+
             return (
                     <Row key={v4()} className="justify-content-center">
                         <Col className="nopadding ChatMessagesList-container">

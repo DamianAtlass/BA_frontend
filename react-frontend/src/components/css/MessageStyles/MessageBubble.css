@@ -3,17 +3,18 @@
 }
 
 .MessageBubble.MOSES .message{
-    background-color: #a856ff;
+    background-color: #cd9dff;
 }
 
 .MessageBubble.MENTOR .message{
-    background-color: #34a4de;
+    background-color: #ffc162;
 }
 
 .MessageBubble.SEK .message{
-    background-color: #3d9633;
+    background-color: #b7ffb0;
 }
 .MessageBubble.CHATU .message{
-    background-color: #c53847;
+    background-color: #C92536;
+    color: white;
 }
 

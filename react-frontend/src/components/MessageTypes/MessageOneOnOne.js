@@ -10,13 +10,17 @@ export default function MessageOneOnOne({message, same_author}) {
     let date = message["date"]
 
     return (
-        <div className={"ChatMessage-container MessageOneOnOne"}>
-            <div className="img-bg">
-                <img src={robot}/>
-            </div>
+        <div className="ChatMessage-container MessageOneOnOne ">
+
+            {same_author ?
+                <div></div> :
+                <div className="img-bg">
+                    <img src={robot}/>
+                </div>
+            }
 
             <div className="message">
-                {!same_author && <b>ChaTU:</b>}
+                {!same_author && <b>CHATU:</b>}
                 <div className="content">{content}</div>
                 <div className="date">{date}</div>
             </div>

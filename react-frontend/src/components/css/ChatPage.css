@@ -7,7 +7,7 @@
     height: 100vh;
     display: grid;
     grid-template-rows: auto auto;
-
+    box-shadow: 0 0 10px gray;
 }
 
 .ChatPage-grid-item-1-2{

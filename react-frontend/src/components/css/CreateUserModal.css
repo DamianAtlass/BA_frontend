@@ -5,3 +5,8 @@
 .CreateUserModal .form-label{
     font-weight: 400;
 }
+
+#CreateUserModalButton{
+    background-color: #c40d20;
+    border-style: none;
+}

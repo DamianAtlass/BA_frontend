@@ -47,22 +47,23 @@ export default function AdminPage() {
         return userInfos.map((entry, index) => {
             return (
                 <tr key={v4()}>
+                    <td>{entry.user_pk}</td>
                     <td>{entry.username}</td>
-                    <td>{entry.email}</td>
+                    <td>{entry.invited_by}</td>
                     {create_td_bool(entry.verified)}
                     {create_td_bool(entry.completed_dialog)}
                     {create_td_bool(entry.completed_survey)}
-                    <td>{entry.dialog_style}</td>
-                    <td>{entry.user_pk}</td>
-                    <td>{entry.invited_by}</td>
-                    <td>{entry.recruited_len}</td>
-                    <td>{entry.indirectly_recruited_len}</td>
                     <td>{entry.user_score}</td>
+                    <td>{entry.directly_invited_len}</td>
+                    <td>{entry.total_invited_len}</td>
+                    <td>{entry.directly_recruited_len}</td>
+                    <td>{entry.total_recruited_len}</td>
+                    <td>{entry.dialog_style}</td>
+                    <td>{entry.email}</td>
                 </tr>
             )
         })
     }
-
 
     return (
             <div className="AdminPage">
@@ -70,17 +71,19 @@ export default function AdminPage() {
                 <table>
                     <tbody>
                         <tr>
+                            <th>user pk</th>
                             <th>username</th>
-                            <th>email</th>
+                            <th>invited by</th>
                             <th>verified</th>
                             <th>completed dialog</th>
                             <th>completed survey</th>
-                            <th>dialog_style</th>
-                            <th>user_pk</th>
-                            <th>invited by</th>
-                            <th>recruited</th>
-                            <th>indirectly recruited</th>
                             <th>user score</th>
+                            <th>directly invited</th>
+                            <th>total invited</th>
+                            <th>directly recruited</th>
+                            <th>total recruited</th>
+                            <th>dialog style</th>
+                            <th>email</th>
                         </tr>
                         {build_table()}
                     </tbody>

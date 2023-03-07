@@ -103,7 +103,7 @@ export default function ChatPage() {
                                     <Col className="nopadding">
                                         <Navbar className="nav-color" expand="lg">
                                             <div className="nav-text" >
-                                                ChaTU
+                                                CHATU
                                             </div>
                                         </Navbar>
                                     </Col>

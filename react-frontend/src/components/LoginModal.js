@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 import {useUserDataUpdate} from "./contexts/UserDataContext";
 import {findFormErrorsLogin} from "../validateInput";
 import {BACKEND_API_URL, ADMIN_USERNAME} from "../env";
+import "./css/LoginModal.css"
 
 export default function LoginModal() {
     const [show, setShow] = useState(false);
@@ -176,11 +177,12 @@ export default function LoginModal() {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button id="LoginModalButton" onClick={handleShow}>
                 Login
             </Button>
 
             <Modal
+                className="LoginModal"
                 show={show}
                 onHide={handleClose}
                 backdrop="static"
