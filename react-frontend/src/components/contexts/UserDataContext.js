@@ -40,7 +40,8 @@ export function UserContext({children}){
             "dialog_style": undefined,
             "user_pk": undefined,
             "completed_dialog": false,
-            "completed_survey": false,
+            "completed_survey_part1": false,
+            "completed_survey_part2": false,
             "admin_token": false
         }
         //console.log("set new state in storage", default_state)
@@ -51,7 +52,8 @@ export function UserContext({children}){
             "dialog_style": local_state.dialog_style,
             "user_pk": local_state.user_pk,
             "completed_dialog": local_state.completed_dialog,
-            "completed_survey": local_state.completed_survey
+            "completed_survey_part1": local_state.completed_survey_part1,
+            "completed_survey_part2": local_state.completed_survey_part2
         }
         //console.log("state found", default_state)
     }

@@ -88,7 +88,7 @@ export default function LoginModal() {
                         "username": username,
                         "dialog_style": undefined,
                         "completed_dialog": undefined,
-                        "completed_survey": undefined,
+                        "completed_survey_part1": undefined,
                         "user_pk": undefined,
                         "token": response.data["token"]
                     }})
@@ -141,7 +141,7 @@ export default function LoginModal() {
                         "username": username,
                         "dialog_style": response.data["dialog_style"],
                         "completed_dialog": response.data["completed_dialog"],
-                        "completed_survey": response.data["completed_survey"],
+                        "completed_survey_part1": response.data["completed_survey_part1"],
                         "user_pk": response.data["user_pk"],
                     }})
 

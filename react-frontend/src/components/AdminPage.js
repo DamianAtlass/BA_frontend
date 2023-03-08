@@ -52,7 +52,7 @@ export default function AdminPage() {
                     <td>{entry.invited_by}</td>
                     {create_td_bool(entry.verified)}
                     {create_td_bool(entry.completed_dialog)}
-                    {create_td_bool(entry.completed_survey)}
+                    {create_td_bool(entry.completed_survey_part1)}
                     <td>{entry.user_score}</td>
                     <td>{entry.directly_invited_len}</td>
                     <td>{entry.total_invited_len}</td>

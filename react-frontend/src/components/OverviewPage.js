@@ -86,7 +86,7 @@ export default function OverviewPage(){
                         </Col>
                     </Row>
 
-                    {userData.completed_survey &&
+                    {userData.completed_survey_part1 &&
                         <>
                             <ScoreBoard user_pk={userData.user_pk}/>
                             <CopyLinkComponent/>
@@ -96,12 +96,12 @@ export default function OverviewPage(){
 
                     <Row className="justify-content-evenly">
                         <Col align="center">
-                            <Button onClick={() => {navigate("/chat")}}>
+                            <Button onClick={() => {navigate("/survey")}}>
                                 {userData.completed_dialog ? "Interaktion ansehen" : "Starte Interaktion"}
                             </Button>
                         </Col>
 
-                        {(!userData.completed_survey && userData.completed_dialog) &&
+                        {(!userData.completed_survey_part1 && userData.completed_dialog) &&
                             <Col align="center">
                                 <Button variant="success" onClick={()=>{navigate("/survey")}}> zur Umfrage </Button>
                             </Col>
