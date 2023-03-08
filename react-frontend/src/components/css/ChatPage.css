@@ -49,6 +49,9 @@
 .nav-color img:hover{
     height: 23px;
 }
+.nav-color img:hover + .nav-text{
+    margin-left: 0;
+}
 
 .ChatPage-input-bg{
     background-color: #c40d20;
