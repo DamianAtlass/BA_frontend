@@ -42,7 +42,7 @@ export function UserContext({children}){
             "completed_dialog": false,
             "completed_survey_part1": false,
             "completed_survey_part2": false,
-            "admin_token": false
+            "admin_token": false,
         }
         //console.log("set new state in storage", default_state)
         localStorage.setItem('state', JSON.stringify(default_state));

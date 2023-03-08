@@ -13,6 +13,7 @@ import "./css/ChatPage.css"
 import InputField from "./InputField";
 import {BACKEND_API_URL} from "../env";
 import MainContainer from "./MainContainer";
+import back_button from "../img/back_white.png"
 
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
 function reducer(state, action) {
@@ -102,6 +103,7 @@ export default function ChatPage() {
                                 <Row className="justify-content-center topbar">
                                     <Col className="nopadding">
                                         <Navbar className="nav-color" expand="lg">
+                                            <img onClick={() => {navigate("/login")}} src={back_button}/>
                                             <div className="nav-text" >
                                                 CHATU
                                             </div>

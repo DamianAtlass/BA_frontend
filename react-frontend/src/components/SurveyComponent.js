@@ -108,7 +108,7 @@ function SurveyPart1() {
 
     const survey = new Model(survey_part1_Json);
     const surveyComplete = useCallback((sender) => {
-        saveSurveyResults(BACKEND_API_URL + "surveydata/" + user_pk_str_pad+"/",sender.data)
+        saveSurveyResults(BACKEND_API_URL + "surveydata/" + user_pk_str_pad+"/1/",sender.data)
         setUserData({type: "update", payload: {completed_survey_part1: true}})
     }, []);
 
@@ -138,7 +138,7 @@ function SurveyPart2() {
     }
 
     const surveyComplete = useCallback((sender) => {
-        saveSurveyResults(BACKEND_API_URL + "surveydata/" + user_pk_str_pad+"/",sender.data)
+        saveSurveyResults(BACKEND_API_URL + "surveydata/" + user_pk_str_pad + "/2/",sender.data)
         setUserData({type: "update", payload: {completed_survey_part2: true}})
     }, []);
 

@@ -29,13 +29,25 @@
 
 
 .nav-color{
+    display: grid;
+    justify-content: start;
+    grid-template-columns: auto auto;
     background-color: #c40d20;
     height: 70px
 }
 .nav-text{
     color: white;
-    margin-left: 15px;
     font-size: 1.5em;
+    margin-left: 3px;
+}
+
+.nav-color img{
+    margin-top: 3px;
+    height: 20px;
+}
+
+.nav-color img:hover{
+    height: 23px;
 }
 
 .ChatPage-input-bg{

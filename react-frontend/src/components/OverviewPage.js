@@ -86,7 +86,7 @@ export default function OverviewPage(){
                         </Col>
                     </Row>
 
-                    {userData.completed_survey_part1 &&
+                    {(userData.completed_survey_part1 && userData.completed_survey_part2) &&
                         <>
                             <ScoreBoard user_pk={userData.user_pk}/>
                             <CopyLinkComponent/>
@@ -101,7 +101,7 @@ export default function OverviewPage(){
                             </Button>
                         </Col>
 
-                        {(!userData.completed_survey_part1 && userData.completed_dialog) &&
+                        {(userData.completed_survey_part1 &&!userData.completed_survey_part2 && userData.completed_dialog) &&
                             <Col align="center">
                                 <Button variant="success" onClick={()=>{navigate("/survey")}}> zur Umfrage </Button>
                             </Col>
