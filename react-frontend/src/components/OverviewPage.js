@@ -96,9 +96,18 @@ export default function OverviewPage(){
 
                     <Row className="justify-content-evenly">
                         <Col align="center">
-                            <Button onClick={() => {navigate("/survey")}}>
-                                {userData.completed_dialog ? "Interaktion ansehen" : "Starte Interaktion"}
-                            </Button>
+
+                            {!userData.completed_dialog &&
+                                <Button onClick={() => {navigate("/survey")}}>
+                                    Starte Interaktion
+                                </Button>
+                            }
+
+                            {(userData.completed_dialog && userData.completed_survey_part2 ) &&
+                                <Button onClick={() => {navigate("/chat")}}>
+                                    Interaktion Ansehen
+                                </Button>
+                            }
                         </Col>
 
                         {(userData.completed_survey_part1 &&!userData.completed_survey_part2 && userData.completed_dialog) &&
