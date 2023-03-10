@@ -4,10 +4,10 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-import {useUserDataUpdate} from "./contexts/UserDataContext";
-import {findFormErrorsLogin} from "../validateInput";
-import {BACKEND_API_URL, ADMIN_USERNAME} from "../env";
-import "./css/LoginModal.css"
+import {useUserDataUpdate} from "../contexts/UserDataContext";
+import {findFormErrorsLogin} from "../../validateInput";
+import {BACKEND_API_URL, ADMIN_USERNAME} from "../../env";
+import "../../css/LoginModal.css"
 
 export default function LoginModal() {
     const [show, setShow] = useState(false);

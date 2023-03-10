@@ -1,15 +1,15 @@
 import React, {useEffect} from "react"
 import CreateUserModal from "./CreateUserModal";
 import LoginModal from "./LoginModal";
-import "./css/LoginPage.css"
+import "../../css/LoginPage.css"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
-import MainContainer from "./MainContainer";
-import {useUserDataUpdate} from "./contexts/UserDataContext";
-import {FRONTEND_API_URL, BACKEND_API_URL, ALLOWED_EMAIL_SUFFIXES, ADMIN_USERNAME} from "../env";
+import MainContainer from "../MainContainer";
+import {useUserDataUpdate} from "../contexts/UserDataContext";
+import {FRONTEND_API_URL, BACKEND_API_URL, ALLOWED_EMAIL_SUFFIXES, ADMIN_USERNAME} from "../../env";
 
 
 export default function LoginPage(){

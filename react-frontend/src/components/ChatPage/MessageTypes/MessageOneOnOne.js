@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
-import "../css/MessageStyles/MessageBasic.css"
-import "../css/MessageStyles/MessageOneOnOne.css"
-import robot from '../../img/robot.png'
+import "../../../css/MessageStyles/MessageBasic.css"
+import "../../../css/MessageStyles/MessageOneOnOne.css"
+import robot from '../../../img/robot.png'
 
 
 export default function MessageOneOnOne({message, same_author}) {

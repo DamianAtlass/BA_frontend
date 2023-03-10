@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from 'react-bootstrap/Container';
 import {v4} from 'uuid';
-import "./css/ChoiceList.css"
+import "../../css/ChoiceList.css"
 
 export default function ChoiceList({choices, handelChoiceSelection}) {
     function createChoiceButtons(){

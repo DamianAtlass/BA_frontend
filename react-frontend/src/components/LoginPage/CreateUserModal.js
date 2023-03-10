@@ -3,9 +3,9 @@ import Modal from 'react-bootstrap/Modal';
 import Button from "react-bootstrap/Button"
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
-import {findFormErrorsCreateUser} from "../validateInput";
-import {BACKEND_API_URL} from "../env";
-import "./css/CreateUserModal.css"
+import {findFormErrorsCreateUser} from "../../validateInput";
+import {BACKEND_API_URL} from "../../env";
+import "../../css/CreateUserModal.css"
 
 export default function CreateUserModal() {
     const [show, setShow] = useState(false);

@@ -3,16 +3,16 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {v4} from 'uuid';
-import "./css/ChatMessagesList.css"
+import "../../css/ChatMessagesList.css"
 import MessageUser from "./MessageTypes/MessageUser";
 import MessageOneOnOne from "./MessageTypes/MessageOneOnOne";
 import MessageBubble from "./MessageTypes/MessageBubble";
-import {useUserData} from "./contexts/UserDataContext";
+import {useUserData} from "../contexts/UserDataContext";
 import MessageClassic from "./MessageTypes/MessageClassic";
 import MessagePicture from "./MessageTypes/MessagePicture";
 import {useNavigate} from "react-router-dom";
 import {sleep} from "./ChatPage";
-import {useUserDataUpdate} from "./contexts/UserDataContext";
+import {useUserDataUpdate} from "../contexts/UserDataContext";
 
 const DIALOG_STYLE_ONE_ON_ONE = "ONE_ON_ONE"
 const DIALOG_STYLE_COLORED_BUBBLES = "COLORED_BUBBLES"

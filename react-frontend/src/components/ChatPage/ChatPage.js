@@ -1,19 +1,19 @@
 import React, {useEffect, useState, useReducer} from "react"
-import {useUserData} from "./contexts/UserDataContext";
+import {useUserData} from "../contexts/UserDataContext";
 import ChatMessagesList from "./ChatMessagesList";
 import axios from "axios";
 import ChoiceList from "./ChoiceList";
-import {INITIAL_USER} from "./contexts/UserDataContext";
+import {INITIAL_USER} from "../contexts/UserDataContext";
 import {useNavigate} from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
-import "./css/ChatPage.css"
+import "../../css/ChatPage.css"
 import InputField from "./InputField";
-import {BACKEND_API_URL} from "../env";
-import MainContainer from "./MainContainer";
-import back_button from "../img/back_white.png"
+import {BACKEND_API_URL} from "../../env";
+import MainContainer from "../MainContainer";
+import back_button from "../../img/back_white.png"
 
 export const sleep = ms => new Promise(r => setTimeout(r, ms));
 function reducer(state, action) {

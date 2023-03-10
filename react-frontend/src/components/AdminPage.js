@@ -5,7 +5,7 @@ import {useUserData, useUserDataUpdate} from "./contexts/UserDataContext";
 import {useNavigate, Link} from "react-router-dom";
 import {v4} from 'uuid';
 import {ADMIN_USERNAME, BACKEND_API_URL} from "../env";
-import "./css/AdminPage.css"
+import "../css/AdminPage.css"
 
 export default function AdminPage() {
     const navigate = useNavigate()

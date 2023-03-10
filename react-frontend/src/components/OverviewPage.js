@@ -11,7 +11,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import CopyLinkComponent from "./CopyLinkComponent";
 import {BACKEND_API_URL, FRONTEND_API_URL} from "../env";
 import MainContainer from "./MainContainer";
-import "./css/ScoreBoard.css"
+import "../css/ScoreBoard.css"
 
 function ScoreBoard({user_pk}){
     const user_pk_str_pad = user_pk.toString().padStart(3, '0')

@@ -1,12 +1,12 @@
 import './App.css';
-import LoginPage from "./components/LoginPage";
+import LoginPage from "./components/LoginPage/LoginPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
 import {BrowserRouter, Routes, Route, Navigate, Link} from "react-router-dom";
 import OverviewPage from "./components/OverviewPage";
 import {UserContext} from "./components/contexts/UserDataContext";
 import RedirectToLogin from "./components/RedirectToLogin";
-import ChatPage from "./components/ChatPage";
+import ChatPage from "./components/ChatPage/ChatPage";
 import SurveyComponent from "./components/SurveyComponent";
 import AdminPage from "./components/AdminPage";
 import { HashRouter } from "react-router-dom";

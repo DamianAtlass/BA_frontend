@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import "../css/MessageStyles/MessageBasic.css"
-import "../css/MessageStyles/MessageUser.css"
+import "../../../css/MessageStyles/MessageBasic.css"
+import "../../../css/MessageStyles/MessageUser.css"
 
 
 export default function MessageUser({message}) {

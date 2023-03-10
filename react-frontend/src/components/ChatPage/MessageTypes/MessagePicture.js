@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
-import "../css/MessageStyles/MessageBasic.css"
-import "../css/MessageStyles/MessagePicture.css"
-import secretary from '../../img/secretary_red.png'
-import secretary_woman from "../../img/secretary_woman_red.png"
-import hackerman from "../../img/hacker_red.png"
-import silhouette from "../../img/silhouette_red.png"
+import "../../../css/MessageStyles/MessageBasic.css"
+import "../../../css/MessageStyles/MessagePicture.css"
+import secretary from '../../../img/secretary_red.png'
+import secretary_woman from "../../../img/secretary_woman_red.png"
+import hackerman from "../../../img/hacker_red.png"
+import silhouette from "../../../img/silhouette_red.png"
 import {BOT_TYPE_MOSES, BOT_TYPE_MENTOR, BOT_TYPE_STUDIERENDEN_SEK, BOT_TYPE_CHATU} from "../ChatMessagesList";
 
 import {setStyling} from "../ChatMessagesList";
