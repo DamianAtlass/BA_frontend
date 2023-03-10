@@ -95,22 +95,29 @@ export default function OverviewPage(){
                     }
 
                     <Row className="justify-content-evenly">
-                        <Col align="center">
 
-                            {!userData.completed_dialog &&
-                                <Button onClick={() => {navigate("/survey")}}>
+
+                        {(!userData.completed_survey_part1 && !userData.completed_dialog && !userData.completed_survey_part2) &&
+                            <Col align="center">
+                                <Button onClick={() => {
+                                    navigate("/survey")
+                                }}>
                                     Starte Interaktion
                                 </Button>
-                            }
+                            </Col>
+                        }
 
-                            {(userData.completed_dialog && userData.completed_survey_part2 ) &&
-                                <Button onClick={() => {navigate("/chat")}}>
-                                    Interaktion Ansehen
+                        {(userData.completed_survey_part1) &&
+                            <Col align="center">
+                                <Button onClick={() => {
+                                    navigate("/chat")
+                                }}>
+                                    {userData.completed_dialog ? "Interaktion ansehen" : "Interaktion fortfahren"}
                                 </Button>
-                            }
-                        </Col>
+                            </Col>
+                        }
 
-                        {(userData.completed_survey_part1 &&!userData.completed_survey_part2 && userData.completed_dialog) &&
+                        {(userData.completed_survey_part1 && userData.completed_dialog && !userData.completed_survey_part2) &&
                             <Col align="center">
                                 <Button variant="success" onClick={()=>{navigate("/survey")}}> zur Umfrage </Button>
                             </Col>

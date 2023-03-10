@@ -142,6 +142,7 @@ export default function LoginModal() {
                         "dialog_style": response.data["dialog_style"],
                         "completed_dialog": response.data["completed_dialog"],
                         "completed_survey_part1": response.data["completed_survey_part1"],
+                        "completed_survey_part2": response.data["completed_survey_part2"],
                         "user_pk": response.data["user_pk"],
                     }})
 

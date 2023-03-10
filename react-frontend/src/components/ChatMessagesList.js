@@ -64,7 +64,6 @@ export default function ChatMessagesList({messages}) {
         }
 
         switch(author){
-
             case "USER":
                 return <MessageUser message={message}/>
             default:
